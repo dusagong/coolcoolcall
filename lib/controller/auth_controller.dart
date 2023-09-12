@@ -21,9 +21,9 @@ class AuthController extends GetxController {
   _moveToPage(User? user) {
     if (initialized) {
       if (user == null) {
-        Get.offAll(() => LoginPage());
+        // Get.offAll(() => LoginPage());
       } else {
-        Get.offAll(() => onBoarding1());
+        // Get.offAll(() => onBoarding1());
       }
     }
     else{
