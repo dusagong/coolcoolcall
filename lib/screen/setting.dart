@@ -1,4 +1,3 @@
-import 'package:coolcoolcall/screen/call.dart';
 import 'package:coolcoolcall/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,32 +8,106 @@ class Setting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('환경설정'), actions: [
-        IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          color: const Color.fromARGB(255, 255, 255, 255),
-          onPressed: () {
-            Get.offAll(() => Home());
-          },
-        ),
-      ]),
+      backgroundColor: Colors.black,
       body: SafeArea(
           child: Center(
         child: Column(
           children: [
             SizedBox(
+              height: 35,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("김한동님",
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        color: Color.fromRGBO(255, 255, 255, 1)
+                        )),
+                GestureDetector(
+                  onTap: () {
+                    Get.offAll(() => Home());
+                  },
+                  child: Image.asset("assets/Setting/Home.png"),
+                ),
+              ],
+            ),
+            SizedBox(
               height: 90,
             ),
-            Text(
-              '한동님, 최근 겪고 있는\n수면 상태에 알맞는 것을 골라주세요.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                // height: 1.2575 * ffem / fem,
-                color: Color(0xfffdeec5),
-              ),
-            )
+            Container(
+                width: 354.7760009765625,
+                height: 67,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xff060713),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      spreadRadius: 3.0,
+                    ),
+                  ],
+                )),
+            Container(
+                width: 354.7760009765625,
+                height: 67,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xff060713),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      spreadRadius: 3.0,
+                    ),
+                  ],
+                )),
+            Container(
+                width: 354.7760009765625,
+                height: 67,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xff060713),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      spreadRadius: 3.0,
+                    ),
+                  ],
+                )),
+            Container(
+                width: 354.7760009765625,
+                height: 67,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xff060713),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      spreadRadius: 3.0,
+                    ),
+                  ],
+                )),
+                SizedBox(height: 320,),
+
+            Container(
+                width: 354.7760009765625,
+                height: 67,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xff060713),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      spreadRadius: 3.0,
+                    ),
+                  ],
+                )),
           ],
         ),
       )),

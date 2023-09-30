@@ -1,7 +1,6 @@
 import 'package:coolcoolcall/controller/auth_controller.dart';
 import 'package:coolcoolcall/screen/auth/login.dart';
 import 'package:coolcoolcall/screen/loginUI.dart';
-import 'package:coolcoolcall/screen/onBoarding/page4.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

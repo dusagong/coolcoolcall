@@ -1,5 +1,6 @@
 import 'package:coolcoolcall/controller/auth_controller.dart';
 import 'package:coolcoolcall/screen/auth/login.dart';
+import 'package:coolcoolcall/screen/loginUI.dart';
 import 'package:coolcoolcall/screen/onBoarding/page1.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
 
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Page1(),//loading screen should be here.
+      home: FakeLogin(),//loading screen should be here.
     );
   }
 }
