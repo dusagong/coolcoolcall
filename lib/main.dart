@@ -5,7 +5,7 @@ import 'package:coolcoolcall/screen/onBoarding/page1.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: FakeLogin(),//loading screen should be here.

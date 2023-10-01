@@ -13,11 +13,26 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   TextEditingController nameC = TextEditingController();
   TextEditingController ageC = TextEditingController();
+  TextEditingController sleepH = TextEditingController();
+  TextEditingController sleepM = TextEditingController();
+  TextEditingController wakeH = TextEditingController();
+  TextEditingController wakeM = TextEditingController();
 
-  Future<void> storeDataInFirestore(String text) async {
+  Future<void> storeDataInFirestore(
+    String enteredName,
+    String enteredAge,
+    String enteredSH,
+    String enteredSM,
+    String enteredWH,
+    String enteredWM,
+  ) async {
     try {
       await FirebaseFirestore.instance.collection('기본 가입 정보').doc('a').set({
-        'name': text, // Store the text from nameC in the 'name' field
+        'name': enteredName, // Store the text from nameC in the 'name' field
+        'sleepHour': enteredSH,
+        'sleepMinute': enteredSM,
+        'wakeHour': enteredWH,
+        'wakeMinute': enteredWM,
       });
     } catch (e) {
       print('Error storing data: $e');
@@ -26,9 +41,16 @@ class _Page1State extends State<Page1> {
 
   void onSaveButtonPressed() {
     String enteredName = nameC.text;
-    storeDataInFirestore(enteredName);
+    String enteredAge = ageC.text;
+    String sleepHour = sleepH.text;
+    String sleepMinute = sleepM.text;
+    String wakeHour = wakeH.text;
+    String wakeMinute = wakeM.text;
+    storeDataInFirestore(
+        enteredName, enteredAge, sleepHour, sleepMinute, wakeHour, wakeMinute);
     Get.to(() => Page2());
   }
+
   FocusNode nameFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
@@ -174,6 +196,7 @@ class _Page1State extends State<Page1> {
                                 ),
                                 child: TextField(
                                   controller: ageC,
+                                  keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
                                     hintText: 'ex. 24',
                                     hintStyle: TextStyle(
@@ -278,7 +301,8 @@ class _Page1State extends State<Page1> {
 
                               // child:
                               child: TextField(
-                                controller: nameC,
+                                controller: sleepH,
+                                keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   hintText: '        23',
                                   hintStyle: TextStyle(
@@ -319,7 +343,8 @@ class _Page1State extends State<Page1> {
                                 ],
                               ),
                               child: TextField(
-                                controller: nameC,
+                                controller: sleepM,
+                                keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   hintText: '        00',
                                   hintStyle: TextStyle(
@@ -373,7 +398,8 @@ class _Page1State extends State<Page1> {
                                 ],
                               ),
                               child: TextField(
-                                controller: nameC,
+                                controller: wakeH,
+                                keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   hintText: '         7',
                                   hintStyle: TextStyle(
@@ -414,7 +440,8 @@ class _Page1State extends State<Page1> {
                                 ],
                               ),
                               child: TextField(
-                                controller: nameC,
+                                controller: wakeM,
+                                keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   hintText: '        30',
                                   hintStyle: TextStyle(

@@ -30,9 +30,15 @@ class _Page1State extends State<Page2> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double conwidth = width * 310 / 390;
+    double conhight = height * 126 / 844;
+
     return Scaffold(
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
+        toolbarHeight: height * 47 / 844,
         title: Text("불면 상태 입력",
             style: TextStyle(
               fontSize: 20,
@@ -46,11 +52,11 @@ class _Page1State extends State<Page2> {
           child: Column(
             children: [
               SizedBox(
-                height: 90,
+                height: height * 105 / 844,
               ),
               Container(
-                width: 310,
-                height: 126,
+                width: conwidth,
+                height: conhight,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Color(0xff060713),
@@ -62,6 +68,8 @@ class _Page1State extends State<Page2> {
                     ),
                   ],
                 ),
+                padding: EdgeInsets.fromLTRB(
+                    width * 37 / 390.0, 0, width * 37 / 390.0, 0),
                 child: Row(
                   children: [
                     Image.asset(
@@ -98,11 +106,11 @@ class _Page1State extends State<Page2> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: height * 22 / 844,
               ),
               Container(
-                width: 310,
-                height: 126,
+                width: conwidth,
+                height: conhight,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Color(0xff060713),
@@ -114,6 +122,8 @@ class _Page1State extends State<Page2> {
                     ),
                   ],
                 ),
+                padding: EdgeInsets.fromLTRB(
+                    width * 37 / 390.0, 0, width * 37 / 390.0, 0),
                 child: Row(
                   children: [
                     Image.asset(
@@ -150,11 +160,11 @@ class _Page1State extends State<Page2> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: height * 22 / 844,
               ),
               Container(
-                width: 310,
-                height: 126,
+                width: conwidth,
+                height: conhight,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Color(0xff060713),
@@ -166,6 +176,8 @@ class _Page1State extends State<Page2> {
                     ),
                   ],
                 ),
+                padding: EdgeInsets.fromLTRB(
+                    width * 37 / 390.0, 0, width * 37 / 390.0, 0),
                 child: Row(
                   children: [
                     Image.asset(
@@ -202,15 +214,15 @@ class _Page1State extends State<Page2> {
                 ),
               ),
               SizedBox(
-                height: 60,
+                height: height * 88 / 844,
               ),
               GestureDetector(
                 onTap: () {
-                  Get.offAll(()=>Home());
+                  Get.offAll(() => Home());
                 },
                 child: Container(
-                    width: 310,
-                    height: 75,
+                    width: conwidth,
+                    height: height * 75 / 844,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                       color: Color(0xff060713),

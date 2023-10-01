@@ -23,71 +23,72 @@ class FakeLogin extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 100,
+                  height: 114,
                 ),
                 Image.asset("assets/login/coolcoolLogo.png"),
                 SizedBox(
-                  height: 80,
+                  height: 84,
                 ),
                 Text("기존에 사용하고 있던 계정으로\n   간단하게 회원가입 하세요!",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
                         color: Colors.white)),
-                SizedBox(height: 35),
+                SizedBox(height: 28),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset("assets/login/kakao.png"),
-                    SizedBox(width: 17),
+                    SizedBox(width: 15),
                     Image.asset("assets/login/naver.png"),
-                    SizedBox(width: 17),
+                    SizedBox(width: 15),
                     Image.asset("assets/login/facebook.png"),
-                    SizedBox(width: 17),
+                    SizedBox(width: 15),
                     Image.asset("assets/login/apple.png"),
                   ],
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 39),
                 Text("또는",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
                         color: Colors.white)),
                 // Image.asset("assets/login/google.png"),
-                SizedBox(height: 45),
+                SizedBox(height: 42),
                 GestureDetector(
                   onTap: () {
                     Get.offAll(() => Page1());
                   },
-                  child: Container(
-                    width: 329,
-                    height: 51,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                    ),
-                    padding: EdgeInsets.all(10), // Adjust the padding as needed
-                    child: Row(
-                      children: [
-                        SizedBox(width: 10),
-                        Image.asset(
-                          "assets/login/googlelogo.png",
-                          width: 22,
-                          height: 20.53333282470703,
-                        ),
-                        SizedBox(
-                            width:
-                                60), // Add some spacing between the image and text
-                        Text(
-                          "구글로 가입하기",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: Image.asset("assets/login/google.png"),
+                  // child: Container(
+                  //   width: 329,
+                  //   height: 51,
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(10),
+                  //     color: Colors.white,
+                  //   ),
+                  //   padding: EdgeInsets.all(10), // Adjust the padding as needed
+                  //   child: Row(
+                  //     children: [
+                  //       SizedBox(width: 10),
+                  //       Image.asset(
+                  //         "assets/login/googlelogo.png",
+                  //         width: 22,
+                  //         height: 20.53333282470703,
+                  //       ),
+                  //       SizedBox(
+                  //           width:
+                  //               60), // Add some spacing between the image and text
+                  //       Text(
+                  //         "구글로 가입하기",
+                  //         style: TextStyle(
+                  //           fontSize: 18,
+                  //           fontWeight: FontWeight.w400,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 )
               ],
             )),
