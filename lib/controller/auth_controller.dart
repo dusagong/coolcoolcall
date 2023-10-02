@@ -9,6 +9,7 @@ class AuthController extends GetxController {
   late Rx<User?> _user;
   FirebaseAuth authentication = FirebaseAuth.instance;
   bool initialized = false;
+  int clickcount = 0;
 
   @override
   void onReady() {

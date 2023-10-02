@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FakeLogin(),//loading screen should be here.
+      home: FakeLogin(),//loading screen should be here. 
     );
   }
 }

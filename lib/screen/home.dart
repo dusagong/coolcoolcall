@@ -1,3 +1,4 @@
+import 'package:coolcoolcall/controller/auth_controller.dart';
 import 'package:coolcoolcall/screen/call.dart';
 import 'package:coolcoolcall/screen/setting.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ Future<String?> fetchNameFromFirestore() async {
     return null;
   }
 }
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -37,156 +39,157 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int clickCount = 0;
+  bool checkBottomConsonant(String input) {
+    bool result = false;
+    if (isKorean(input)) {
+      result = ((input.runes.first - 0xAC00) / (28 * 21)) < 0
+          ? false
+          : (((input.runes.first - 0xAC00) % 28 != 0) ? true : false);
+    }
+    return result;
+  }
+
+  bool isKorean(String input) {
+    bool isKorean = false;
+    int inputToUniCode = input.codeUnits[0];
+
+    isKorean = (inputToUniCode >= 12593 && inputToUniCode <= 12643)
+        ? true
+        : (inputToUniCode >= 44032 && inputToUniCode <= 55203)
+            ? true
+            : false;
+
+    return isKorean;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () {
-            setState(() {
-              clickCount++;
-            });
-          },
-          child: Stack(
-            children: [
-              // Background Image or Content
-              Center(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.offAll(() => Setting());
-                          },
-                          child: Image.asset("assets/home/setting.png"),
-                        ),
-                        SizedBox(width: 20),
-                      ],
-                    ),
-                    SizedBox(height: 230),
-                    FutureBuilder<String?>(
-                      future: fetchNameFromFirestore(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return CircularProgressIndicator();
-                        } else if (snapshot.hasError) {
-                          return Text("Error: ${snapshot.error}");
-                        } else {
-                          final String? name = snapshot.data;
-
-                          if (name != null) {
-                            return Text(
-                              "$name아!\n오늘도 고생했어,\n같이 자러 갈래?",
-                              style: TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.w500,
-                                color: Color.fromRGBO(229, 221, 234, 1),
-                              ),
-                            );
-                          } else {
-                            return Text("Document does not exist.");
-                          }
-                        }
-                      },
-                    ),
-                    SizedBox(height: 90),
-                    GestureDetector(
-                      onTap: () {
-                        Get.offAll(Call());
-                      },
-                      child: Image.asset("assets/home/moon.png"),
-                    ),
-                    Text(
-                      "전화하기",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Color.fromRGBO(229, 221, 234, 1),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Content to Show in the Container
-              if (clickCount == 0)
-                Center(
-                  child: Container(
-                    color: Color.fromRGBO(18, 18, 18, 1),
-                    width: double.infinity,
-                    height: double.infinity,
-                    child: Center(
-                      child: Text(
-                        'Click $clickCount times',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                if (clickCount == 1)
-                Center(
-                  child: Container(
-                    color: Colors.black.withOpacity(0.5), // 50% opacity
-                    width: double.infinity,
-                    height: double.infinity,
-                    child: Center(
-                      child: Text(
-                        'Click $clickCount times',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                if (clickCount == 2)
-                Center(
-                  child: Container(
-                    color: Colors.black.withOpacity(0.5), // 50% opacity
-                    width: double.infinity,
-                    height: double.infinity,
-                    child: Center(
-                      child: Text(
-                        'Click $clickCount times',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                if (clickCount == 3)
-                Center(
-                  child: Container(
-                    color: Colors.black.withOpacity(0.5), // 50% opacity
-                    width: double.infinity,
-                    height: double.infinity,
-                    child: Center(
-                      child: Text(
-                        'Click $clickCount times',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-            ],
+    return Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage('assets/background/background.png'), // 배경 이미지
           ),
         ),
-      ),
-    );
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: GestureDetector(
+            onTap: () {
+              setState(() {
+                AuthController.instance.clickcount++;
+              });
+            },
+            child: Stack(
+              children: [
+                // Background Image or Content
+                Center(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 56),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Get.offAll(() => Setting());
+                            },
+                            child: Image.asset("assets/home/setting.png"),
+                          ),
+                          SizedBox(width: 20),
+                        ],
+                      ),
+                      SizedBox(height: 158),
+                      FutureBuilder<String?>(
+                        future: fetchNameFromFirestore(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text("Error: ${snapshot.error}");
+                          } else {
+                            final String? name = snapshot.data;
+
+                            if (name != null) {
+                              final String trimmedName = name.substring(1);
+                              final String lastletter =
+                                  name.substring(name.length - 1);
+                              return checkBottomConsonant(lastletter)
+                                  ? Text(
+                                      "      $trimmedName아!\n오늘도 고생했어,\n 같이 자러 갈래?",
+                                      style: TextStyle(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color.fromRGBO(229, 221, 234, 1),
+                                      ),
+                                    )
+                                  : Text(
+                                      "      $trimmedName야!\n오늘도 고생했어,\n 같이 자러 갈래?",
+                                      style: TextStyle(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color.fromRGBO(229, 221, 234, 1),
+                                      ),
+                                    );
+                            } else {
+                              return Text("Document does not exist.");
+                            }
+                          }
+                        },
+                      ),
+                      SizedBox(height: 197),
+                      GestureDetector(
+                        onTap: () {
+                          Get.offAll(Call());
+                        },
+                        child: Image.asset("assets/home/moon.png"),
+                      ),
+                      Text(
+                        "전화하기",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Color.fromRGBO(229, 221, 234, 1),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Content to Show in the Container
+                if (AuthController.instance.clickcount == 0)
+                  Center(
+                      child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image.asset(
+                      "assets/home/cover1_.png",
+                      fit: BoxFit.cover,
+                    ),
+                  )),
+                if (AuthController.instance.clickcount == 1)
+                  Center(
+                      child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image.asset(
+                      "assets/home/cover2_.png",
+                      fit: BoxFit.cover,
+                    ),
+                  )),
+                if (AuthController.instance.clickcount == 2)
+                  Center(
+                      child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image.asset(
+                      "assets/home/cover3_.png",
+                      fit: BoxFit.cover,
+                    ),
+                  )),
+              ],
+            ),
+          ),
+        ));
   }
 }

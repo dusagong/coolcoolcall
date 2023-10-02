@@ -58,7 +58,7 @@ class _Page1State extends State<Page1> {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage("assets/background.png"), // 배경 이미지
+            image: AssetImage("assets/background/background.png"), // 배경 이미지
           ),
         ),
         child: Scaffold(
@@ -76,9 +76,9 @@ class _Page1State extends State<Page1> {
             child: Center(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 30,
-                  ),
+                  // SizedBox(
+                  //   height: 30,
+                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -120,7 +120,7 @@ class _Page1State extends State<Page1> {
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("이름",

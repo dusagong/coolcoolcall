@@ -69,7 +69,7 @@ class _Page1State extends State<Page2> {
                   ],
                 ),
                 padding: EdgeInsets.fromLTRB(
-                    width * 37 / 390.0, 0, width * 37 / 390.0, 0),
+                    width * 37 / 390.0, 0, width * 34 / 390.0, 0),
                 child: Row(
                   children: [
                     Image.asset(
@@ -123,7 +123,7 @@ class _Page1State extends State<Page2> {
                   ],
                 ),
                 padding: EdgeInsets.fromLTRB(
-                    width * 37 / 390.0, 0, width * 37 / 390.0, 0),
+                    width * 37 / 390.0, 0, width * 34 / 390.0, 0),
                 child: Row(
                   children: [
                     Image.asset(
@@ -177,7 +177,7 @@ class _Page1State extends State<Page2> {
                   ],
                 ),
                 padding: EdgeInsets.fromLTRB(
-                    width * 37 / 390.0, 0, width * 37 / 390.0, 0),
+                    width * 37 / 390.0, 0, width * 31 / 390.0, 0),
                 child: Row(
                   children: [
                     Image.asset(
