@@ -19,12 +19,24 @@ class Setting extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("김한동님",
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: Color.fromRGBO(255, 255, 255, 1)
-                        )),
+                FutureBuilder<String?>(
+                  future: fetchNameFromFirestore(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text("Error: ${snapshot.error}");
+                    } else {
+                      final String? name = snapshot.data;
+
+                      return Text("$name님",
+                          style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                              color: Color.fromRGBO(255, 255, 255, 1)));
+                    }
+                  },
+                ),
                 GestureDetector(
                   onTap: () {
                     Get.offAll(() => Home());
@@ -92,8 +104,9 @@ class Setting extends StatelessWidget {
                     ),
                   ],
                 )),
-                SizedBox(height: 320,),
-
+            SizedBox(
+              height: 220,
+            ),
             Container(
                 width: 354.7760009765625,
                 height: 67,
