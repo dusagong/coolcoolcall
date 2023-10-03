@@ -64,12 +64,12 @@ class _CallState extends State<Call> {
         child: Scaffold(
             backgroundColor: Colors.transparent,
             body: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 2500),
-              key: ValueKey<Widget>(mychoice),
+              duration: const Duration(seconds: 1),
+              // key: ValueKey<Widget>(mychoice),
               child: mychoice,
-              transitionBuilder: (Widget child, Animation<double> animation) {
-                return ScaleTransition(scale: animation, child: child);
-              },
+              // transitionBuilder: (Widget child, Animation<double> animation) {
+              //   return ScaleTransition(scale: animation, child: child);
+              // },
             )),
       ),
     );
