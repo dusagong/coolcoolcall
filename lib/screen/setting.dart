@@ -1,4 +1,6 @@
+import 'package:coolcoolcall/controller/auth_controller.dart';
 import 'package:coolcoolcall/screen/home.dart';
+import 'package:coolcoolcall/screen/loginUI.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -109,8 +111,8 @@ class Setting extends StatelessWidget {
                     ),
                     Image.asset(
                       "assets/Setting/1.png",
-                      width: 18.36393928527832,
-                      height: 19.999977111816406,
+                      width: 18,
+                      height: 20,
                     ),
                     SizedBox(
                       width: 30,
@@ -154,14 +156,14 @@ class Setting extends StatelessWidget {
                       width: 20,
                     ),
                     Image.asset(
-                      "assets/Setting/1.png",
-                      width: 18.36393928527832,
-                      height: 19.999977111816406,
+                      "assets/Setting/2.png",
+                      width: 18,
+                      height: 32,
                     ),
                     SizedBox(
                       width: 30,
                     ),
-                    Text("개인 정보 설정",
+                    Text("서비스 설정",
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -200,14 +202,14 @@ class Setting extends StatelessWidget {
                       width: 20,
                     ),
                     Image.asset(
-                      "assets/Setting/1.png",
-                      width: 18.36393928527832,
-                      height: 19.999977111816406,
+                      "assets/Setting/3.png",
+                      width: 18,
+                      height: 22.5,
                     ),
                     SizedBox(
                       width: 30,
                     ),
-                    Text("개인 정보 설정",
+                    Text("사용 설명서",
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -246,14 +248,14 @@ class Setting extends StatelessWidget {
                       width: 20,
                     ),
                     Image.asset(
-                      "assets/Setting/1.png",
-                      width: 18.36393928527832,
-                      height: 19.999977111816406,
+                      "assets/Setting/4.png",
+                      width: 18,
+                      height: 22.5,
                     ),
                     SizedBox(
                       width: 30,
                     ),
-                    Text("개인 정보 설정",
+                    Text("건의 사항",
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -262,22 +264,47 @@ class Setting extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 220,
+                height: 338,
               ),
-              Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff060713),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 5.0,
-                        spreadRadius: 3.0,
+              GestureDetector(
+                onTap: (){
+                  Get.offAll(()=>FakeLogin());
+                  AuthController.instance.clickcount = 0;
+                },
+                child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xff060713),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 5.0,
+                          spreadRadius: 3.0,
+                        ),
+                      ],
+                    ),
+                    child: Center(child: Row(children: [
+                      SizedBox(
+                        width: 20,
                       ),
-                    ],
-                  )),
+                      Image.asset(
+                        "assets/Setting/5.png",
+                        width: 18,
+                        height: 22.5,
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Text("로그아웃",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xffffffff)))
+                    ],)),
+                    ),
+              ),
             ],
           ),
         ));

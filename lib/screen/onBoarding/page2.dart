@@ -195,7 +195,7 @@ class _Page1State extends State<Page2> {
                         height: 101.81,
                       ),
                       SizedBox(
-                        width: 30,
+                        width: 46,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
