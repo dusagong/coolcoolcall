@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coolcoolcall/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:coolcoolcall/screen/onBoarding/page2.dart';
 
 class Page2 extends StatefulWidget {
   Page2({super.key});

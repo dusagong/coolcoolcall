@@ -1,6 +1,6 @@
 import 'package:coolcoolcall/controller/auth_controller.dart';
-import 'package:coolcoolcall/screen/call.dart';
-import 'package:coolcoolcall/screen/setting.dart';
+import 'package:coolcoolcall/call/call.dart';
+import 'package:coolcoolcall/setting/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -40,6 +40,7 @@ dependencies:
   firebase_auth: ^4.9.0
   google_fonts: ^5.1.0
   cloud_firestore: ^4.9.1
+  animated_switch: ^0.0.2
   # alan_voice: ^4.4.0
 
 dev_dependencies:

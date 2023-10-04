@@ -1,4 +1,3 @@
-import 'package:coolcoolcall/screen/home.dart';
 import 'package:coolcoolcall/screen/onBoarding/page1.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

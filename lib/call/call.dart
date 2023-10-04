@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:coolcoolcall/screen/home.dart';
-import 'package:coolcoolcall/screen/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -64,12 +63,13 @@ class _CallState extends State<Call> {
         child: Scaffold(
             backgroundColor: Colors.transparent,
             body: AnimatedSwitcher(
+              switchInCurve: Curves.fastOutSlowIn,
+              switchOutCurve: Curves.fastLinearToSlowEaseIn,
               duration: const Duration(seconds: 1),
               // key: ValueKey<Widget>(mychoice),
-              child: mychoice,
-              // transitionBuilder: (Widget child, Animation<double> animation) {
-              //   return ScaleTransition(scale: animation, child: child);
-              // },
+              child: isOverlayVisible ? a() : b(),
+              // mychoice,
+              // key: isOverlayVisible ? ValueKey<String>('a') : ValueKey<String>('b'),
             )),
       ),
     );
@@ -77,6 +77,7 @@ class _CallState extends State<Call> {
 
   Widget a() {
     return Stack(
+      key: ValueKey<String>('a'),
       children: [
         Center(
           child: Column(
@@ -91,7 +92,6 @@ class _CallState extends State<Call> {
                     fontWeight: FontWeight.w400,
                     color: Color(0xffE5DDEA),
                   )),
-              if (isOverlayVisible)
                 GestureDetector(
                     onTap: () {
                       Get.offAll(Home());
@@ -121,6 +121,7 @@ class _CallState extends State<Call> {
 
   Widget b() {
     return Stack(
+      key: ValueKey<String>('b'),
       children: [
         Center(
           child: Column(

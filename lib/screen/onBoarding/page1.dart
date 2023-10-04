@@ -809,7 +809,14 @@ class _Page1State extends State<Page1> {
                   SizedBox(
                     height: 30,
                   ),
-                  Text(
+                  if (nameC.text.trim().isEmpty ||
+                      ageC.text.trim().isEmpty ||
+                      sleepH.text.trim().isEmpty ||
+                      sleepM.text.trim().isEmpty ||
+                      wakeH.text.trim().isEmpty ||
+                      wakeM.text.trim().isEmpty)SizedBox(height: 38,)
+                  
+                  else Text(
                       "입력한 시간에 자동으로 전화와 모닝콜이 수신됩니다.\n          환경설정에서 나중에 변경 가능합니다.",
                       style: TextStyle(
                           fontSize: 15,

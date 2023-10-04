@@ -1,5 +1,3 @@
-import 'package:coolcoolcall/screen/auth/login.dart';
-import 'package:coolcoolcall/screen/onBoarding/page1.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
