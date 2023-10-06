@@ -11,12 +11,13 @@ class SleepAlarm extends StatefulWidget {
 }
 
 class _SleepAlarmState extends State<SleepAlarm> {
-    bool click = false;
-    late Widget mychoice;
-  void initState(){
+  bool click = false;
+  late Widget mychoice;
+  void initState() {
     super.initState();
     mychoice = a();
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -44,16 +45,68 @@ class _SleepAlarmState extends State<SleepAlarm> {
             AnimatedSwitcher(
               switchInCurve: Curves.fastOutSlowIn,
               switchOutCurve: Curves.fastLinearToSlowEaseIn,
-              duration: const Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 1000),
               // key: ValueKey<Widget>(mychoice),
               child: click ? b() : a(),
-            //   transitionBuilder: (Widget child, Animation<double> animation) {
-            //   return ScaleTransition(scale: animation, child: child);
-            // },
+              //   transitionBuilder: (Widget child, Animation<double> animation) {
+              //   return ScaleTransition(scale: animation, child: child);
+              // },
               // mychoice,
               // key: isOverlayVisible ? ValueKey<String>('a') : ValueKey<String>('b'),
-            )
+            ),
+            GestureDetector(
+          onTap: () {
+            setState(() {
+              click = !click;
+            });
+            print('$click');
+          },
+          child: Stack(
+          alignment: Alignment.center,
+          children: [
+            AnimatedSwitcher(
+              // switchInCurve: Curves.fastOutSlowIn,
+              // switchOutCurve: Curves.fastLinearToSlowEaseIn,
+              duration: const Duration(milliseconds: 1000),
+              // key: ValueKey<Widget>(mychoice),
+              child: click ? Image.asset(
+              "assets/Setting/2/BrightToggleBack.png",
+              width: 260,
+              height: 144.18,
+              key:ValueKey<String>('b1')
 
+            ) : Image.asset(
+              "assets/Setting/2/DarkToggleBack.png",
+              width: 260,
+              height: 144.18,
+              key:ValueKey<String>('a1')
+            ),
+              //   transitionBuilder: (Widget child, Animation<double> animation) {
+              //   return ScaleTransition(scale: animation, child: child);
+              // },
+              // mychoice,
+              // key: isOverlayVisible ? ValueKey<String>('a') : ValueKey<String>('b'),
+            ),
+            
+            AnimatedPositioned(child: Image.asset(
+                "assets/Setting/2/smallMoon.png",
+                width: 109,
+                height: 144.18,
+              ), duration: Duration(milliseconds: 600),
+              left: click?140:0,
+              right: click?0:140,)
+            
+            // Positioned(
+            //   right: click ? -26 : 2, // Slide in from left or hide to the left
+            //   child: Image.asset(
+            //     "assets/Setting/2/smallMoon.png",
+            //     width: 109,
+            //     height: 144.18,
+            //   ),
+            // ),
+          ],
+        ),
+        ),
           ]),
         ));
   }
@@ -70,57 +123,50 @@ class _SleepAlarmState extends State<SleepAlarm> {
         SizedBox(
           height: 30,
         ),
-        Container( // Wrapping the text in a container with fixed height
-        height: 60, // Adjust the height as needed
-        width: 300,
-        child: Text(
-          "            현재 쿨쿨콜 알람이 꺼져있어요.\n           취침 전 쿨쿨이의 전화를 싶다면\n                     알람을 켜주세요!",
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color: Color(0xffE5DDEA),
+        Container(
+          // Wrapping the text in a container with fixed height
+          height: 60, // Adjust the height as needed
+          width: 300,
+          child: Text(
+            "            현재 쿨쿨콜 알람이 꺼져있어요.\n           취침 전 쿨쿨이의 전화를 싶다면\n                     알람을 켜주세요!",
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: Color(0xffE5DDEA),
+            ),
           ),
         ),
-      ),
-        GestureDetector(
-          onTap: (){
-            setState(() {
-              click = true;  
-            
-            });
-            print('$click');
-
-          },
-          child: Image.asset(
-            "assets/Setting/2/DarkToggle.png",
-            width: 260,
-            height: 144.18,
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(
-              width: 10,
-            ),
-            Text("OFF",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xffE5DDEA))),
-            Text("ON",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xffE5DDEA))),
-            SizedBox(
-              width: 10,
-            ),
-          ],
-        )
+        // GestureDetector(
+        //   onTap: () {
+        //     setState(() {
+        //       click = true;
+        //     });
+        //     print('$click');
+        //   },
+        //   child: Stack(
+        //   alignment: Alignment.center,
+        //   children: [
+        //     Image.asset(
+        //       "assets/Setting/2/DarkToggleBack.png",
+        //       width: 260,
+        //       height: 144.18,
+        //     ),
+        //     Positioned(
+        //       left: click ? 2 : -26, // Slide in from left or hide to the left
+        //       child: Image.asset(
+        //         "assets/Setting/2/smallMoon.png",
+        //         width: 109,
+        //         height: 144.18,
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        // ),
+      
       ],
     );
   }
+
   Widget b() {
     return Column(
       key: ValueKey<String>('b'),
@@ -133,53 +179,45 @@ class _SleepAlarmState extends State<SleepAlarm> {
         SizedBox(
           height: 30,
         ),
-        
-        Container( // Wrapping the text in a container with fixed height
-        height: 60, // Adjust the height as needed
-        width: 300,
-        child: Text(
-          "            현재 쿨쿨콜 알람이 켜져있어요.\n    취침 전 쿨쿨이의 전화를 받고싶지 않다면\n                     알람을 꺼주세요!",
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color: Color(0xffE5DDEA),
+        Container(
+          // Wrapping the text in a container with fixed height
+          height: 60, // Adjust the height as needed
+          width: 300,
+          child: Text(
+            "            현재 쿨쿨콜 알람이 켜져있어요.\n    취침 전 쿨쿨이의 전화를 받고싶지 않다면\n                     알람을 꺼주세요!",
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: Color(0xffE5DDEA),
+            ),
           ),
         ),
-      ),
-        GestureDetector(
-          onTap: (){
-            setState(() {
-              click = false;
-            });
-            print('$click');
-          },
-          child: Image.asset(
-            "assets/Setting/2/BrightToggle.png",
-            width: 260,
-            height: 144.18,
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(
-              width: 10,
-            ),
-            Text("OFF",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xffE5DDEA))),
-            Text("ON",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xffE5DDEA))),
-            SizedBox(
-              width: 10,
-            ),
-          ],
-        )
+        // GestureDetector(
+        //   onTap: () {
+        //     setState(() {
+        //       click = false;
+        //     });
+        //     print('$click');
+        //   },
+        //   child: Stack(
+        //   alignment: Alignment.center,
+        //   children: [
+        //     Image.asset(
+        //       "assets/Setting/2/BrightToggleBack.png",
+        //       width: 260,
+        //       height: 144.18,
+        //     ),
+        //     Positioned(
+        //       right: click ? -26 : 2, // Slide in from left or hide to the left
+        //       child: Image.asset(
+        //         "assets/Setting/2/smallMoon.png",
+        //         width: 109,
+        //         height: 144.18,
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        // ),
       ],
     );
   }
