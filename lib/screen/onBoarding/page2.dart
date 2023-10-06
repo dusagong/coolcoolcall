@@ -7,10 +7,10 @@ class Page2 extends StatefulWidget {
   Page2({super.key});
 
   @override
-  _Page1State createState() => _Page1State();
+  _Page2State createState() => _Page2State();
 }
 
-class _Page1State extends State<Page2> {
+class _Page2State extends State<Page2> {
   Future<void> storeDataInFirestore(
       bool first_, bool second_, bool third_) async {
     try {

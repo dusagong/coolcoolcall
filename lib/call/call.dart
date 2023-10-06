@@ -83,7 +83,7 @@ class _CallState extends State<Call> {
           child: Column(
             children: [
               SizedBox(
-                height: 520,
+                height: 580,
               ),
               Text(
                   "              전화를 종료하고 싶으시면\n          잠금 또는 음량 버튼을 누르거나,\n   화면을 터치하여 종료하기 버튼을 누르세요",
@@ -127,7 +127,7 @@ class _CallState extends State<Call> {
           child: Column(
             children: [
               SizedBox(
-                height: 520,
+                height: 580,
               ),
               Text(
                   "              전화를 종료하고 싶으시면\n          잠금 또는 음량 버튼을 누르거나,\n   화면을 터치하여 종료하기 버튼을 누르세요",
