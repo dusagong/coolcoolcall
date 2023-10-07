@@ -3,14 +3,15 @@ import 'package:coolcoolcall/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Page2 extends StatefulWidget {
-  Page2({super.key});
+class typeModify extends StatefulWidget {
+  typeModify({super.key});
 
   @override
   _Page2State createState() => _Page2State();
 }
 
-class _Page2State extends State<Page2> {
+class _Page2State extends State<typeModify> {
+  bool click = false;
   Future<void> storeDataInFirestore(
       bool first_, bool second_, bool third_) async {
     try {
@@ -26,8 +27,47 @@ class _Page2State extends State<Page2> {
   bool first = false;
   bool second = false;
   bool third = false;
+  bool initalF = false;
+  bool initalS = false;
+  bool initalT = false;
   void onSaveButtonPressed() {
     storeDataInFirestore(first, second, third);
+  }
+
+  void initState() {
+    super.initState();
+
+    FirebaseFirestore.instance
+        .collection('불면 상태 입력')
+        .doc('a')
+        .get()
+        .then((snapshot) {
+      if (snapshot.exists) {
+        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+
+        // Retrieve the boolean fields
+        bool first_g = data['first'] ?? false;
+        bool second_g = data['second'] ?? false;
+        bool third_g = data['third'] ?? false;
+
+        // Now you have the boolean values
+        // You can use these values as needed in your code
+
+        // For example, you can update the state of UI elements like switches or checkboxes
+
+        // Call setState to trigger a rebuild with the initial values
+        setState(() {
+          first = first_g;
+          second = second_g;
+          third = third_g;
+          initalF = first_g;
+          initalS = second_g;
+          initalT = third_g;
+        });
+      }
+    }).catchError((error) {
+      print('Error retrieving data: $error');
+    });
   }
 
   @override
@@ -41,7 +81,7 @@ class _Page2State extends State<Page2> {
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
         toolbarHeight: height * 47 / 844,
-        title: Text("불면 상태 입력",
+        title: Text("불면 타입 변경",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
@@ -54,13 +94,58 @@ class _Page2State extends State<Page2> {
           child: Column(
             children: [
               SizedBox(
-                height: height * 105 / 844,
+                height: 40,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 35),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("현재 불면 상태",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white)),
+                    click
+                        ? GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                click = !click;
+                                onSaveButtonPressed();
+                              });
+                            },
+                            child: Image.asset(
+                              "assets/Setting/1/check.png",
+                              width: 20.5,
+                              height: 20.5,
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                click = !click;
+                              });
+                            },
+                            child: Image.asset(
+                              "assets/Setting/1/pencil.png",
+                              width: 20.5,
+                              height: 20.5,
+                            ),
+                          )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: height * 60 / 844,
+                // height: height * 105 / 844,
               ),
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    first = !first;
-                  });
+                  click
+                      ? setState(() {
+                          first = !first;
+                        })
+                      : setState(() {});
                 },
                 child: Container(
                   width: conwidth,
@@ -142,9 +227,11 @@ class _Page2State extends State<Page2> {
               ),
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    second = !second;
-                  });
+                  click
+                      ? setState(() {
+                          second = !second;
+                        })
+                      : setState(() {});
                 },
                 child: Container(
                   width: conwidth,
@@ -226,9 +313,11 @@ class _Page2State extends State<Page2> {
               ),
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    third = !third;
-                  });
+                  click
+                      ? setState(() {
+                          third = !third;
+                        })
+                      : setState(() {});
                 },
                 child: Container(
                   width: conwidth,
@@ -308,7 +397,7 @@ class _Page2State extends State<Page2> {
               SizedBox(
                 height: height * 88 / 844,
               ),
-              if (first == false && second == false && third == false)
+              if (first == initalF && second == initalS && third == initalT)
                 Container(
                     width: conwidth,
                     height: height * 75 / 844,
@@ -335,19 +424,15 @@ class _Page2State extends State<Page2> {
                       ],
                     ),
                     child: Center(
-                      child: Text("다음",
+                      child: Text("수정완료",
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
                     ))
-              else
-                GestureDetector(
-                  onTap: () {
-                    onSaveButtonPressed();
-                    Get.offAll(() => Home());
-                  },
-                  child: Container(
+              else if (click == false)
+                if (first == false && second == false && third == false)
+                  Container(
                       width: conwidth,
                       height: height * 75 / 844,
                       decoration: BoxDecoration(
@@ -355,20 +440,91 @@ class _Page2State extends State<Page2> {
                         color: Color(0xff060713),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 5.0,
-                            spreadRadius: 3.0,
+                            // color: Color.fromRGBO(228, 221, 234, 0.25),
+                            color: Color(0x40E4DDEA),
+                            blurRadius: 8.0,
+                            offset: Offset(-4, -4),
+                          ),
+                          BoxShadow(
+                            color: Color(0xff000215),
+                            blurRadius: 24.0,
+                            offset: Offset(4, 4),
+                          ),
+                          BoxShadow(
+                            color: Color(0xff000000),
+                            blurRadius: 4.0,
+                            offset: Offset(0, 4),
                           ),
                         ],
                       ),
                       child: Center(
-                        child: Text("다음",
+                        child: Text("수정완료",
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white)),
-                      )),
-                )
+                      ))
+                else
+                  GestureDetector(
+                    onTap: () {
+                      onSaveButtonPressed();
+                      Get.offAll(() => Home());
+                    },
+                    child: Container(
+                        width: conwidth,
+                        height: height * 75 / 844,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Color(0xff060713),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 5.0,
+                              spreadRadius: 3.0,
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text("수정완료",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white)),
+                        )),
+                  )
+              else
+                Container(
+                    width: conwidth,
+                    height: height * 75 / 844,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Color(0xff060713),
+                      boxShadow: [
+                        BoxShadow(
+                          // color: Color.fromRGBO(228, 221, 234, 0.25),
+                          color: Color(0x40E4DDEA),
+                          blurRadius: 8.0,
+                          offset: Offset(-4, -4),
+                        ),
+                        BoxShadow(
+                          color: Color(0xff000215),
+                          blurRadius: 24.0,
+                          offset: Offset(4, 4),
+                        ),
+                        BoxShadow(
+                          color: Color(0xff000000),
+                          blurRadius: 4.0,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Text("수정완료",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white)),
+                    ))
             ],
           ),
         ),
