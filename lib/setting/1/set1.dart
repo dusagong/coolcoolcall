@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coolcoolcall/setting/1/typemodify.dart';
 import 'package:flutter/material.dart';
@@ -32,23 +34,6 @@ class _Set1State extends State<Set1> {
   bool thirdState = false;
   late int boolcount;
 
-  // Future<Map<String, dynamic>> getDataFromFirestore() async {
-  //   try {
-  //     DocumentSnapshot snapshot = await FirebaseFirestore.instance
-  //         .collection('기본 가입 정보')
-  //         .doc('a')
-  //         .get();
-
-  //     if (snapshot.exists) {
-  //       return snapshot.data() as Map<String, dynamic>;
-  //     } else {
-  //       return {}; // Return an empty map if the document doesn't exist
-  //     }
-  //   } catch (e) {
-  //     print('Error retrieving data: $e');
-  //     return {}; // Return an empty map in case of an error
-  //   }
-  // }
 
   Future<void> storeDataInFirestore(
     String enteredName,
@@ -71,6 +56,7 @@ class _Set1State extends State<Set1> {
       print('Error storing data: $e');
     }
   }
+  late StreamController<bool> booleanStreamController;
 
   void initState() {
     super.initState();
@@ -103,11 +89,14 @@ class _Set1State extends State<Set1> {
     }).catchError((error) {
       print('Error retrieving data: $error');
     });
+
+        booleanStreamController = StreamController<bool>();
+
     FirebaseFirestore.instance
         .collection('불면 상태 입력')
         .doc('a')
-        .get()
-        .then((snapshot) {
+        .snapshots()
+        .listen((DocumentSnapshot snapshot) {
       if (snapshot.exists) {
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
 
@@ -116,26 +105,29 @@ class _Set1State extends State<Set1> {
         bool second = data['second'] ?? false;
         bool third = data['third'] ?? false;
 
-        // Now you have the boolean values
-        // You can use these values as needed in your code
+        // Emit these values to the custom boolean stream
+        booleanStreamController.add(first);
+        booleanStreamController.add(second);
+        booleanStreamController.add(third);
 
-        // For example, you can update the state of UI elements like switches or checkboxes
-        firstState = first;
-        secondState = second;
-        thirdState = third;
-
-        // Call setState to trigger a rebuild with the initial values
+        // Update the state or perform other actions based on the boolean values
         setState(() {
-          if (firstState) boolcount++;
-          if (secondState) boolcount++;
-          if (thirdState) boolcount++;
+          firstState = first;
+          secondState = second;
+          thirdState = third;
+
+          // Update boolcount if needed
+          boolcount = (firstState ? 1 : 0) + (secondState ? 1 : 0) + (thirdState ? 1 : 0);
         });
       }
-    }).catchError((error) {
-      print('Error retrieving data: $error');
     });
   }
-
+  @override
+  void dispose() {
+    // Don't forget to close the stream controller when disposing of the widget
+    booleanStreamController.close();
+    super.dispose();
+  }
   void onSaveButtonPressed() {
     String enteredName = nameC.text;
     String enteredAge = ageC.text;

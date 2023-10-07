@@ -40,7 +40,7 @@ class _WakeAlarmState extends State<WakeAlarm> {
         body: Center(
           child: Column(children: [
             SizedBox(
-              height: 200,
+              height: 140,
             ),
             AnimatedSwitcher(
               switchInCurve: Curves.fastOutSlowIn,
@@ -116,9 +116,9 @@ class _WakeAlarmState extends State<WakeAlarm> {
       key: ValueKey<String>('a'),
       children: [
         Image.asset(
-          "assets/Setting/2/BigDarkMoon.png",
-          width: 126.79,
-          height: 128.15,
+          "assets/Setting/2/BigDarkSun.png",
+          width: 364,
+          height: 208,
         ),
         SizedBox(
           height: 30,
@@ -172,9 +172,9 @@ class _WakeAlarmState extends State<WakeAlarm> {
       key: ValueKey<String>('b'),
       children: [
         Image.asset(
-          "assets/Setting/2/BigBrightMoon.png",
-          width: 126.79,
-          height: 128.15,
+          "assets/Setting/2/BigBrightSun.png",
+          width: 364,
+          height: 208,
         ),
         SizedBox(
           height: 30,
