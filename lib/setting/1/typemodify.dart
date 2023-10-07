@@ -395,7 +395,7 @@ class _Page2State extends State<typeModify> {
                 ),
               ),
               SizedBox(
-                height: height * 88 / 844,
+                height: height * 68 / 844,
               ),
               if (first == initalF && second == initalS && third == initalT)
                 Container(

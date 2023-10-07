@@ -63,26 +63,23 @@ class _Page1State extends State<Page1> {
   FocusNode nameFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage("assets/background/background.png"), // 배경 이미지
-          ),
-        ),
-        child: Scaffold(
-          backgroundColor: Color(0xff060713),
-          appBar: AppBar(
-            title: Text("기본 가입 정보",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                )),
-            backgroundColor: Color(0xff060713),
-            elevation: 0.0,
-          ),
-          body: SafeArea(
-            child: Center(
+    return Scaffold(
+      backgroundColor: Color(0xff060713),
+      appBar: AppBar(
+        title: Text("기본 가입 정보",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            )),
+        backgroundColor: Color(0xff060713),
+        elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Center(
+            child: SingleChildScrollView(
               child: Column(
                 children: [
                   // SizedBox(
@@ -101,7 +98,7 @@ class _Page1State extends State<Page1> {
                               color: Colors.white)),
                     ],
                   ),
-
+            
                   SizedBox(
                     height: 10,
                   ),
@@ -494,7 +491,7 @@ class _Page1State extends State<Page1> {
                                         ),
                                       ],
                                     ),
-
+            
                               // child:
                               child: TextField(
                                 onTap: () {
@@ -527,7 +524,7 @@ class _Page1State extends State<Page1> {
                                       fontWeight: FontWeight.w400,
                                       color: Color(0xff9A9A9A)),
                                   // contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-
+            
                                   border: InputBorder.none,
                                 ),
                                 style: TextStyle(
@@ -906,6 +903,8 @@ class _Page1State extends State<Page1> {
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

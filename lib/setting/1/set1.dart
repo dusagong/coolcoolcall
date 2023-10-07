@@ -444,7 +444,7 @@ class _Set1State extends State<Set1> {
                   ],
                 ),
                 SizedBox(
-                  width: 48,
+                  width: 15,
                 ),
                 isSecondContainerSelected
                     ? GestureDetector(
