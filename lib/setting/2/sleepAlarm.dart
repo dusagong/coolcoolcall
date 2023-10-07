@@ -40,7 +40,7 @@ class _SleepAlarmState extends State<SleepAlarm> {
         body: Center(
           child: Column(children: [
             SizedBox(
-              height: 200,
+              height: 140,
             ),
             AnimatedSwitcher(
               switchInCurve: Curves.fastOutSlowIn,
@@ -117,8 +117,8 @@ class _SleepAlarmState extends State<SleepAlarm> {
       children: [
         Image.asset(
           "assets/Setting/2/BigDarkMoon.png",
-          width: 126.79,
-          height: 128.15,
+          width: 178,
+          height: 179,
         ),
         SizedBox(
           height: 30,
@@ -173,8 +173,8 @@ class _SleepAlarmState extends State<SleepAlarm> {
       children: [
         Image.asset(
           "assets/Setting/2/BigBrightMoon.png",
-          width: 126.79,
-          height: 128.15,
+          width: 178,
+          height: 179,
         ),
         SizedBox(
           height: 30,

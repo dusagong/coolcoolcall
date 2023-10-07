@@ -4,7 +4,6 @@ import 'package:coolcoolcall/screen/home.dart';
 import 'package:coolcoolcall/screen/loginUI.dart';
 import 'package:coolcoolcall/setting/1/set1.dart';
 import 'package:coolcoolcall/setting/2/set2.dart';
-import 'package:coolcoolcall/setting/3/set3.dart';
 import 'package:coolcoolcall/setting/4/set4.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -206,7 +205,8 @@ class Setting extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => Set3());
+                  Get.offAll(() => Home());
+                  AuthController.instance.clickcount = 0;
                 },
                 child: Container(
                   width: 354.7760009765625,
