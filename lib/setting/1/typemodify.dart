@@ -468,7 +468,7 @@ class _Page2State extends State<typeModify> {
                   GestureDetector(
                     onTap: () {
                       onSaveButtonPressed();
-                      Get.offAll(() => Home());
+                      Get.back();
                     },
                     child: Container(
                         width: conwidth,
