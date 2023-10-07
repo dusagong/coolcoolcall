@@ -1,15 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coolcoolcall/controller/auth_controller.dart';
 import 'package:coolcoolcall/screen/home.dart';
 import 'package:coolcoolcall/screen/loginUI.dart';
-import 'package:coolcoolcall/setting/set1.dart';
+import 'package:coolcoolcall/setting/1/set1.dart';
 import 'package:coolcoolcall/setting/2/set2.dart';
-import 'package:coolcoolcall/setting/set3.dart';
-import 'package:coolcoolcall/setting/set4.dart';
+import 'package:coolcoolcall/setting/3/set3.dart';
+import 'package:coolcoolcall/setting/4/set4.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Setting extends StatelessWidget {
   const Setting({super.key});
+  Stream<String?> fetchNameFromFirestore() {
+    return FirebaseFirestore.instance
+        .collection('기본 가입 정보')
+        .doc('a')
+        .snapshots()
+        .map((snapshot) {
+      if (snapshot.exists) {
+        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+        String name = data['name'] ?? '';
+        return name;
+      } else {
+        return null;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +49,8 @@ class Setting extends StatelessWidget {
                       SizedBox(
                         height: 7,
                       ),
-                      FutureBuilder<String?>(
-                        future: fetchNameFromFirestore(),
+                      StreamBuilder<String?>(
+                        stream: fetchNameFromFirestore(),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
@@ -44,14 +60,17 @@ class Setting extends StatelessWidget {
                           } else {
                             final String? name = snapshot.data;
 
-                            return Text("$name님",
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w700,
-                                    color: Color.fromRGBO(255, 255, 255, 1)));
+                            return Text(
+                              "$name님",
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w700,
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                              ),
+                            );
                           }
                         },
-                      ),
+                      )
                     ],
                   ),
                   SizedBox(
@@ -84,8 +103,8 @@ class Setting extends StatelessWidget {
                 height: 40,
               ),
               GestureDetector(
-                onTap: (){
-                  Get.to(()=>Set1());
+                onTap: () {
+                  Get.to(() => Set1());
                 },
                 child: Container(
                   width: 354.7760009765625,
@@ -135,8 +154,8 @@ class Setting extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: (){
-                  Get.to(()=>Set2());
+                onTap: () {
+                  Get.to(() => Set2());
                 },
                 child: Container(
                   width: 354.7760009765625,
@@ -186,8 +205,8 @@ class Setting extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: (){
-                  Get.to(()=>Set3());
+                onTap: () {
+                  Get.to(() => Set3());
                 },
                 child: Container(
                   width: 354.7760009765625,
@@ -237,8 +256,8 @@ class Setting extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: (){
-                  Get.to(()=>Set4());
+                onTap: () {
+                  Get.to(() => Set4());
                 },
                 child: Container(
                   width: 354.7760009765625,
@@ -288,28 +307,30 @@ class Setting extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 338,
+                height: 360,
               ),
               GestureDetector(
-                onTap: (){
-                  Get.offAll(()=>FakeLogin());
+                onTap: () {
+                  Get.offAll(() => FakeLogin());
                   AuthController.instance.clickcount = 0;
                 },
                 child: Container(
-                    width: 354.7760009765625,
-                    height: 67,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xff060713),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 5.0,
-                          spreadRadius: 3.0,
-                        ),
-                      ],
-                    ),
-                    child: Center(child: Row(children: [
+                  width: 354.7760009765625,
+                  height: 67,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xff060713),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 5.0,
+                        spreadRadius: 3.0,
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                      child: Row(
+                    children: [
                       SizedBox(
                         width: 20,
                       ),
@@ -326,8 +347,9 @@ class Setting extends StatelessWidget {
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
                               color: Color(0xffffffff)))
-                    ],)),
-                    ),
+                    ],
+                  )),
+                ),
               ),
             ],
           ),

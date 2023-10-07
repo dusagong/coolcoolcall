@@ -1,19 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coolcoolcall/screen/home.dart';
-import 'package:coolcoolcall/setting/2/aiVoiceList.dart';
 import 'package:coolcoolcall/setting/2/sleepAlarm.dart';
 import 'package:coolcoolcall/setting/2/wakeAlarm.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Set2 extends StatefulWidget {
-  Set2({super.key});
+class AiVoice extends StatefulWidget {
+  AiVoice({super.key});
 
   @override
-  _Set2State createState() => _Set2State();
+  _AiVoiceState createState() => _AiVoiceState();
 }
 
-class _Set2State extends State<Set2> {
+class _AiVoiceState extends State<AiVoice> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -25,7 +24,7 @@ class _Set2State extends State<Set2> {
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
         toolbarHeight: height * 47 / 844,
-        title: Text("서비스 설정",
+        title: Text("AI 목소리 선택",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
@@ -36,25 +35,11 @@ class _Set2State extends State<Set2> {
       body: Center(
           child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 35,
-              ),
-              Text("알람 전화 방식",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white)),
-            ],
-          ),
           SizedBox(
             height: 20,
           ),
           GestureDetector(
                 onTap: (){
-                  Get.to(()=>SleepAlarm());
                 },
                 child: Container(
                   width: 354.7760009765625,
@@ -86,15 +71,8 @@ class _Set2State extends State<Set2> {
                       SizedBox(
                         width: 20,
                       ),
-                      Image.asset(
-                        "assets/Setting/2/setmoon.png",
-                        width: 18,
-                        height: 22.5,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("취침 알람 전화",
+                     
+                      Text("쿨쿨이1",
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
@@ -105,7 +83,6 @@ class _Set2State extends State<Set2> {
               ),
               GestureDetector(
                 onTap: (){
-                  Get.to(()=>WakeAlarm());
                 },
                 child: Container(
                   width: 354.7760009765625,
@@ -137,15 +114,8 @@ class _Set2State extends State<Set2> {
                       SizedBox(
                         width: 20,
                       ),
-                      Image.asset(
-                        "assets/Setting/2/setsun.png",
-                        width: 18,
-                        height: 22.5,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("기상 알람 전화",
+                     
+                      Text("쿨쿨이2",
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
@@ -156,7 +126,6 @@ class _Set2State extends State<Set2> {
               ),
               GestureDetector(
                 onTap: (){
-                  Get.to(()=>AiVoice());
                 },
                 child: Container(
                   width: 354.7760009765625,
@@ -188,15 +157,51 @@ class _Set2State extends State<Set2> {
                       SizedBox(
                         width: 20,
                       ),
-                      Image.asset(
-                        "assets/Setting/2/setAI.png",
-                        width: 16,
-                        height: 18,
+                     
+                      Text("쿨쿨이3",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xffffffff)))
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                },
+                child: Container(
+                  width: 354.7760009765625,
+                  height: 67,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xff060713),
+                    boxShadow: [
+                      BoxShadow(
+                        // color: Color.fromRGBO(228, 221, 234, 0.25),
+                        color: Color(0x40E4DDEA),
+                        blurRadius: 8.0,
+                        offset: Offset(-4, -4),
                       ),
+                      BoxShadow(
+                        color: Color(0xff000215),
+                        blurRadius: 24.0,
+                        offset: Offset(4, 4),
+                      ),
+                      BoxShadow(
+                        color: Color(0xff000000),
+                        blurRadius: 4.0,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
                       SizedBox(
-                        width: 30,
+                        width: 20,
                       ),
-                      Text("AI 목소리 목록",
+                     
+                      Text("쿨쿨이4",
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w400,

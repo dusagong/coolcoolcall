@@ -73,6 +73,7 @@ flutter:
     - assets/home/
     - assets/Setting/
     - assets/Setting/2/
+    - assets/Setting/1/
     - assets/background/
     - assets/Call/
     # - assets/voice/sound

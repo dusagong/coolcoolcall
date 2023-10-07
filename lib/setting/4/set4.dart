@@ -23,7 +23,7 @@ class _Set4State extends State<Set4> {
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
         toolbarHeight: height * 47 / 844,
-        title: Text("불면 상태 입력",
+        title: Text("건의 사항",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,

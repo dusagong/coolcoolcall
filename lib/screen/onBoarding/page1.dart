@@ -37,6 +37,7 @@ class _Page1State extends State<Page1> {
     try {
       await FirebaseFirestore.instance.collection('기본 가입 정보').doc('a').set({
         'name': enteredName, // Store the text from nameC in the 'name' field
+        'age': enteredAge,
         'sleepHour': enteredSH,
         'sleepMinute': enteredSM,
         'wakeHour': enteredWH,
@@ -516,15 +517,17 @@ class _Page1State extends State<Page1> {
                                     sleepH = this.sleepH;
                                   });
                                 },
+                                textAlign: TextAlign.center,
                                 controller: sleepH,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
-                                  hintText: '        23',
+                                  hintText: '23',
                                   hintStyle: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w400,
                                       color: Color(0xff9A9A9A)),
-                                  contentPadding: EdgeInsets.all(10),
+                                  // contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+
                                   border: InputBorder.none,
                                 ),
                                 style: TextStyle(
@@ -592,6 +595,7 @@ class _Page1State extends State<Page1> {
                                     isSecond2right = false;
                                   });
                                 },
+                                textAlign: TextAlign.center,
                                 controller: sleepM,
                                 keyboardType: TextInputType.number,
                                 onChanged: (newText) {
@@ -604,7 +608,7 @@ class _Page1State extends State<Page1> {
                                   });
                                 },
                                 decoration: InputDecoration(
-                                  hintText: '        00',
+                                  hintText: '00',
                                   hintStyle: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w400,
@@ -701,8 +705,9 @@ class _Page1State extends State<Page1> {
                                     wakeH = this.wakeH;
                                   });
                                 },
+                                textAlign: TextAlign.center,
                                 decoration: InputDecoration(
-                                  hintText: '         7',
+                                  hintText: '7',
                                   hintStyle: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w400,
@@ -787,8 +792,9 @@ class _Page1State extends State<Page1> {
                                     wakeM = this.wakeM;
                                   });
                                 },
+                                textAlign: TextAlign.center,
                                 decoration: InputDecoration(
-                                  hintText: '        30',
+                                  hintText: '30',
                                   hintStyle: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w400,
@@ -814,14 +820,17 @@ class _Page1State extends State<Page1> {
                       sleepH.text.trim().isEmpty ||
                       sleepM.text.trim().isEmpty ||
                       wakeH.text.trim().isEmpty ||
-                      wakeM.text.trim().isEmpty)SizedBox(height: 38,)
-                  
-                  else Text(
-                      "입력한 시간에 자동으로 전화와 모닝콜이 수신됩니다.\n          환경설정에서 나중에 변경 가능합니다.",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white)),
+                      wakeM.text.trim().isEmpty)
+                    SizedBox(
+                      height: 38,
+                    )
+                  else
+                    Text(
+                        "입력한 시간에 자동으로 전화와 모닝콜이 수신됩니다.\n          환경설정에서 나중에 변경 가능합니다.",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white)),
                   SizedBox(
                     height: 100,
                   ),
