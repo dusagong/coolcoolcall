@@ -42,6 +42,8 @@ dependencies:
   cloud_firestore: ^4.9.1
   animated_switch: ^0.0.2
   carousel_slider: ^4.2.1
+  overlapped_carousel: ^1.0.1
+  
   # alan_voice: ^4.4.0
 
 dev_dependencies:

@@ -126,8 +126,6 @@ class _RequireState extends State<Require> {
                                     fontSize: 18,
                                     fontWeight: FontWeight.w400,
                                     color: Color(0xff9A9A9A)),
-                                border:
-                                    OutlineInputBorder(), // Optional border decoration
                               ),
                               controller: text,
                             )),
