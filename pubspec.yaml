@@ -43,6 +43,7 @@ dependencies:
   animated_switch: ^0.0.2
   carousel_slider: ^4.2.1
   overlapped_carousel: ^1.0.1
+  stacked_list_carousel: ^1.0.1
   
   # alan_voice: ^4.4.0
 
@@ -78,6 +79,7 @@ flutter:
     - assets/Setting/2/
     - assets/Setting/1/
     - assets/Setting/4/
+    - assets/Setting/4/qa/
     - assets/background/
     - assets/Call/
     # - assets/voice/sound

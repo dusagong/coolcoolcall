@@ -108,14 +108,21 @@ class _Page1State extends State<Page1> {
                     height: 112,
                     decoration: isFirstContainerSelected
                         ? BoxDecoration(
+                          // border: Border.all(color: Colors.black, width: 1),
                             borderRadius: BorderRadius.circular(10),
                             color: Color(0xff04060f),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 5.0,
-                                spreadRadius: 3.0,
+                                color: Color(0xffE4DDEA),
+                                blurRadius: 19.0,
+                                offset: Offset(0, 0),
                               ),
+                              BoxShadow(
+                                color: Color(0xffE4DDEA),
+                                blurRadius: 1.0,
+                                offset: Offset(0, 1),
+                              ),
+                              
                             ],
                           )
                         // BoxDecoration(
