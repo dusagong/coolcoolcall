@@ -212,28 +212,23 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        backgroundColor: Color(0xff060713),
-        appBar: AppBar(
-          toolbarHeight: screenHeight * 47 / 844,
-          title: const Text(
-            "자주 묻는 질문",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-            ),
+      backgroundColor: Color(0xff060713),
+      appBar: AppBar(
+        toolbarHeight: screenHeight * 47 / 844,
+        title: const Text(
+          "자주 묻는 질문",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
           ),
-          backgroundColor: Color(0xff060713),
-          elevation: 0.0,
         ),
-        body: Center(
-            child: AnimatedContainer(
-          duration:
-              Duration(milliseconds: 300), // Adjust the duration as needed
-
-          curve: Curves.easeInOut, // Add a curve for smoother animation
-
-          child: SingleChildScrollView(
-            child: Column(children: [
+        backgroundColor: Color(0xff060713),
+        elevation: 0.0,
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
               SizedBox(
                 height: 600,
                 width: MediaQuery.of(context).size.width,
@@ -242,32 +237,39 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
                   controller:
                       PageController(initialPage: 0, viewportFraction: 0.73),
                   onPageChanged: (value) {
-                    currentindex = value % assets.length;
-                    setState(() {});
+                    setState(() {
+                      // Smoothly update the container size
+                      currentindex = value % assets.length;
+                    });
                   },
                   itemBuilder: (context, index) {
+                    // Calculate size based on the current index
                     double containerWidth1 =
-                        currentindex == index % assets.length ? 304 : 200;
+                        currentindex == index % assets.length ? 304 : 250;
                     double containerHeight1 =
                         currentindex == index % assets.length ? 96 : 80;
 
                     double containerWidth2 =
-                        currentindex == index % assets.length ? 304 : 200;
+                        currentindex == index % assets.length ? 304 : 250;
                     double containerHeight2 =
-                        currentindex == index % assets.length ? 383 : 300;
+                        currentindex == index % assets.length ? 386 : 300;
 
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                            width: containerWidth1,
-                            height: containerHeight1,
+                        AnimatedContainer(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                          width: containerWidth1,
+                          height: containerHeight1,
+                          child: Container(
                             clipBehavior: Clip.antiAlias,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Color(0xffE5DDEA),
                               borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20)),
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                              ),
                               boxShadow: [
                                 BoxShadow(
                                   color: Color(0x36E4DDEA),
@@ -281,49 +283,44 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
                                 ),
                               ],
                             ),
-                            child: Text(
-                              assets1[index % assets.length],
-                            )),
-                        Container(
+                            child: Text(assets1[index % assets.length]),
+                          ),
+                        ),
+                        AnimatedContainer(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
                           width: containerWidth2,
                           height: containerHeight2,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 58, 66, 153),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x36000000),
-                                blurRadius: 4.0,
-                                offset: Offset(0, 4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000215),
-                                blurRadius: 24.0,
-                                offset: Offset(4, 4),
-                              ),
-                              BoxShadow(
-                                color: Color(0x36E4DDEA),
-                                blurRadius: 8.0,
-                                offset: Offset(-4, -4),
-                              ),
-                            ],
+                          child: Container(
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 58, 66, 153),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x36000000),
+                                  blurRadius: 4.0,
+                                  offset: Offset(0, 4),
+                                ),
+                                BoxShadow(
+                                  color: Color(0xff000215),
+                                  blurRadius: 24.0,
+                                  offset: Offset(4, 4),
+                                ),
+                                BoxShadow(
+                                  color: Color(0x36E4DDEA),
+                                  blurRadius: 8.0,
+                                  offset: Offset(-4, -4),
+                                ),
+                              ],
+                            ),
+                            child: Text(assets2[index % assets.length]),
                           ),
-                          child: Text(assets2[index % assets.length]),
                         ),
                       ],
                     );
                   },
                 ),
               ),
-              // TabPageSelector(
-              //   controller: TabController(
-              //       length: assets.length,
-              //       initialIndex: currentindex,
-              //       vsync: this),
-              //   selectedColor: Colors.red,
-              //   color: Colors.grey,
-              //   borderStyle: BorderStyle.none,
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -338,8 +335,10 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
                       : Image.asset("assets/Setting/4/qa/DarkSmallMoon.png"),
                 ],
               )
-            ]),
+            ],
           ),
-        )));
+        ),
+      ),
+    );
   }
 }
