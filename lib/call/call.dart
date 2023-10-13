@@ -1,8 +1,10 @@
 import 'dart:async';
-import 'package:voice_assistant/voice_assistant.dart';
 import 'package:coolcoolcall/screen/home.dart';
+import 'package:coolcoolcall/screen/onBoarding/page3.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:speech_to_text/speech_to_text.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
 
 class Call extends StatefulWidget {
   @override
@@ -10,6 +12,9 @@ class Call extends StatefulWidget {
 }
 
 class _CallState extends State<Call> {
+  SpeechToText speechToText = SpeechToText();
+  bool _speechEnabled = false;
+  String _words = '';
   bool isOverlayVisible = false;
   Timer? _overlayTimer; // Declare a Timer variable
   late Widget mychoice;
@@ -19,6 +24,29 @@ class _CallState extends State<Call> {
   void initState() {
     super.initState();
     mychoice = b();
+    _initSpeech();
+  }
+
+  void _initSpeech() async {
+    _speechEnabled = await speechToText.initialize();
+    setState(() {});
+  }
+
+  void _startListening() async {
+    await speechToText.listen(onResult: _onSpeechResult);
+    setState(() {});
+  }
+
+  void _stopListening() async {
+    await speechToText.stop();
+
+    setState(() {});
+  }
+
+  void _onSpeechResult(SpeechRecognitionResult result) {
+    setState(() {
+      _words = result.recognizedWords;
+    });
   }
 
   void _toggleOverlay() {
@@ -92,26 +120,26 @@ class _CallState extends State<Call> {
                     fontWeight: FontWeight.w400,
                     color: Color(0xffE5DDEA),
                   )),
-                GestureDetector(
-                    onTap: () {
-                      Get.offAll(Home());
-                    },
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 55,
+              GestureDetector(
+                  onTap: () {
+                    Get.offAll(Home());
+                  },
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 55,
+                      ),
+                      Image.asset("assets/Call/closeMoon.png"),
+                      Text(
+                        "전화 종료하기",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Color.fromRGBO(229, 221, 234, 1),
                         ),
-                        Image.asset("assets/Call/closeMoon.png"),
-                        Text(
-                          "전화 종료하기",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Color.fromRGBO(229, 221, 234, 1),
-                          ),
-                        ),
-                      ],
-                    )),
+                      ),
+                    ],
+                  )),
             ],
           ),
         ),

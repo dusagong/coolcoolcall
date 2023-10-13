@@ -1,5 +1,6 @@
 import 'package:coolcoolcall/controller/auth_controller.dart';
 import 'package:coolcoolcall/call/call.dart';
+import 'package:coolcoolcall/screen/onBoarding/page3.dart';
 import 'package:coolcoolcall/setting/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -140,7 +141,8 @@ class _HomeState extends State<Home> {
                       SizedBox(height: 197),
                       GestureDetector(
                         onTap: () {
-                          Get.offAll(Call());
+                          Get.offAll(()=>SpeechSampleApp());
+                          // Get.offAll(()=>Call());
                         },
                         child: Image.asset("assets/home/moon.png"),
                       ),

@@ -44,7 +44,8 @@ dependencies:
   carousel_slider: ^4.2.1
   overlapped_carousel: ^1.0.1
   stacked_list_carousel: ^1.0.1
-  voice_assistant: ^1.0.0+4
+  speech_to_text: ^6.3.0
+  http: ^1.1.0
   
   # alan_voice: ^4.4.0
 
