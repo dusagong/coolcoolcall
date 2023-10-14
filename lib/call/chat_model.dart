@@ -1,9 +1,9 @@
-enum ChatMessageType { user, bot }
+// enum ChatMessageType { user, bot }
 
-class ChatMessage {
+// class ChatMessage {
 
-  ChatMessage({required this.text, required this.type});  
+//   ChatMessage({required this.text, required this.type});  
 
-  String? text;
-  ChatMessageType? type; 
-}
+//   String? text;
+//   ChatMessageType? type; 
+// }

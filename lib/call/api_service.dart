@@ -5,9 +5,9 @@ import 'package:http/http.dart' as http;
 String apiKey = "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";
 
 class ApiServices {
-  String baseUrl = "https://api.openai.com/vi/completions";
+  static String baseUrl = "https://api.openai.com/vi/completions";
 
-  Map<String, String> header = {
+  static Map<String, String> header = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer $apiKey'
   };
