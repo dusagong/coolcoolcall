@@ -8,7 +8,7 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-String apiKey = "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";
+// String apiKey = "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";
 // String apiUrl = "https://api.openai.com/vi/completions";
 String apiUrl = "https://api.openai.com/v1/engines/text-davinci-003/completions";
 
