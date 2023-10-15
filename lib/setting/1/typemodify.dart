@@ -1,3 +1,4 @@
+//연필없에고 바로 수정 가능하게
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coolcoolcall/screen/home.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class typeModify extends StatefulWidget {
 }
 
 class _Page2State extends State<typeModify> {
-  bool click = false;
+  bool click = true;
   Future<void> storeDataInFirestore(
       bool first_, bool second_, bool third_) async {
     try {
@@ -106,32 +107,7 @@ class _Page2State extends State<typeModify> {
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                             color: Colors.white)),
-                    click
-                        ? GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                click = !click;
-                                onSaveButtonPressed();
-                              });
-                            },
-                            child: Image.asset(
-                              "assets/Setting/1/check.png",
-                              width: 20.5,
-                              height: 20.5,
-                            ),
-                          )
-                        : GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                click = !click;
-                              });
-                            },
-                            child: Image.asset(
-                              "assets/Setting/1/pencil.png",
-                              width: 20.5,
-                              height: 20.5,
-                            ),
-                          )
+                    
                   ],
                 ),
               ),
@@ -189,7 +165,7 @@ class _Page2State extends State<typeModify> {
                   child: Row(
                     children: [
                       Image.asset(
-                        "assets/onboarding/GumBuk.png",
+                        "assets/onboarding/GumBuk4.png",
                         width: 94,
                         height: 73,
                       ),
@@ -275,7 +251,7 @@ class _Page2State extends State<typeModify> {
                   child: Row(
                     children: [
                       Image.asset(
-                        "assets/onboarding/Jada.png",
+                        "assets/onboarding/Jada4.png",
                         width: 76.22086,
                         height: 101.81,
                       ),
@@ -361,7 +337,7 @@ class _Page2State extends State<typeModify> {
                   child: Row(
                     children: [
                       Image.asset(
-                        "assets/onboarding/bimong.png",
+                        "assets/onboarding/bimong4.png",
                         width: 95,
                         height: 94.00258,
                       ),
@@ -430,40 +406,40 @@ class _Page2State extends State<typeModify> {
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
                     ))
-              else if (click == false)
-                if (first == false && second == false && third == false)
-                  Container(
-                      width: conwidth,
-                      height: height * 75 / 844,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Color(0xff060713),
-                        boxShadow: [
-                          BoxShadow(
-                            // color: Color.fromRGBO(228, 221, 234, 0.25),
-                            color: Color(0x40E4DDEA),
-                            blurRadius: 8.0,
-                            offset: Offset(-4, -4),
-                          ),
-                          BoxShadow(
-                            color: Color(0xff000215),
-                            blurRadius: 24.0,
-                            offset: Offset(4, 4),
-                          ),
-                          BoxShadow(
-                            color: Color(0xff000000),
-                            blurRadius: 4.0,
-                            offset: Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        child: Text("수정완료",
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white)),
-                      ))
+              // else if (click == false)
+              //   if (first == false && second == false && third == false)
+              //     Container(
+              //         width: conwidth,
+              //         height: height * 75 / 844,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(100),
+              //           color: Color(0xff060713),
+              //           boxShadow: [
+              //             BoxShadow(
+              //               // color: Color.fromRGBO(228, 221, 234, 0.25),
+              //               color: Color(0x40E4DDEA),
+              //               blurRadius: 8.0,
+              //               offset: Offset(-4, -4),
+              //             ),
+              //             BoxShadow(
+              //               color: Color(0xff000215),
+              //               blurRadius: 24.0,
+              //               offset: Offset(4, 4),
+              //             ),
+              //             BoxShadow(
+              //               color: Color(0xff000000),
+              //               blurRadius: 4.0,
+              //               offset: Offset(0, 4),
+              //             ),
+              //           ],
+              //         ),
+              //         child: Center(
+              //           child: Text("수정완료",
+              //               style: TextStyle(
+              //                   fontSize: 18,
+              //                   fontWeight: FontWeight.w600,
+              //                   color: Colors.white)),
+              //         ))
                 else
                   GestureDetector(
                     onTap: () {
@@ -492,39 +468,39 @@ class _Page2State extends State<typeModify> {
                                   color: Colors.white)),
                         )),
                   )
-              else
-                Container(
-                    width: conwidth,
-                    height: height * 75 / 844,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: Color(0xff060713),
-                      boxShadow: [
-                        BoxShadow(
-                          // color: Color.fromRGBO(228, 221, 234, 0.25),
-                          color: Color(0x40E4DDEA),
-                          blurRadius: 8.0,
-                          offset: Offset(-4, -4),
-                        ),
-                        BoxShadow(
-                          color: Color(0xff000215),
-                          blurRadius: 24.0,
-                          offset: Offset(4, 4),
-                        ),
-                        BoxShadow(
-                          color: Color(0xff000000),
-                          blurRadius: 4.0,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Text("수정완료",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
-                    ))
+              // else
+              //   Container(
+              //       width: conwidth,
+              //       height: height * 75 / 844,
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(100),
+              //         color: Color(0xff060713),
+              //         boxShadow: [
+              //           BoxShadow(
+              //             // color: Color.fromRGBO(228, 221, 234, 0.25),
+              //             color: Color(0x40E4DDEA),
+              //             blurRadius: 8.0,
+              //             offset: Offset(-4, -4),
+              //           ),
+              //           BoxShadow(
+              //             color: Color(0xff000215),
+              //             blurRadius: 24.0,
+              //             offset: Offset(4, 4),
+              //           ),
+              //           BoxShadow(
+              //             color: Color(0xff000000),
+              //             blurRadius: 4.0,
+              //             offset: Offset(0, 4),
+              //           ),
+              //         ],
+              //       ),
+              //       child: Center(
+              //         child: Text("수정완료",
+              //             style: TextStyle(
+              //                 fontSize: 18,
+              //                 fontWeight: FontWeight.w600,
+              //                 color: Colors.white)),
+              //       ))
             ],
           ),
         ),

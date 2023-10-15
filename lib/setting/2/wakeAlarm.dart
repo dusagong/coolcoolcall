@@ -43,11 +43,23 @@ class _WakeAlarmState extends State<WakeAlarm> {
               height: 140,
             ),
             AnimatedSwitcher(
-              switchInCurve: Curves.fastOutSlowIn,
-              switchOutCurve: Curves.fastLinearToSlowEaseIn,
+              // switchInCurve: Curves.fastOutSlowIn,
+              // switchOutCurve: Curves.fastLinearToSlowEaseIn,
               duration: const Duration(milliseconds: 1000),
               // key: ValueKey<Widget>(mychoice),
               child: click ? b() : a(),
+              //   transitionBuilder: (Widget child, Animation<double> animation) {
+              //   return ScaleTransition(scale: animation, child: child);
+              // },
+              // mychoice,
+              // key: isOverlayVisible ? ValueKey<String>('a') : ValueKey<String>('b'),
+            ),
+            AnimatedSwitcher(
+              // switchInCurve: Curves.fastOutSlowIn,
+              // switchOutCurve: Curves.fastLinearToSlowEaseIn,
+              duration: const Duration(milliseconds: 0),
+              // key: ValueKey<Widget>(mychoice),
+              child: click ? d() : c(),
               //   transitionBuilder: (Widget child, Animation<double> animation) {
               //   return ScaleTransition(scale: animation, child: child);
               // },
@@ -93,8 +105,9 @@ class _WakeAlarmState extends State<WakeAlarm> {
                 width: 107,
                 height: 72.11,
               ), duration: Duration(milliseconds: 600),
+              top: 31,              
               left: click?140:-30,
-              right: click?10:140,)
+              right: click?17:140,)
             
             // Positioned(
             //   right: click ? -26 : 2, // Slide in from left or hide to the left
@@ -120,6 +133,26 @@ class _WakeAlarmState extends State<WakeAlarm> {
           width: 364,
           height: 208,
         ),
+      ],
+    );
+  }
+
+  Widget b() {
+    return Column(
+      key: ValueKey<String>('b'),
+      children: [
+        Image.asset(
+          "assets/Setting/2/BigBrightSun.png",
+          width: 364,
+          height: 208,
+        ),
+      ],
+    );
+  }
+  Widget c() {
+    return Column(
+      key: ValueKey<String>('c'),
+      children: [
         SizedBox(
           height: 30,
         ),
@@ -136,46 +169,14 @@ class _WakeAlarmState extends State<WakeAlarm> {
             ),
           ),
         ),
-        // GestureDetector(
-        //   onTap: () {
-        //     setState(() {
-        //       click = true;
-        //     });
-        //     print('$click');
-        //   },
-        //   child: Stack(
-        //   alignment: Alignment.center,
-        //   children: [
-        //     Image.asset(
-        //       "assets/Setting/2/DarkToggleBack.png",
-        //       width: 260,
-        //       height: 144.18,
-        //     ),
-        //     Positioned(
-        //       left: click ? 2 : -26, // Slide in from left or hide to the left
-        //       child: Image.asset(
-        //         "assets/Setting/2/smallMoon.png",
-        //         width: 109,
-        //         height: 144.18,
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        // ),
-      
       ],
     );
   }
 
-  Widget b() {
+  Widget d() {
     return Column(
-      key: ValueKey<String>('b'),
+      key: ValueKey<String>('d'),
       children: [
-        Image.asset(
-          "assets/Setting/2/BigBrightSun.png",
-          width: 364,
-          height: 208,
-        ),
         SizedBox(
           height: 30,
         ),
@@ -192,32 +193,6 @@ class _WakeAlarmState extends State<WakeAlarm> {
             ),
           ),
         ),
-        // GestureDetector(
-        //   onTap: () {
-        //     setState(() {
-        //       click = false;
-        //     });
-        //     print('$click');
-        //   },
-        //   child: Stack(
-        //   alignment: Alignment.center,
-        //   children: [
-        //     Image.asset(
-        //       "assets/Setting/2/BrightToggleBack.png",
-        //       width: 260,
-        //       height: 144.18,
-        //     ),
-        //     Positioned(
-        //       right: click ? -26 : 2, // Slide in from left or hide to the left
-        //       child: Image.asset(
-        //         "assets/Setting/2/smallMoon.png",
-        //         width: 109,
-        //         height: 144.18,
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        // ),
       ],
     );
   }

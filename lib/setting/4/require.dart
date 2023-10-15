@@ -9,6 +9,46 @@ class Require extends StatefulWidget {
 }
 
 class _RequireState extends State<Require> {
+  BoxDecoration touched = BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Color(0xff686572),
+      // color: Color(0xffE4DDEA),
+      width: 2,
+    ),
+    color: Color(0xff060713),
+    boxShadow: [
+      BoxShadow(
+        color: Color(0xffE4DDEA),
+        blurRadius: 19.0,
+        offset: Offset(0, 0),
+      ),
+    ],
+  );
+
+  BoxDecoration initial = BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    color: Color(0xff060713),
+    boxShadow: [
+      BoxShadow(
+        // color: Color.fromRGBO(228, 221, 234, 0.25),
+        color: Color(0x40E4DDEA),
+        blurRadius: 8.0,
+        offset: Offset(-4, -4),
+      ),
+      BoxShadow(
+        color: Color(0xff000215),
+        blurRadius: 24.0,
+        offset: Offset(4, 4),
+      ),
+      BoxShadow(
+        color: Color(0xff000000),
+        blurRadius: 4.0,
+        offset: Offset(0, 4),
+      ),
+    ],
+  );
   TextEditingController text = TextEditingController();
   bool textClick = false;
   bool textFill = false;
@@ -34,6 +74,9 @@ class _RequireState extends State<Require> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 8,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17.0),
                 child: Row(
@@ -54,40 +97,7 @@ class _RequireState extends State<Require> {
               Container(
                 width: 358,
                 height: 278,
-                decoration: textClick
-                    ? BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff04060f),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 5.0,
-                            spreadRadius: 3.0,
-                          ),
-                        ],
-                      )
-                    : BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Color(0xff060713),
-                        boxShadow: [
-                          BoxShadow(
-                            // color: Color.fromRGBO(228, 221, 234, 0.25),
-                            color: Color(0x40E4DDEA),
-                            blurRadius: 8.0,
-                            offset: Offset(-4, -4),
-                          ),
-                          BoxShadow(
-                            color: Color(0xff000215),
-                            blurRadius: 24.0,
-                            offset: Offset(4, 4),
-                          ),
-                          BoxShadow(
-                            color: Color(0xff000000),
-                            blurRadius: 4.0,
-                            offset: Offset(0, 4),
-                          ),
-                        ],
-                      ),
+                decoration: textClick ? touched : initial,
                 child: Padding(
                     padding: EdgeInsets.all(15),
                     child: Column(
@@ -135,7 +145,7 @@ class _RequireState extends State<Require> {
                     )),
               ),
               SizedBox(
-                height: 30,
+                height: 50,
               ),
               textFill
                   ? GestureDetector(
@@ -149,12 +159,18 @@ class _RequireState extends State<Require> {
                         height: 75,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
+                          border: Border.all(
+                            // style: BorderStyle.solid,
+                            color: Color(0xff686572),
+                            // color: Color(0xffE4DDEA),
+                            width: 2,
+                          ),
                           color: Color(0xff060713),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 5.0,
-                              spreadRadius: 3.0,
+                              color: Color(0xffE4DDEA),
+                              blurRadius: 19.0,
+                              offset: Offset(0, 0),
                             ),
                           ],
                         ),
@@ -193,7 +209,7 @@ class _RequireState extends State<Require> {
                         ],
                       ),
                       child: Center(
-                        child: Text("다음",
+                        child: Text("제출하기",
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
@@ -204,20 +220,20 @@ class _RequireState extends State<Require> {
           ),
         ),
       ),
-      if(timer)GestureDetector(
-        onTap: (){
-          Get.back();
-        },
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('assets/Setting/4/cover.png'), // 배경 이미지
+      if (timer)
+        GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/Setting/4/cover.png'), // 배경 이미지
+              ),
             ),
           ),
-          
-        ),
-      )
+        )
     ]);
   }
 }

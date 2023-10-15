@@ -120,6 +120,7 @@ class _HomeState extends State<Home> {
                                       "      $trimmedName아!\n오늘도 고생했어,\n 같이 자러 갈래?",
                                       style: TextStyle(
                                         fontSize: 35,
+                                        // fontFamily: 'home',
                                         fontWeight: FontWeight.w500,
                                         color: Color.fromRGBO(229, 221, 234, 1),
                                       ),
@@ -128,6 +129,7 @@ class _HomeState extends State<Home> {
                                       "      $trimmedName야!\n오늘도 고생했어,\n 같이 자러 갈래?",
                                       style: TextStyle(
                                         fontSize: 35,
+                                        // fontFamily: 'home',
                                         fontWeight: FontWeight.w500,
                                         color: Color.fromRGBO(229, 221, 234, 1),
                                       ),
@@ -141,7 +143,7 @@ class _HomeState extends State<Home> {
                       SizedBox(height: 197),
                       GestureDetector(
                         onTap: () {
-                          Get.offAll(()=>SpeechSampleApp());
+                          Get.offAll(() => SpeechSampleApp());
                           // Get.offAll(()=>Call());
                         },
                         child: Image.asset("assets/home/moon.png"),

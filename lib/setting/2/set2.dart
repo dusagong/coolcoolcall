@@ -14,6 +14,68 @@ class Set2 extends StatefulWidget {
 }
 
 class _Set2State extends State<Set2> {
+
+  BoxDecoration touched = BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Color(0xff686572),
+      // color: Color(0xffE4DDEA),
+      width: 2,
+    ),
+    color: Color(0xff060713),
+    boxShadow: [
+      BoxShadow(
+        color: Color(0xffE4DDEA),
+        blurRadius: 19.0,
+        offset: Offset(0, 0),
+      ),
+    ],
+  );
+
+  BoxDecoration initial = BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    color: Color(0xff060713),
+    boxShadow: [
+      BoxShadow(
+        // color: Color.fromRGBO(228, 221, 234, 0.25),
+        color: Color(0x40E4DDEA),
+        blurRadius: 8.0,
+        offset: Offset(-4, -4),
+      ),
+      BoxShadow(
+        color: Color(0xff000215),
+        blurRadius: 24.0,
+        offset: Offset(4, 4),
+      ),
+      BoxShadow(
+        color: Color(0xff000000),
+        blurRadius: 4.0,
+        offset: Offset(0, 4),
+      ),
+    ],
+  );
+  bool isTapped1 = false;
+
+  void updateShadow1(bool isTapped1) {
+    setState(() {
+      this.isTapped1 = isTapped1;
+    });
+  }
+  bool isTapped2 = false;
+
+  void updateShadow2(bool isTapped2) {
+    setState(() {
+      this.isTapped2 = isTapped2;
+    });
+  }
+  bool isTapped3 = false;
+
+  void updateShadow3(bool isTapped3) {
+    setState(() {
+      this.isTapped3 = isTapped3;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -40,7 +102,7 @@ class _Set2State extends State<Set2> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: 35,
+                width: 20,
               ),
               Text("알람 전화 방식",
                   style: TextStyle(
@@ -53,34 +115,20 @@ class _Set2State extends State<Set2> {
             height: 20,
           ),
           GestureDetector(
+            onTapDown: (_) {
+                  updateShadow1(true); // Set the shadow when touched
+                },
+                onTapUp: (_) {
+                  updateShadow1(false);
+                   // Set the initial shadow when released
+                },
                 onTap: (){
                   Get.to(()=>SleepAlarm());
                 },
                 child: Container(
                   width: 354.7760009765625,
                   height: 67,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff060713),
-                    boxShadow: [
-                      BoxShadow(
-                        // color: Color.fromRGBO(228, 221, 234, 0.25),
-                        color: Color(0x40E4DDEA),
-                        blurRadius: 8.0,
-                        offset: Offset(-4, -4),
-                      ),
-                      BoxShadow(
-                        color: Color(0xff000215),
-                        blurRadius: 24.0,
-                        offset: Offset(4, 4),
-                      ),
-                      BoxShadow(
-                        color: Color(0xff000000),
-                        blurRadius: 4.0,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
+                  decoration: isTapped1?touched:initial,
                   child: Row(
                     children: [
                       SizedBox(
@@ -104,34 +152,20 @@ class _Set2State extends State<Set2> {
                 ),
               ),
               GestureDetector(
+                onTapDown: (_) {
+                  updateShadow2(true); // Set the shadow when touched
+                },
+                onTapUp: (_) {
+                  updateShadow2(false);
+                   // Set the initial shadow when released
+                },
                 onTap: (){
                   Get.to(()=>WakeAlarm());
                 },
                 child: Container(
                   width: 354.7760009765625,
                   height: 67,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff060713),
-                    boxShadow: [
-                      BoxShadow(
-                        // color: Color.fromRGBO(228, 221, 234, 0.25),
-                        color: Color(0x40E4DDEA),
-                        blurRadius: 8.0,
-                        offset: Offset(-4, -4),
-                      ),
-                      BoxShadow(
-                        color: Color(0xff000215),
-                        blurRadius: 24.0,
-                        offset: Offset(4, 4),
-                      ),
-                      BoxShadow(
-                        color: Color(0xff000000),
-                        blurRadius: 4.0,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
+                  decoration: isTapped2?touched:initial,
                   child: Row(
                     children: [
                       SizedBox(
@@ -155,34 +189,20 @@ class _Set2State extends State<Set2> {
                 ),
               ),
               GestureDetector(
+                onTapDown: (_) {
+                  updateShadow3(true); // Set the shadow when touched
+                },
+                onTapUp: (_) {
+                  updateShadow3(false);
+                   // Set the initial shadow when released
+                },
                 onTap: (){
                   Get.to(()=>AiVoice());
                 },
                 child: Container(
                   width: 354.7760009765625,
                   height: 67,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff060713),
-                    boxShadow: [
-                      BoxShadow(
-                        // color: Color.fromRGBO(228, 221, 234, 0.25),
-                        color: Color(0x40E4DDEA),
-                        blurRadius: 8.0,
-                        offset: Offset(-4, -4),
-                      ),
-                      BoxShadow(
-                        color: Color(0xff000215),
-                        blurRadius: 24.0,
-                        offset: Offset(4, 4),
-                      ),
-                      BoxShadow(
-                        color: Color(0xff000000),
-                        blurRadius: 4.0,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
+                  decoration: isTapped3?touched:initial,
                   child: Row(
                     children: [
                       SizedBox(

@@ -145,7 +145,7 @@ class _Set1State extends State<Set1> {
     return Scaffold(
       backgroundColor: Color(0xff060713  ),
       appBar: AppBar(
-        title: Text("기본 가입 정보",
+        title: Text("개인 정보 설정",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
@@ -871,7 +871,7 @@ class _Set1State extends State<Set1> {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("기본 정보",
+                      Text("불면 타입",
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,

@@ -66,50 +66,61 @@ class _Page2State extends State<Page2> {
                   width: conwidth,
                   height: conhight,
                   decoration: first
-                      ? BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Color(0xff060713),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 5.0,
-                              spreadRadius: 3.0,
+                      ? 
+                      BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              // style: BorderStyle.solid,
+                              color: Color(0xff686572),
+                              // color: Color(0xffE4DDEA),
+                              width: 3,
                             ),
-                          ],
-                        )
-                      : BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Color(0xff060713),
-                          boxShadow: [
-                            BoxShadow(
-                              // color: Color.fromRGBO(228, 221, 234, 0.25),
-                              color: Color(0x40E4DDEA),
-                              blurRadius: 8.0,
-                              offset: Offset(-4, -4),
-                            ),
-                            BoxShadow(
-                              color: Color(0xff000215),
-                              blurRadius: 24.0,
-                              offset: Offset(4, 4),
-                            ),
-                            BoxShadow(
-                              color: Color(0xff000000),
-                              blurRadius: 4.0,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
-                        ),
+                            color: Color(0xff060713),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xffE4DDEA),
+                                blurRadius: 19.0,
+                                offset: Offset(0, 0),
+                              ),
+                            ],
+                          )
+                        : (BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            // border: Border.all(
+                            //   style: BorderStyle.solid,
+                            //   width: 1,
+                            // ),
+                            color: Color(0xff060713),
+                            boxShadow: [
+                              BoxShadow(
+                                // color: Color.fromRGBO(228, 221, 234, 0.25),
+                                color: Color(0x40E4DDEA),
+                                blurRadius: 8.0,
+                                offset: Offset(-4, -4),
+                              ),
+                              BoxShadow(
+                                color: Color(0xff000215),
+                                blurRadius: 24.0,
+                                offset: Offset(4, 4),
+                              ),
+                              BoxShadow(
+                                color: Color(0xff000000),
+                                blurRadius: 4.0,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          )),
                   padding: EdgeInsets.fromLTRB(
                       width * 37 / 390.0, 0, width * 34 / 390.0, 0),
                   child: Row(
                     children: [
                       Image.asset(
-                        "assets/onboarding/GumBuk.png",
+                        "assets/onboarding/GumBuk4.png",
                         width: 94,
                         height: 73,
                       ),
                       SizedBox(
-                        width: 30,
+                        width: 25,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,50 +161,61 @@ class _Page2State extends State<Page2> {
                   width: conwidth,
                   height: conhight,
                   decoration: second
-                      ? BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Color(0xff060713),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 5.0,
-                              spreadRadius: 3.0,
+                      ?
+                      BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              // style: BorderStyle.solid,
+                              color: Color(0xff686572),
+                              // color: Color(0xffE4DDEA),
+                              width: 3,
                             ),
-                          ],
-                        )
-                      : BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Color(0xff060713),
-                          boxShadow: [
-                            BoxShadow(
-                              // color: Color.fromRGBO(228, 221, 234, 0.25),
-                              color: Color(0x40E4DDEA),
-                              blurRadius: 8.0,
-                              offset: Offset(-4, -4),
-                            ),
-                            BoxShadow(
-                              color: Color(0xff000215),
-                              blurRadius: 24.0,
-                              offset: Offset(4, 4),
-                            ),
-                            BoxShadow(
-                              color: Color(0xff000000),
-                              blurRadius: 4.0,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
-                        ),
+                            color: Color(0xff060713),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xffE4DDEA),
+                                blurRadius: 19.0,
+                                offset: Offset(0, 0),
+                              ),
+                            ],
+                          )
+                        : (BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            // border: Border.all(
+                            //   style: BorderStyle.solid,
+                            //   width: 1,
+                            // ),
+                            color: Color(0xff060713),
+                            boxShadow: [
+                              BoxShadow(
+                                // color: Color.fromRGBO(228, 221, 234, 0.25),
+                                color: Color(0x40E4DDEA),
+                                blurRadius: 8.0,
+                                offset: Offset(-4, -4),
+                              ),
+                              BoxShadow(
+                                color: Color(0xff000215),
+                                blurRadius: 24.0,
+                                offset: Offset(4, 4),
+                              ),
+                              BoxShadow(
+                                color: Color(0xff000000),
+                                blurRadius: 4.0,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          )),
                   padding: EdgeInsets.fromLTRB(
                       width * 37 / 390.0, 0, width * 34 / 390.0, 0),
                   child: Row(
                     children: [
                       Image.asset(
-                        "assets/onboarding/Jada.png",
+                        "assets/onboarding/Jada4.png",
                         width: 76.22086,
                         height: 101.81,
                       ),
                       SizedBox(
-                        width: 46,
+                        width: 45,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -234,45 +256,56 @@ class _Page2State extends State<Page2> {
                   width: conwidth,
                   height: conhight,
                   decoration: third
-                      ? BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Color(0xff060713),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 5.0,
-                              spreadRadius: 3.0,
+                      ? 
+                      BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              // style: BorderStyle.solid,
+                              color: Color(0xff686572),
+                              // color: Color(0xffE4DDEA),
+                              width: 3,
                             ),
-                          ],
-                        )
-                      : BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Color(0xff060713),
-                          boxShadow: [
-                            BoxShadow(
-                              // color: Color.fromRGBO(228, 221, 234, 0.25),
-                              color: Color(0x40E4DDEA),
-                              blurRadius: 8.0,
-                              offset: Offset(-4, -4),
-                            ),
-                            BoxShadow(
-                              color: Color(0xff000215),
-                              blurRadius: 24.0,
-                              offset: Offset(4, 4),
-                            ),
-                            BoxShadow(
-                              color: Color(0xff000000),
-                              blurRadius: 4.0,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
-                        ),
+                            color: Color(0xff060713),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xffE4DDEA),
+                                blurRadius: 19.0,
+                                offset: Offset(0, 0),
+                              ),
+                            ],
+                          )
+                        : (BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            // border: Border.all(
+                            //   style: BorderStyle.solid,
+                            //   width: 1,
+                            // ),
+                            color: Color(0xff060713),
+                            boxShadow: [
+                              BoxShadow(
+                                // color: Color.fromRGBO(228, 221, 234, 0.25),
+                                color: Color(0x40E4DDEA),
+                                blurRadius: 8.0,
+                                offset: Offset(-4, -4),
+                              ),
+                              BoxShadow(
+                                color: Color(0xff000215),
+                                blurRadius: 24.0,
+                                offset: Offset(4, 4),
+                              ),
+                              BoxShadow(
+                                color: Color(0xff000000),
+                                blurRadius: 4.0,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          )),
                   padding: EdgeInsets.fromLTRB(
-                      width * 37 / 390.0, 0, width * 31 / 390.0, 0),
+                      width * 37 / 390.0, 0, width * 26 / 390.0, 0),
                   child: Row(
                     children: [
                       Image.asset(
-                        "assets/onboarding/bimong.png",
+                        "assets/onboarding/bimong4.png",
                         width: 95,
                         height: 94.00258,
                       ),
@@ -350,17 +383,25 @@ class _Page2State extends State<Page2> {
                   child: Container(
                       width: conwidth,
                       height: height * 75 / 844,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Color(0xff060713),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 5.0,
-                            spreadRadius: 3.0,
-                          ),
-                        ],
-                      ),
+                      decoration: 
+                      BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(
+                              // style: BorderStyle.solid,
+                              color: Color(0xff686572),
+                              // color: Color(0xffE4DDEA),
+                              width: 3,
+                            ),
+                            color: Color(0xff060713),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xffE4DDEA),
+                                blurRadius: 19.0,
+                                offset: Offset(0, 0),
+                              ),
+                            ],
+                          )
+                        ,
                       child: Center(
                         child: Text("다음",
                             style: TextStyle(

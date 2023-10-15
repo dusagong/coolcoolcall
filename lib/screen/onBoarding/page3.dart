@@ -8,10 +8,12 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-String apiKey = "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";
-// String apiUrl = "https://api.openai.com/vi/completions";
-String apiUrl = "https://api.openai.com/v1/engines/text-davinci-003/completions";
+String apiKey = "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"; // github upload용
+// String apiKey ="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"; //  실제 쓰는 키
 
+// String apiUrl = "https://api.openai.com/vi/completions";
+String apiUrl =
+    "https://api.openai.com/v1/engines/text-davinci-003/completions";
 
 class SpeechSampleApp extends StatefulWidget {
   const SpeechSampleApp({Key? key}) : super(key: key);
@@ -29,6 +31,8 @@ class _SpeechSampleAppState extends State<SpeechSampleApp> {
   String _words = '';
   String send = '';
   TextEditingController _controller = TextEditingController();
+  Timer? _speechTimeout;
+
   @override
   void initState() {
     super.initState();
@@ -37,16 +41,27 @@ class _SpeechSampleAppState extends State<SpeechSampleApp> {
 
   void _initSpeech() async {
     _speechEnabled = await _speechToText.initialize();
+    _startListening();
     setState(() {});
   }
 
   void _startListening() async {
+    // _speechToText.isListening?
+    //   print('listens'):print('Not listens');
     await _speechToText.listen(onResult: _onSpeechResult, localeId: 'ko_KR');
+    _speechToText.isListening ? print('listens') : print('Not listens');
+    _speechTimeout = Timer(Duration(seconds: 2), () {
+      _stopListening(); // Call your stop listening function here
+    });
+    print('start');
     setState(() {});
   }
 
   void _stopListening() async {
     await _speechToText.stop();
+    print('stop');
+    _speechTimeout?.cancel();
+
     setState(() {
       _controller.text = '';
       send = _words;
@@ -55,12 +70,18 @@ class _SpeechSampleAppState extends State<SpeechSampleApp> {
 
   void _onSpeechResult(SpeechRecognitionResult result) {
     _controller.text = result.recognizedWords;
+
+    _speechTimeout?.cancel();
+    _speechTimeout = Timer(Duration(seconds: 3), () {
+      _stopListening(); // Call your stop listening function here
+    });
+
     setState(() {
       _words = result.recognizedWords;
     });
   }
 
-  static Future<String> generateText(String _words) async {
+  Future<String> generateText(String _words) async {
     final response = await http.post(
       Uri.parse(apiUrl),
       headers: {
@@ -68,15 +89,10 @@ class _SpeechSampleAppState extends State<SpeechSampleApp> {
         'Authorization': 'Bearer $apiKey'
       },
       body: jsonEncode({
-        'prompt': "with $_words, could you pleas respode that you are talking to a person who is having hard time to sleep so needed someone to talk with and it is you",
-        // 'message':[
-        //   {
-        //     'role' : 'user',
-        //     'content' :'does this message '
-        //   }
-        // ],
+        'prompt':
+            "with $_words, could you pleas respode that you are talking to a person who is having hard time to sleep so needed someone to talk with and it is you",
         'max_tokens': 1000,
-        'temperature': 1,
+        'temperature': 0.6,
         'top_p': 0.53,
         'frequency_penalty': 0,
         'presence_penalty': 0
@@ -86,14 +102,17 @@ class _SpeechSampleAppState extends State<SpeechSampleApp> {
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
       var msg = data['choices'][0]['text'];
+      // _speechToText.isListening?
+      // print('listens'):print('Not listens');
+      _startListening();
+
       return msg;
     } else {
       print('Request failed with status code: ${response.statusCode}');
       print('Response body: ${response.body}');
       throw Exception('Failed to make a valid API request.');
     }
-}
-
+  }
 
   // static Map<String, String> header = {
   //   'Content-Type': 'application/json',
@@ -124,7 +143,7 @@ class _SpeechSampleAppState extends State<SpeechSampleApp> {
 
   @override
   Widget build(BuildContext context) {
-    _speechToText.isListening ? print('on') : print('off');
+    _speechToText.isListening ? print('on!') : print('off!');
     return Scaffold(
         appBar: AppBar(
           title: const Text('Speech to Text Demo'),
@@ -140,9 +159,12 @@ class _SpeechSampleAppState extends State<SpeechSampleApp> {
                   decoration: InputDecoration(
                       border: const OutlineInputBorder(),
                       suffix: IconButton(
-                        onPressed: _speechToText.isListening
-                            ? _stopListening
-                            : _startListening,
+                        onPressed: () {
+                          _speechToText.isListening
+                              ? _stopListening
+                              : _startListening;
+                          print('touched');
+                        },
                         icon: Icon(_speechToText.isListening
                             ? Icons.mic_off
                             : Icons.mic),
@@ -157,15 +179,12 @@ class _SpeechSampleAppState extends State<SpeechSampleApp> {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            print("loading!!!!!!");
-
                             return const Center(
                                 child: CircularProgressIndicator());
                           } else if (snapshot.hasError) {
                             print("faile!!!!!!");
                             return Text('Error: ${snapshot.error}');
                           } else {
-                            print("success???");
                             return Text('${snapshot.data}');
                           }
                         },

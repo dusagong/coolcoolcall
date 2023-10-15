@@ -31,24 +31,26 @@ class FakeLogin extends StatelessWidget {
                 Text("기존에 사용하고 있던 계정으로\n   간단하게 회원가입 하세요!",
                     style: TextStyle(
                         fontSize: 18,
+                        fontFamily: 'Pretendard',
                         fontWeight: FontWeight.w400,
                         color: Colors.white)),
                 SizedBox(height: 28),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("assets/login/kakao.png"),
+                    Image.asset("assets/login/kakao4.png",width: 61,height: 61,),
                     SizedBox(width: 15),
-                    Image.asset("assets/login/naver.png"),
+                    Image.asset("assets/login/naver4.png",width: 61,height: 61),
                     SizedBox(width: 15),
-                    Image.asset("assets/login/facebook.png"),
+                    Image.asset("assets/login/facebook4.png",width: 61,height: 61),
                     SizedBox(width: 15),
-                    Image.asset("assets/login/apple.png"),
+                    Image.asset("assets/login/apple4.png",width: 61,height: 61),
                   ],
                 ),
                 SizedBox(height: 39),
                 Text("또는",
                     style: TextStyle(
+                        fontFamily: 'Pretendard',
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
                         color: Colors.white)),
@@ -58,7 +60,7 @@ class FakeLogin extends StatelessWidget {
                   onTap: () {
                     Get.offAll(() => Page1());
                   },
-                  child: Image.asset("assets/login/google.png"),
+                  child: Image.asset("assets/login/googlelogo4.png",width: 346,height: 53.64,),
                   // child: Container(
                   //   width: 329,
                   //   height: 51,

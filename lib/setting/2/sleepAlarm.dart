@@ -1,3 +1,4 @@
+//글자 변화 자연스럽게
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coolcoolcall/screen/home.dart';
 import 'package:flutter/material.dart';
@@ -43,8 +44,8 @@ class _SleepAlarmState extends State<SleepAlarm> {
               height: 140,
             ),
             AnimatedSwitcher(
-              switchInCurve: Curves.fastOutSlowIn,
-              switchOutCurve: Curves.fastLinearToSlowEaseIn,
+              // switchInCurve: Curves.fastOutSlowIn,
+              // switchOutCurve: Curves.fastLinearToSlowEaseIn,
               duration: const Duration(milliseconds: 1000),
               // key: ValueKey<Widget>(mychoice),
               child: click ? b() : a(),
@@ -54,59 +55,72 @@ class _SleepAlarmState extends State<SleepAlarm> {
               // mychoice,
               // key: isOverlayVisible ? ValueKey<String>('a') : ValueKey<String>('b'),
             ),
-            GestureDetector(
-          onTap: () {
-            setState(() {
-              click = !click;
-            });
-            print('$click');
-          },
-          child: Stack(
-          alignment: Alignment.center,
-          children: [
             AnimatedSwitcher(
               // switchInCurve: Curves.fastOutSlowIn,
               // switchOutCurve: Curves.fastLinearToSlowEaseIn,
-              duration: const Duration(milliseconds: 1000),
-              // key: ValueKey<Widget>(mychoice),
-              child: click ? Image.asset(
-              "assets/Setting/2/BrightToggleBack.png",
-              width: 260,
-              height: 144.18,
-              key:ValueKey<String>('b1')
+              duration: const Duration(milliseconds: 0),
+              child: click ? d() : c(),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: child,
+                );
+              },
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  click = !click;
+                });
+                print('$click');
+              },
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  AnimatedSwitcher(
+                    // switchInCurve: Curves.fastOutSlowIn,
+                    // switchOutCurve: Curves.fastLinearToSlowEaseIn,
+                    duration: const Duration(milliseconds: 1000),
+                    // key: ValueKey<Widget>(mychoice),
+                    child: click
+                        ? Image.asset("assets/Setting/2/BrightToggleBack.png",
+                            width: 260,
+                            height: 144.18,
+                            key: ValueKey<String>('b1'))
+                        : Image.asset("assets/Setting/2/DarkToggleBack.png",
+                            width: 260,
+                            height: 144.18,
+                            key: ValueKey<String>('a1')),
+                    //   transitionBuilder: (Widget child, Animation<double> animation) {
+                    //   return ScaleTransition(scale: animation, child: child);
+                    // },
+                    // mychoice,
+                    // key: isOverlayVisible ? ValueKey<String>('a') : ValueKey<String>('b'),
+                  ),
 
-            ) : Image.asset(
-              "assets/Setting/2/DarkToggleBack.png",
-              width: 260,
-              height: 144.18,
-              key:ValueKey<String>('a1')
+                  AnimatedPositioned(
+                    child: Image.asset(
+                      "assets/Setting/2/smallMoon.png",
+                      width: 109,
+                      height: 144.18,
+                    ),
+                    duration: Duration(milliseconds: 600),
+                    bottom: 3,
+                    left: click ? 140 : 0,
+                    right: click ? 0 : 140,
+                  )
+
+                  // Positioned(
+                  //   right: click ? -26 : 2, // Slide in from left or hide to the left
+                  //   child: Image.asset(
+                  //     "assets/Setting/2/smallMoon.png",
+                  //     width: 109,
+                  //     height: 144.18,
+                  //   ),
+                  // ),
+                ],
+              ),
             ),
-              //   transitionBuilder: (Widget child, Animation<double> animation) {
-              //   return ScaleTransition(scale: animation, child: child);
-              // },
-              // mychoice,
-              // key: isOverlayVisible ? ValueKey<String>('a') : ValueKey<String>('b'),
-            ),
-            
-            AnimatedPositioned(child: Image.asset(
-                "assets/Setting/2/smallMoon.png",
-                width: 109,
-                height: 144.18,
-              ), duration: Duration(milliseconds: 600),
-              left: click?140:0,
-              right: click?0:140,)
-            
-            // Positioned(
-            //   right: click ? -26 : 2, // Slide in from left or hide to the left
-            //   child: Image.asset(
-            //     "assets/Setting/2/smallMoon.png",
-            //     width: 109,
-            //     height: 144.18,
-            //   ),
-            // ),
-          ],
-        ),
-        ),
           ]),
         ));
   }
@@ -120,6 +134,27 @@ class _SleepAlarmState extends State<SleepAlarm> {
           width: 178,
           height: 179,
         ),
+      ],
+    );
+  }
+
+  Widget b() {
+    return Column(
+      key: ValueKey<String>('b'),
+      children: [
+        Image.asset(
+          "assets/Setting/2/BigBrightMoon.png",
+          width: 178,
+          height: 179,
+        ),
+      ],
+    );
+  }
+
+  Widget c() {
+    return Column(
+      key: ValueKey<String>('c'),
+      children: [
         SizedBox(
           height: 30,
         ),
@@ -136,46 +171,14 @@ class _SleepAlarmState extends State<SleepAlarm> {
             ),
           ),
         ),
-        // GestureDetector(
-        //   onTap: () {
-        //     setState(() {
-        //       click = true;
-        //     });
-        //     print('$click');
-        //   },
-        //   child: Stack(
-        //   alignment: Alignment.center,
-        //   children: [
-        //     Image.asset(
-        //       "assets/Setting/2/DarkToggleBack.png",
-        //       width: 260,
-        //       height: 144.18,
-        //     ),
-        //     Positioned(
-        //       left: click ? 2 : -26, // Slide in from left or hide to the left
-        //       child: Image.asset(
-        //         "assets/Setting/2/smallMoon.png",
-        //         width: 109,
-        //         height: 144.18,
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        // ),
-      
       ],
     );
   }
 
-  Widget b() {
+  Widget d() {
     return Column(
-      key: ValueKey<String>('b'),
+      key: ValueKey<String>('d'),
       children: [
-        Image.asset(
-          "assets/Setting/2/BigBrightMoon.png",
-          width: 178,
-          height: 179,
-        ),
         SizedBox(
           height: 30,
         ),
@@ -192,32 +195,6 @@ class _SleepAlarmState extends State<SleepAlarm> {
             ),
           ),
         ),
-        // GestureDetector(
-        //   onTap: () {
-        //     setState(() {
-        //       click = false;
-        //     });
-        //     print('$click');
-        //   },
-        //   child: Stack(
-        //   alignment: Alignment.center,
-        //   children: [
-        //     Image.asset(
-        //       "assets/Setting/2/BrightToggleBack.png",
-        //       width: 260,
-        //       height: 144.18,
-        //     ),
-        //     Positioned(
-        //       right: click ? -26 : 2, // Slide in from left or hide to the left
-        //       child: Image.asset(
-        //         "assets/Setting/2/smallMoon.png",
-        //         width: 109,
-        //         height: 144.18,
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        // ),
       ],
     );
   }
