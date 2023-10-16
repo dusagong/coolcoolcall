@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:coolcoolcall/call/incomming.dart';
 import 'package:coolcoolcall/controller/auth_controller.dart';
 import 'package:coolcoolcall/call/call.dart';
 import 'package:coolcoolcall/screen/onBoarding/page3.dart';
@@ -50,6 +53,13 @@ class _HomeState extends State<Home> {
     return result;
   }
 
+  void _handleDoubleTap() {
+    // Create a timer with a 2-second delay
+    Timer(Duration(seconds: 2), () {
+      Get.offAll(() => Income());
+    });
+  }
+
   bool isKorean(String input) {
     bool isKorean = false;
     int inputToUniCode = input.codeUnits[0];
@@ -99,7 +109,17 @@ class _HomeState extends State<Home> {
                           SizedBox(width: 20),
                         ],
                       ),
-                      SizedBox(height: 158),
+                      SizedBox(height: 28),
+                      Container(
+                        height: 110,
+                        child: GestureDetector(
+                          onDoubleTap: () {
+                            _handleDoubleTap();
+                            print('hi');
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 20),
                       FutureBuilder<String?>(
                         future: fetchNameFromFirestore(),
                         builder: (context, snapshot) {
@@ -143,8 +163,8 @@ class _HomeState extends State<Home> {
                       SizedBox(height: 197),
                       GestureDetector(
                         onTap: () {
-                          Get.offAll(() => SpeechSampleApp());
-                          // Get.offAll(()=>Call());
+                          // Get.offAll(() => SpeechSampleApp());
+                          Get.offAll(() => Call());
                         },
                         child: Image.asset("assets/home/moon.png"),
                       ),

@@ -91,8 +91,8 @@ class _CallState extends State<Call> {
         child: Scaffold(
             backgroundColor: Colors.transparent,
             body: AnimatedSwitcher(
-              switchInCurve: Curves.fastOutSlowIn,
-              switchOutCurve: Curves.fastLinearToSlowEaseIn,
+              // switchInCurve: Curves.fastOutSlowIn,
+              // switchOutCurve: Curves.fastLinearToSlowEaseIn,
               duration: const Duration(seconds: 1),
               // key: ValueKey<Widget>(mychoice),
               child: isOverlayVisible ? a() : b(),

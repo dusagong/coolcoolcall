@@ -33,6 +33,7 @@ class _Page2State extends State<typeModify> {
   bool initalT = false;
   void onSaveButtonPressed() {
     storeDataInFirestore(first, second, third);
+    Get.back();
   }
 
   void initState() {
@@ -444,7 +445,6 @@ class _Page2State extends State<typeModify> {
                   GestureDetector(
                     onTap: () {
                       onSaveButtonPressed();
-                      Get.back();
                     },
                     child: Container(
                         width: conwidth,

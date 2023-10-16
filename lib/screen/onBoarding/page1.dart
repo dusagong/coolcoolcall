@@ -26,6 +26,74 @@ class _Page1State extends State<Page1> {
   TextEditingController wakeH = TextEditingController();
   TextEditingController wakeM = TextEditingController();
 
+  BoxDecoration touched = BoxDecoration(
+    borderRadius: BorderRadius.circular(20),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Color(0xff9F9AA7),
+      // color: Color(0xffE4DDEA),
+      width: 3,
+    ),
+    color: Color(0xff060713),
+    boxShadow: [
+      BoxShadow(
+        color: Color(0xffE4DDEA),
+        blurRadius: 19.0,
+        offset: Offset(0, 0),
+      ),
+    ],
+  );
+  BoxDecoration smallTouched = BoxDecoration(
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Color(0xffE5DDEA),
+      // color: Color(0xffE4DDEA),
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(10),
+    color: Color(0xff060714),
+    boxShadow: [
+      BoxShadow(
+        // color: Color.fromRGBO(228, 221, 234, 0.25),
+        color: Color(0x40E4DDEA),
+        blurRadius: 8.0,
+        offset: Offset(4, 4),
+      ),
+      BoxShadow(
+        color: Color(0xff000215),
+        blurRadius: 24.0,
+        offset: Offset(-4, -4),
+      ),
+      BoxShadow(
+        color: Color(0xff000000),
+        blurRadius: 4.0,
+        offset: Offset(0, -4),
+      ),
+    ],
+  );
+  BoxDecoration initial = BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    color: Color(0xff060713),
+    boxShadow: [
+      BoxShadow(
+        // color: Color.fromRGBO(228, 221, 234, 0.25),
+        color: Color(0x40E4DDEA),
+        blurRadius: 8.0,
+        offset: Offset(-4, -4),
+      ),
+      BoxShadow(
+        color: Color(0xff000215),
+        blurRadius: 24.0,
+        offset: Offset(4, 4),
+      ),
+      BoxShadow(
+        color: Color(0xff000000),
+        blurRadius: 4.0,
+        offset: Offset(0, 4),
+      ),
+    ],
+  );
+
   Future<void> storeDataInFirestore(
     String enteredName,
     String enteredAge,
@@ -108,68 +176,7 @@ class _Page1State extends State<Page1> {
                   Container(
                     width: 364,
                     height: 112,
-                    decoration: isFirstContainerSelected
-                        ?
-                        // BoxDecoration(
-                        //     // border: Border.all(color: Colors.black, width: 1),
-                        //     borderRadius: BorderRadius.circular(10),
-                        //     color: Color(0xff04060f),
-                        //     boxShadow: [
-                        //       BoxShadow(
-                        //         color: Color(0xffE4DDEA),
-                        //         blurRadius: 19.0,
-                        //         offset: Offset(0, 0),
-                        //       ),
-                        //       BoxShadow(
-                        //         color: Color(0xffE4DDEA),
-                        //         blurRadius: 1.0,
-                        //         offset: Offset(0, 1),
-                        //       ),
-                        //     ],
-                        //   )
-                        BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              // style: BorderStyle.solid,
-                              color: Color(0xff9F9AA7),
-                              // color: Color(0xffE4DDEA),
-                              width: 3,
-                            ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xffE4DDEA),
-                                blurRadius: 19.0,
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                          )
-                        : (BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            // border: Border.all(
-                            //   style: BorderStyle.solid,
-                            //   width: 1,
-                            // ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                color: Color(0x40E4DDEA),
-                                blurRadius: 8.0,
-                                offset: Offset(-4, -4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000215),
-                                blurRadius: 24.0,
-                                offset: Offset(4, 4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000000),
-                                blurRadius: 4.0,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                          )),
+                    decoration: isFirstContainerSelected ? touched : initial,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
@@ -204,57 +211,8 @@ class _Page1State extends State<Page1> {
                               Container(
                                 width: 139,
                                 height: 44,
-                                decoration: isFirstleft
-                                    ? (BoxDecoration(
-                                        border: Border.all(
-                                          // style: BorderStyle.solid,
-                                          color: Color(0xffE5DDEA),
-                                          // color: Color(0xffE4DDEA),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Color(0xff060714),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                            color: Color(0x40E4DDEA),
-                                            blurRadius: 8.0,
-                                            offset: Offset(4, 4),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xff000215),
-                                            blurRadius: 24.0,
-                                            offset: Offset(-4, -4),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xff000000),
-                                            blurRadius: 4.0,
-                                            offset: Offset(0, -4),
-                                          ),
-                                        ],
-                                      ))
-                                    : BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Color(0xff060714),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                            color: Color(0x40E4DDEA),
-                                            blurRadius: 8.0,
-                                            offset: Offset(4, 4),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xff000215),
-                                            blurRadius: 24.0,
-                                            offset: Offset(-4, -4),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xff000000),
-                                            blurRadius: 4.0,
-                                            offset: Offset(0, -4),
-                                          ),
-                                        ],
-                                      ),
+                                decoration:
+                                    isFirstleft ? smallTouched : initial,
                                 child: TextField(
                                   onTap: () {
                                     setState(() {
@@ -300,57 +258,8 @@ class _Page1State extends State<Page1> {
                               Container(
                                 width: 139,
                                 height: 44,
-                                decoration: isFirstright
-                                    ? (BoxDecoration(
-                                        border: Border.all(
-                                          // style: BorderStyle.solid,
-                                          color: Color(0xffE5DDEA),
-                                          // color: Color(0xffE4DDEA),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Color(0xff060714),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                            color: Color(0x40E4DDEA),
-                                            blurRadius: 8.0,
-                                            offset: Offset(4, 4),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xff000215),
-                                            blurRadius: 24.0,
-                                            offset: Offset(-4, -4),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xff000000),
-                                            blurRadius: 4.0,
-                                            offset: Offset(0, -4),
-                                          ),
-                                        ],
-                                      ))
-                                    : BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Color(0xff060714),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                            color: Color(0x40E4DDEA),
-                                            blurRadius: 8.0,
-                                            offset: Offset(4, 4),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xff000215),
-                                            blurRadius: 24.0,
-                                            offset: Offset(-4, -4),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xff000000),
-                                            blurRadius: 4.0,
-                                            offset: Offset(0, -4),
-                                          ),
-                                        ],
-                                      ),
+                                decoration:
+                                    isFirstright ? smallTouched : initial,
                                 child: TextField(
                                   onTap: () {
                                     setState(() {
@@ -431,65 +340,7 @@ class _Page1State extends State<Page1> {
                   Container(
                     width: 364,
                     height: 225,
-                    decoration: isFirstContainerSelected
-                        ? (BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            // border: Border.all(
-                            //   style: BorderStyle.solid,
-                            //   width: 1,
-                            // ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                color: Color(0x40E4DDEA),
-                                blurRadius: 8.0,
-                                offset: Offset(-4, -4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000215),
-                                blurRadius: 24.0,
-                                offset: Offset(4, 4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000000),
-                                blurRadius: 4.0,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                          ))
-                        : BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              // style: BorderStyle.solid,
-                              color: Color(0xff9F9AA7),
-                              // color: Color(0xffE4DDEA),
-                              width: 3,
-                            ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xffE4DDEA),
-                                blurRadius: 19.0,
-                                offset: Offset(0, 0),
-                              ),
-                              // BoxShadow(
-                              //   color: Color(0xADE4DDEA),
-                              //   blurRadius: 14.0,
-                              //   offset: Offset(0, 1),
-                              // ),
-                              // BoxShadow(
-                              //   color: Color(0xff000000),
-                              //   blurRadius: 4.0,
-                              //   offset: Offset(-6, -4),
-                              // ),
-                              // BoxShadow(
-                              //   color: Color(0xff000000),
-                              //   blurRadius: 10.0,
-                              //   offset: Offset(-6, -4),
-                              // ),
-                            ],
-                          ),
+                    decoration: isFirstContainerSelected ? initial : touched,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(children: [
@@ -515,57 +366,8 @@ class _Page1State extends State<Page1> {
                             Container(
                               width: 139,
                               height: 44,
-                              decoration: isSecond1left
-                                  ? (BoxDecoration(
-                                      border: Border.all(
-                                        // style: BorderStyle.solid,
-                                        color: Color(0xffE5DDEA),
-                                        // color: Color(0xffE4DDEA),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xff060714),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                          color: Color(0x40E4DDEA),
-                                          blurRadius: 8.0,
-                                          offset: Offset(4, 4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000215),
-                                          blurRadius: 24.0,
-                                          offset: Offset(-4, -4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000000),
-                                          blurRadius: 4.0,
-                                          offset: Offset(0, -4),
-                                        ),
-                                      ],
-                                    ))
-                                  : BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xff060714),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                          color: Color(0x40E4DDEA),
-                                          blurRadius: 8.0,
-                                          offset: Offset(4, 4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000215),
-                                          blurRadius: 24.0,
-                                          offset: Offset(-4, -4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000000),
-                                          blurRadius: 4.0,
-                                          offset: Offset(0, -4),
-                                        ),
-                                      ],
-                                    ),
+                              decoration:
+                                  isSecond1left ? smallTouched : initial,
                               // child:
                               child: TextField(
                                 onTap: () {
@@ -621,56 +423,7 @@ class _Page1State extends State<Page1> {
                               width: 139,
                               height: 44,
                               decoration: isSecond1right
-                                  ? (BoxDecoration(
-                                      border: Border.all(
-                                        // style: BorderStyle.solid,
-                                        color: Color(0xffE5DDEA),
-                                        // color: Color(0xffE4DDEA),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xff060714),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                          color: Color(0x40E4DDEA),
-                                          blurRadius: 8.0,
-                                          offset: Offset(4, 4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000215),
-                                          blurRadius: 24.0,
-                                          offset: Offset(-4, -4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000000),
-                                          blurRadius: 4.0,
-                                          offset: Offset(0, -4),
-                                        ),
-                                      ],
-                                    ))
-                                  : BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xff060714),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                          color: Color(0x40E4DDEA),
-                                          blurRadius: 8.0,
-                                          offset: Offset(4, 4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000215),
-                                          blurRadius: 24.0,
-                                          offset: Offset(-4, -4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000000),
-                                          blurRadius: 4.0,
-                                          offset: Offset(0, -4),
-                                        ),
-                                      ],
-                                    ),
+                                  ? smallTouched : initial,
                               child: TextField(
                                 onTap: () {
                                   setState(() {
@@ -737,56 +490,7 @@ class _Page1State extends State<Page1> {
                               width: 139,
                               height: 44,
                               decoration: isSecond2left
-                                  ? (BoxDecoration(
-                                      border: Border.all(
-                                        // style: BorderStyle.solid,
-                                        color: Color(0xffE5DDEA),
-                                        // color: Color(0xffE4DDEA),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xff060714),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                          color: Color(0x40E4DDEA),
-                                          blurRadius: 8.0,
-                                          offset: Offset(4, 4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000215),
-                                          blurRadius: 24.0,
-                                          offset: Offset(-4, -4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000000),
-                                          blurRadius: 4.0,
-                                          offset: Offset(0, -4),
-                                        ),
-                                      ],
-                                    ))
-                                  : BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xff060714),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                          color: Color(0x40E4DDEA),
-                                          blurRadius: 8.0,
-                                          offset: Offset(4, 4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000215),
-                                          blurRadius: 24.0,
-                                          offset: Offset(-4, -4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000000),
-                                          blurRadius: 4.0,
-                                          offset: Offset(0, -4),
-                                        ),
-                                      ],
-                                    ),
+                                  ? smallTouched : initial,
                               child: TextField(
                                 onTap: () {
                                   setState(() {
@@ -840,56 +544,7 @@ class _Page1State extends State<Page1> {
                               width: 139,
                               height: 44,
                               decoration: isSecond2right
-                                  ? (BoxDecoration(
-                                      border: Border.all(
-                                        // style: BorderStyle.solid,
-                                        color: Color(0xffE5DDEA),
-                                        // color: Color(0xffE4DDEA),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xff060714),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                          color: Color(0x40E4DDEA),
-                                          blurRadius: 8.0,
-                                          offset: Offset(4, 4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000215),
-                                          blurRadius: 24.0,
-                                          offset: Offset(-4, -4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000000),
-                                          blurRadius: 4.0,
-                                          offset: Offset(0, -4),
-                                        ),
-                                      ],
-                                    ))
-                                  : BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xff060714),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                          color: Color(0x40E4DDEA),
-                                          blurRadius: 8.0,
-                                          offset: Offset(4, 4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000215),
-                                          blurRadius: 24.0,
-                                          offset: Offset(-4, -4),
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff000000),
-                                          blurRadius: 4.0,
-                                          offset: Offset(0, -4),
-                                        ),
-                                      ],
-                                    ),
+                                  ?smallTouched : initial,
                               child: TextField(
                                 onTap: () {
                                   setState(() {
@@ -1005,36 +660,23 @@ class _Page1State extends State<Page1> {
                       child: Container(
                         width: 310,
                         height: 75,
-                        decoration: 
-                        BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(
-                              // style: BorderStyle.solid,
-                              color: Color(0xff8B8794),
-                              // color: Color(0xffE4DDEA),
-                              width: 3,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(
+                            // style: BorderStyle.solid,
+                            color: Color(0xff8B8794),
+                            // color: Color(0xffE4DDEA),
+                            width: 3,
+                          ),
+                          color: Color(0xff060713),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xffE4DDEA),
+                              blurRadius: 19.0,
+                              offset: Offset(0, 0),
                             ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xffE4DDEA),
-                                blurRadius: 19.0,
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                          )
-                        ,
-                        // BoxDecoration(
-                        //   borderRadius: BorderRadius.circular(100),
-                        //   color: Color(0xff060713),
-                        //   boxShadow: [
-                        //     BoxShadow(
-                        //       color: Colors.grey,
-                        //       blurRadius: 5.0,
-                        //       spreadRadius: 3.0,
-                        //     ),
-                        //   ],
-                        // ),
+                          ],
+                        ),
                         child: Center(
                           child: Text("다음",
                               style: TextStyle(
