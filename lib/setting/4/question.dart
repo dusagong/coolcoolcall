@@ -20,9 +20,8 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
     "assets/Setting/4/qa/SJsend/1_4.png",
     "assets/Setting/4/qa/SJsend/2_4.png",
     "assets/Setting/4/qa/SJsend/3_4.png",
+  ];
 
-    ];
-  
   final color = [
     Colors.red,
     Colors.amber,
@@ -49,179 +48,96 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
         backgroundColor: Color(0xff060713),
         elevation: 0.0,
       ),
-      body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 80,),
-              SizedBox(
-                height: 490,
-                width: MediaQuery.of(context).size.width,
-                child: PageView.builder(
-                  physics: BouncingScrollPhysics(),
-                  controller:
-                      PageController(initialPage: 0, viewportFraction: 0.73),
-                  onPageChanged: (value) {
-                    setState(() {
-                      // Smoothly update the container size
-                      currentindex = value % assets1.length;
-                    });
-                  },
-                  itemBuilder: (context, index) {
-                    // Calculate size based on the current index
-                    double containerWidth1 =
-                        currentindex == index % assets1.length ? 404 : 250;
-                    double containerHeight1 =
-                        currentindex == index % assets1.length ? 480 : 384;
-                    double font1 =
-                        currentindex == index % assets1.length ? 18 : 15;
-                        double font2 =
-                        currentindex == index % assets1.length ? 16 : 13.5;
-                    double containerWidth2 =
-                        currentindex == index % assets1.length ? 304 : 250;
-                    double containerHeight2 =
-                        currentindex == index % assets1.length ? 386 : 300;
-
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AnimatedContainer(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            height: 590,
+            width: MediaQuery.of(context).size.width,
+            child: Center(
+              child: PageView.builder(
+                physics: BouncingScrollPhysics(),
+                controller:
+                    PageController(initialPage: 0, viewportFraction: 0.76),
+                onPageChanged: (value) {
+                  setState(() {
+                    // Smoothly update the container size
+                    currentindex = value % assets1.length;
+                  });
+                },
+                itemBuilder: (context, index) {
+                  // Calculate size based on the current index
+                  double containerWidth1 =
+                      currentindex == index % assets1.length ? 445 : 430;
+                  double containerHeight1 =
+                      currentindex == index % assets1.length ? 590 : 484;
+                  bool opa =
+                      currentindex == index % assets1.length ? true : false;
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      AnimatedContainer(
                           duration: Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
+                          // curve: Curves.easeInOut,
                           width: containerWidth1,
                           height: containerHeight1,
-                          child: Image.asset(assets[index % assets1.length])
-                        //   Container(
-                        //     clipBehavior: Clip.antiAlias,
-                        //     decoration: const BoxDecoration(
-                        //       color: Color(0xffE5DDEA),
-                        //       borderRadius: BorderRadius.only(
-                        //         topLeft: Radius.circular(20),
-                        //         topRight: Radius.circular(20),
-                        //       ),
-                        //       boxShadow: [
-                        //         BoxShadow(
-                        //           color: Color(0x36E4DDEA),
-                        //           blurRadius: 8.0,
-                        //           offset: Offset(-4, -4),
-                        //         ),
-                        //         BoxShadow(
-                        //           color: Color(0xff000215),
-                        //           blurRadius: 24.0,
-                        //           offset: Offset(4, 4),
-                        //         ),
-                        //         BoxShadow(
-                        //           color: Color(0x36E4DDEA),
-                        //           blurRadius: 8.0,
-                        //           offset: Offset(-4, 1),
-                        //         ),
-                        //         BoxShadow(
-                        //           color: Color(0xff000000),
-                        //           blurRadius: 4.0,
-                        //           offset: Offset(0, 4),
-                        //         ),
-                        //         // BoxShadow(
-                        //         //   color: Color(0xff000215),
-                        //         //   blurRadius: 24.0,
-                        //         //   offset: Offset(4, 0),
-                        //         // ),
-                        //         BoxShadow(
-                        //           color: Color(0x36E4DDEA),
-                        //           blurRadius: 8.0,
-                        //           offset: Offset(-4, -4),
-                        //         ),
-                        //       ],
-                        //     ),
-                        //     child: Padding(
-                        //       padding: const EdgeInsets.fromLTRB(20.0,20,20,10),
-                        //       child: Text(assets1[index % assets1.length],style: TextStyle(
-                        //               fontSize: font1,
-                        //               fontWeight: FontWeight.w600,
-                        //               color: Color(0xff292929)),),
-                        //     ),
-                        //   ),
-                        // ),
-                        // AnimatedContainer(
-                        //   duration: Duration(milliseconds: 300),
-                        //   curve: Curves.easeInOut,
-                        //   width: containerWidth2,
-                        //   height: containerHeight2,
-                        //   child: Container(
-                        //     clipBehavior: Clip.antiAlias,
-                        //     decoration: const BoxDecoration(
-                        //       borderRadius: BorderRadius.only(
-                        //         bottomLeft: Radius.circular(20),
-                        //         bottomRight: Radius.circular(20),
-                        //       ),
-                        //       color: Color(0xff060713),
-                        //       boxShadow: [
-                        //         BoxShadow(
-                        //           color: Color(0x36000000),
-                        //           blurRadius: 4.0,
-                        //           offset: Offset(0, 4),
-                        //         ),
-                        //         BoxShadow(
-                        //           color: Color(0x36E4DDEA),
-                        //           blurRadius: 8.0,
-                        //           offset: Offset(-4, 1),
-                        //         ),
-                        //         BoxShadow(
-                        //           color: Color(0xff000000),
-                        //           blurRadius: 4.0,
-                        //           offset: Offset(0, 4),
-                        //         ),
-                        //         // BoxShadow(
-                        //         //   color: Color(0xff000215),
-                        //         //   blurRadius: 24.0,
-                        //         //   offset: Offset(4, 4),
-                        //         // ),
-                        //         BoxShadow(
-                        //           color: Color(0x36E4DDEA),
-                        //           blurRadius: 8.0,
-                        //           offset: Offset(-4, 0),
-                        //         ),
-                        //       ],
-                        //     ),
-                        //     child: Padding(
-                        //       padding: const EdgeInsets.all(20.0),
-                        //       child: Text(assets2[index % assets1.length],
-                        //           style: TextStyle(
-                        //               fontSize: font2,
-                        //               fontWeight: FontWeight.w400,
-                        //               color: Color(0xffE5DDEA))),
-                        //     ),
-                        //   ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
+                          child: opa
+                              ? Image.asset(
+                                  assets[index % assets1.length],
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.asset(assets[index % assets1.length],
+                                  fit: BoxFit.cover,
+                                  opacity: AnimationController(
+                                      vsync: this, value: 0.5))
+                          
+                          ),
+                    ],
+                  );
+                },
               ),
-              SizedBox(height: 30,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  currentindex == 0
-                      ? Image.asset("assets/Setting/4/qa/1.png",width: 50,
-                              height: 50,)
-                      : Image.asset("assets/Setting/4/qa/1-2.png",width: 31,
-                              height: 31,),
-                  currentindex == 1
-                      ? Image.asset("assets/Setting/4/qa/2.png",width: 50,
-                              height: 50,)
-                      : Image.asset("assets/Setting/4/qa/2-2.png",width: 31,
-                              height: 31,),
-                  currentindex == 2
-                      ? Image.asset("assets/Setting/4/qa/3.png",width: 50,
-                              height: 50,)
-                      : Image.asset("assets/Setting/4/qa/3-2.png",width: 31,
-                              height: 31,),
-                ],
-              )
-            ],
+            ),
           ),
-        ),
-      
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              currentindex == 0
+                  ? Image.asset(
+                      "assets/Setting/4/qa/1.png",
+                      width: 50,
+                      height: 50,
+                    )
+                  : Image.asset(
+                      "assets/Setting/4/qa/1-2.png",
+                      width: 31,
+                      height: 31,
+                    ),
+              currentindex == 1
+                  ? Image.asset(
+                      "assets/Setting/4/qa/2.png",
+                      width: 50,
+                      height: 50,
+                    )
+                  : Image.asset(
+                      "assets/Setting/4/qa/2-2.png",
+                      width: 31,
+                      height: 31,
+                    ),
+              currentindex == 2
+                  ? Image.asset(
+                      "assets/Setting/4/qa/3.png",
+                      width: 50,
+                      height: 50,
+                    )
+                  : Image.asset(
+                      "assets/Setting/4/qa/3-2.png",
+                      width: 31,
+                      height: 31,
+                    ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

@@ -1,4 +1,9 @@
+import 'package:coolcoolcall/call/call.dart';
+import 'package:coolcoolcall/call/lockscreen.dart';
+import 'package:coolcoolcall/screen/home.dart';
 import 'package:flutter/material.dart';
+import 'package:action_slider/action_slider.dart';
+import 'package:get/get.dart';
 
 class Income extends StatefulWidget {
   const Income({super.key});
@@ -9,6 +14,8 @@ class Income extends StatefulWidget {
 
 class _IncomeState extends State<Income> {
   bool isClick = false;
+  final _controller = ActionSliderController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -31,7 +38,7 @@ class _IncomeState extends State<Income> {
               body: Center(
                 child: Column(children: [
                   SizedBox(
-                    height: 30,
+                    height: 90,
                   ),
                   Text("쿨쿨이",
                       style: TextStyle(
@@ -44,7 +51,31 @@ class _IncomeState extends State<Income> {
                           fontWeight: FontWeight.w400,
                           color: Color(0xffffffff))),
                   SizedBox(
-                    height: 230,
+                    height: 300,
+                  ),
+                  isClick
+                      ? Row(
+                          children: [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            GestureDetector(
+                              onTap: (){
+                                Get.offAll(()=>LockScreen());
+                              },
+                              child: Image.asset(
+                                "assets/Call/1hour.png",
+                                width: 260,
+                                height: 79,
+                              ),
+                            ),
+                          ],
+                        )
+                      : SizedBox(
+                          height: 79,
+                        ),
+                  SizedBox(
+                    height: 9,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,14 +87,27 @@ class _IncomeState extends State<Income> {
                           });
                           print('$isClick');
                         },
-                        child: Image.asset(
-                          "assets/Call/seeulater.png",
-                          width: 78,
-                          height: 50,
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isClick = !isClick;
+                            });
+                          },
+                          child: isClick
+                              ? Image.asset(
+                                  "assets/Call/seeulaterdark.png",
+                                  width: 78,
+                                  height: 50,
+                                )
+                              : Image.asset(
+                                  "assets/Call/seeulater.png",
+                                  width: 78,
+                                  height: 50,
+                                ),
                         ),
                       ),
                       SizedBox(
-                        width: 130,
+                        width: 90,
                       ),
                       Image.asset(
                         "assets/Call/message.png",
@@ -71,6 +115,28 @@ class _IncomeState extends State<Income> {
                         height: 50,
                       ),
                     ],
+                  ),
+                  SizedBox(height: 46,),
+                  ActionSlider.standard(
+                    // sliderBehavior: SliderBehavior.stretch,
+                    width: 312.0,
+                    height: 77,
+                    backgroundColor: Color(0x6ED9D9D9),
+                    toggleColor: Color(0xffffffff),
+                    icon: Icon(Icons.navigate_next,size: 60,color: Color(0xff4676EE),),
+                    action: (controller) async {
+                      controller.loading(); //starts loading animation
+                      await Future.delayed(const Duration(seconds: 1));
+                      Get.offAll(()=>Call());
+                      
+                      // controller.success(); //starts success animation
+                      // await Future.delayed(const Duration(seconds: 1));
+                      // controller.reset(); //resets the slider
+                    },
+                    child: const Text('밀어서 통화하기',style: TextStyle(
+                                  fontSize: 20.5,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff444444))),
                   ),
                 ]),
               ),

@@ -42,7 +42,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int clickCount = 0;
+  int clickCount = AuthController.instance.clickcount;
+
+  final ImageProvider image1 = AssetImage("assets/home/cover1_.png");
+  final ImageProvider image2 = AssetImage("assets/home/cover2_.png");
+  final ImageProvider image3 = AssetImage("assets/home/cover3_.png");
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Preload the images
+    precacheImage(image1, context);
+    precacheImage(image2, context);
+    precacheImage(image3, context);
+  }
+
   bool checkBottomConsonant(String input) {
     bool result = false;
     if (isKorean(input)) {
@@ -75,6 +89,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    if (clickCount == 3) AuthController.instance.clickcount = clickCount;
     return Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -87,7 +102,8 @@ class _HomeState extends State<Home> {
           body: GestureDetector(
             onTap: () {
               setState(() {
-                AuthController.instance.clickcount++;
+                // AuthController.instance.clickcount++;
+                clickCount++;
               });
             },
             child: Stack(
@@ -179,37 +195,41 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-
+//AuthController.instance.clickcount == 0
                 // Content to Show in the Container
-                if (AuthController.instance.clickcount == 0)
+                if (clickCount == 0)
                   Center(
                       child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    child: Image.asset(
-                      "assets/home/cover1_.png",
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image(image: image1, fit: BoxFit.cover),
+
+                    // Image.asset(
+                    //   "assets/home/cover1_.png",
+                    //   fit: BoxFit.cover,
+                    // ),
                   )),
-                if (AuthController.instance.clickcount == 1)
+                if (clickCount == 1)
                   Center(
                       child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    child: Image.asset(
-                      "assets/home/cover2_.png",
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image(image: image2, fit: BoxFit.cover),
+                    // Image.asset(
+                    //   "assets/home/cover2_.png",
+                    //   fit: BoxFit.cover,
+                    // ),
                   )),
-                if (AuthController.instance.clickcount == 2)
+                if (clickCount == 2)
                   Center(
                       child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    child: Image.asset(
-                      "assets/home/cover3_.png",
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image(image: image3, fit: BoxFit.cover),
+                    // Image.asset(
+                    //   "assets/home/cover3_.png",
+                    //   fit: BoxFit.cover,
+                    // ),
                   )),
               ],
             ),

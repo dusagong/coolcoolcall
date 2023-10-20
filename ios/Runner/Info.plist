@@ -47,7 +47,9 @@
 	</array>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Reason your app uses speech recognition!</string>
-	<key>NSMicrophoneRecognitionUsageDescription</key>
+	<key>NSMicrophoneUsageDescription</key>
 	<string>Why your app needs microphone access!</string>
+	<!-- <key>NSMicrophoneRecognitionUsageDescription</key>
+	<string>Why your app needs microphone access!</string> -->
 </dict>
 </plist>
