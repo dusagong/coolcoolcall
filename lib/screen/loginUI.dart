@@ -1,5 +1,6 @@
 import 'package:coolcoolcall/screen/onBoarding/page1.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class FakeLogin extends StatelessWidget {
@@ -7,6 +8,9 @@ class FakeLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,
+        overlays: [SystemUiOverlay.top]);
+
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -38,13 +42,20 @@ class FakeLogin extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("assets/login/kakao4.png",width: 61,height: 61,),
+                    Image.asset(
+                      "assets/login/kakao4.png",
+                      width: 61,
+                      height: 61,
+                    ),
                     SizedBox(width: 15),
-                    Image.asset("assets/login/naver4.png",width: 61,height: 61),
+                    Image.asset("assets/login/naver4.png",
+                        width: 61, height: 61),
                     SizedBox(width: 15),
-                    Image.asset("assets/login/facebook4.png",width: 61,height: 61),
+                    Image.asset("assets/login/facebook4.png",
+                        width: 61, height: 61),
                     SizedBox(width: 15),
-                    Image.asset("assets/login/apple4.png",width: 61,height: 61),
+                    Image.asset("assets/login/apple4.png",
+                        width: 61, height: 61),
                   ],
                 ),
                 SizedBox(height: 39),
@@ -58,9 +69,17 @@ class FakeLogin extends StatelessWidget {
                 SizedBox(height: 42),
                 GestureDetector(
                   onTap: () {
-                    Get.offAll(() => Page1());
+                    Get.offAll(() => Page1(),
+                        transition: Transition.native,
+                        duration: Duration(
+                          milliseconds: 700,
+                        ));
                   },
-                  child: Image.asset("assets/login/googlelogo4.png",width: 346,height: 53.64,),
+                  child: Image.asset(
+                    "assets/login/googlelogo4.png",
+                    width: 346,
+                    height: 53.64,
+                  ),
                   // child: Container(
                   //   width: 329,
                   //   height: 51,

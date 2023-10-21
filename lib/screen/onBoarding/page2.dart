@@ -66,50 +66,51 @@ class _Page2State extends State<Page2> {
                   width: conwidth,
                   height: conhight,
                   decoration: first
-                      ? 
-                      BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              // style: BorderStyle.solid,
-                              color: Color(0xff686572),
-                              // color: Color(0xffE4DDEA),
-                              width: 3,
+                      ? BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            // style: BorderStyle.solid,
+                            color: Color(0xff686572),
+                            // color: Color(0xffE4DDEA),
+                            width: 3,
+                          ),
+                          color: Color(0xff060713),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xffE4DDEA),
+                              blurRadius: 19.0,
+                              offset: Offset(0, 0),
                             ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xffE4DDEA),
-                                blurRadius: 19.0,
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                          )
-                        : (BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            // border: Border.all(
-                            //   style: BorderStyle.solid,
-                            //   width: 1,
-                            // ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                color: Color(0x40E4DDEA),
-                                blurRadius: 8.0,
-                                offset: Offset(-4, -4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000215),
-                                blurRadius: 24.0,
-                                offset: Offset(4, 4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000000),
-                                blurRadius: 4.0,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                          )),
+                          ],
+                        )
+                      : (BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            // style: BorderStyle.solid,
+                            color: Colors.transparent,
+                            // color: Color(0xffE4DDEA),
+                            width: 3,
+                          ),
+                          color: Color(0xff060713),
+                          boxShadow: [
+                            BoxShadow(
+                              // color: Color.fromRGBO(228, 221, 234, 0.25),
+                              color: Color(0x40E4DDEA),
+                              blurRadius: 8.0,
+                              offset: Offset(-4, -4),
+                            ),
+                            BoxShadow(
+                              color: Color(0xff000215),
+                              blurRadius: 24.0,
+                              offset: Offset(4, 4),
+                            ),
+                            BoxShadow(
+                              color: Color(0xff000000),
+                              blurRadius: 4.0,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        )),
                   padding: EdgeInsets.fromLTRB(
                       width * 37 / 390.0, 0, width * 34 / 390.0, 0),
                   child: Row(
@@ -161,50 +162,55 @@ class _Page2State extends State<Page2> {
                   width: conwidth,
                   height: conhight,
                   decoration: second
-                      ?
-                      BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              // style: BorderStyle.solid,
-                              color: Color(0xff686572),
-                              // color: Color(0xffE4DDEA),
-                              width: 3,
+                      ? BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            // style: BorderStyle.solid,
+                            color: Color(0xff686572),
+                            // color: Color(0xffE4DDEA),
+                            width: 3,
+                          ),
+                          color: Color(0xff060713),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xffE4DDEA),
+                              blurRadius: 19.0,
+                              offset: Offset(0, 0),
                             ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xffE4DDEA),
-                                blurRadius: 19.0,
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                          )
-                        : (BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            // border: Border.all(
-                            //   style: BorderStyle.solid,
-                            //   width: 1,
-                            // ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                color: Color(0x40E4DDEA),
-                                blurRadius: 8.0,
-                                offset: Offset(-4, -4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000215),
-                                blurRadius: 24.0,
-                                offset: Offset(4, 4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000000),
-                                blurRadius: 4.0,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                          )),
+                          ],
+                        )
+                      : (BoxDecoration(
+                          border: Border.all(
+                            // style: BorderStyle.solid,
+                            color: Colors.transparent,
+                            // color: Color(0xffE4DDEA),
+                            width: 3,
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                          // border: Border.all(
+                          //   style: BorderStyle.solid,
+                          //   width: 1,
+                          // ),
+                          color: Color(0xff060713),
+                          boxShadow: [
+                            BoxShadow(
+                              // color: Color.fromRGBO(228, 221, 234, 0.25),
+                              color: Color(0x40E4DDEA),
+                              blurRadius: 8.0,
+                              offset: Offset(-4, -4),
+                            ),
+                            BoxShadow(
+                              color: Color(0xff000215),
+                              blurRadius: 24.0,
+                              offset: Offset(4, 4),
+                            ),
+                            BoxShadow(
+                              color: Color(0xff000000),
+                              blurRadius: 4.0,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        )),
                   padding: EdgeInsets.fromLTRB(
                       width * 37 / 390.0, 0, width * 34 / 390.0, 0),
                   child: Row(
@@ -256,50 +262,55 @@ class _Page2State extends State<Page2> {
                   width: conwidth,
                   height: conhight,
                   decoration: third
-                      ? 
-                      BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              // style: BorderStyle.solid,
-                              color: Color(0xff686572),
-                              // color: Color(0xffE4DDEA),
-                              width: 3,
+                      ? BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            // style: BorderStyle.solid,
+                            color: Color(0xff686572),
+                            // color: Color(0xffE4DDEA),
+                            width: 3,
+                          ),
+                          color: Color(0xff060713),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xffE4DDEA),
+                              blurRadius: 19.0,
+                              offset: Offset(0, 0),
                             ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xffE4DDEA),
-                                blurRadius: 19.0,
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                          )
-                        : (BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            // border: Border.all(
-                            //   style: BorderStyle.solid,
-                            //   width: 1,
-                            // ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                color: Color(0x40E4DDEA),
-                                blurRadius: 8.0,
-                                offset: Offset(-4, -4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000215),
-                                blurRadius: 24.0,
-                                offset: Offset(4, 4),
-                              ),
-                              BoxShadow(
-                                color: Color(0xff000000),
-                                blurRadius: 4.0,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                          )),
+                          ],
+                        )
+                      : (BoxDecoration(
+                          border: Border.all(
+                            // style: BorderStyle.solid,
+                            color: Colors.transparent,
+                            // color: Color(0xffE4DDEA),
+                            width: 3,
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                          // border: Border.all(
+                          //   style: BorderStyle.solid,
+                          //   width: 1,
+                          // ),
+                          color: Color(0xff060713),
+                          boxShadow: [
+                            BoxShadow(
+                              // color: Color.fromRGBO(228, 221, 234, 0.25),
+                              color: Color(0x40E4DDEA),
+                              blurRadius: 8.0,
+                              offset: Offset(-4, -4),
+                            ),
+                            BoxShadow(
+                              color: Color(0xff000215),
+                              blurRadius: 24.0,
+                              offset: Offset(4, 4),
+                            ),
+                            BoxShadow(
+                              color: Color(0xff000000),
+                              blurRadius: 4.0,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        )),
                   padding: EdgeInsets.fromLTRB(
                       width * 37 / 390.0, 0, width * 26 / 390.0, 0),
                   child: Row(
@@ -368,40 +379,45 @@ class _Page2State extends State<Page2> {
                       ],
                     ),
                     child: Center(
-                      child: Text("다음",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
+                      child: Text(
+                        "다음",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            // color: Colors.white)
+                            color: Color.fromRGBO(154, 154, 154, 1)),
+                      ),
                     ))
               else
                 GestureDetector(
                   onTap: () {
                     onSaveButtonPressed();
-                    Get.offAll(() => Home());
+                    Get.offAll(() => Home(),
+                        transition: Transition.native,
+                        duration: Duration(
+                          milliseconds: 700,
+                        ));
                   },
                   child: Container(
                       width: conwidth,
                       height: height * 75 / 844,
-                      decoration: 
-                      BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(
-                              // style: BorderStyle.solid,
-                              color: Color(0xff686572),
-                              // color: Color(0xffE4DDEA),
-                              width: 3,
-                            ),
-                            color: Color(0xff060713),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xffE4DDEA),
-                                blurRadius: 19.0,
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                          )
-                        ,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(
+                          // style: BorderStyle.solid,
+                          color: Color(0xff686572),
+                          // color: Color(0xffE4DDEA),
+                          width: 3,
+                        ),
+                        color: Color(0xff060713),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xffE4DDEA),
+                            blurRadius: 19.0,
+                            offset: Offset(0, 0),
+                          ),
+                        ],
+                      ),
                       child: Center(
                         child: Text("다음",
                             style: TextStyle(

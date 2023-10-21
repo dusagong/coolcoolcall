@@ -13,7 +13,7 @@ class Set4 extends StatefulWidget {
 }
 
 class _Set4State extends State<Set4> {
-   BoxDecoration touched = BoxDecoration(
+  BoxDecoration touched = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
     border: Border.all(
       // style: BorderStyle.solid,
@@ -33,6 +33,12 @@ class _Set4State extends State<Set4> {
 
   BoxDecoration initial = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Colors.transparent,
+      // color: Color(0xffE4DDEA),
+      width: 2,
+    ),
     color: Color(0xff060713),
     boxShadow: [
       BoxShadow(
@@ -60,6 +66,7 @@ class _Set4State extends State<Set4> {
       this.isTapped1 = isTapped1;
     });
   }
+
   bool isTapped2 = false;
 
   void updateShadow2(bool isTapped2) {
@@ -67,6 +74,7 @@ class _Set4State extends State<Set4> {
       this.isTapped2 = isTapped2;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -89,88 +97,96 @@ class _Set4State extends State<Set4> {
       body: Center(
           child: Column(
         children: [
-          
           SizedBox(
-            height: 20,
+            height: 40,
           ),
           GestureDetector(
             onTapDown: (_) {
-                  updateShadow1(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow1(false);
-                   // Set the initial shadow when released
-                },
-                onTap: (){
-                  Get.to(()=>Question());
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration:isTapped1?touched:initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/4/candy.png",
-                        width: 17,
-                        height: 18,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("자주 묻는 질문 보기",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+              updateShadow1(true); // Set the shadow when touched
+            },
+            onTapUp: (_) {
+              updateShadow1(false);
+              // Set the initial shadow when released
+            },
+            onTap: () {
+              Get.to(() => Question(),
+                  transition: Transition.fadeIn,
+                  duration: Duration(
+                    milliseconds: 700,
+                  ));
+            },
+            child: Container(
+              width: 354.7760009765625,
+              height: 67,
+              decoration: isTapped1 ? touched : initial,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
                   ),
-                ),
-              ),
-              GestureDetector(
-                onTapDown: (_) {
-                  updateShadow2(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow2(false);
-                   // Set the initial shadow when released
-                },
-                onTap: (){
-                  Get.to(()=>Require());
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration:isTapped2?touched:initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/4/question.png",
-                        width: 17,
-                        height: 27,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("건의 사항 작성하러 가기",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+                  Image.asset(
+                    "assets/Setting/4/candy.png",
+                    width: 17,
+                    height: 18,
                   ),
-                ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text("자주 묻는 질문 보기",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff)))
+                ],
               ),
-              
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          GestureDetector(
+            onTapDown: (_) {
+              updateShadow2(true); // Set the shadow when touched
+            },
+            onTapUp: (_) {
+              updateShadow2(false);
+              // Set the initial shadow when released
+            },
+            onTap: () {
+              Get.to(() => Require(),
+                  transition: Transition.fadeIn,
+                  duration: Duration(
+                    milliseconds: 700,
+                  ));
+            },
+            child: Container(
+              width: 354.7760009765625,
+              height: 67,
+              decoration: isTapped2 ? touched : initial,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Image.asset(
+                    "assets/Setting/4/question.png",
+                    width: 17,
+                    height: 27,
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text("건의 사항 작성하러 가기",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff)))
+                ],
+              ),
+            ),
+          ),
         ],
       )),
-      
     );
   }
 }

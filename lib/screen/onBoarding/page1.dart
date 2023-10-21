@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coolcoolcall/widget/inputdoneview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:coolcoolcall/screen/onBoarding/page2.dart';
 
@@ -73,6 +75,40 @@ class _Page1State extends State<Page1> {
   );
   BoxDecoration initial = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Colors.transparent,
+      // color: Color(0xffE4DDEA),
+      width: 2,
+    ),
+    color: Color(0xff060713),
+    boxShadow: [
+      BoxShadow(
+        // color: Color.fromRGBO(228, 221, 234, 0.25),
+        color: Color(0x40E4DDEA),
+        blurRadius: 8.0,
+        offset: Offset(-4, -4),
+      ),
+      BoxShadow(
+        color: Color(0xff000215),
+        blurRadius: 24.0,
+        offset: Offset(4, 4),
+      ),
+      BoxShadow(
+        color: Color(0xff000000),
+        blurRadius: 4.0,
+        offset: Offset(0, 4),
+      ),
+    ],
+  );
+  BoxDecoration Binitial = BoxDecoration(
+    borderRadius: BorderRadius.circular(20),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Colors.transparent,
+      // color: Color(0xffE4DDEA),
+      width: 3,
+    ),
     color: Color(0xff060713),
     boxShadow: [
       BoxShadow(
@@ -125,10 +161,74 @@ class _Page1State extends State<Page1> {
     String wakeMinute = wakeM.text;
     storeDataInFirestore(
         enteredName, enteredAge, sleepHour, sleepMinute, wakeHour, wakeMinute);
-    Get.to(() => Page2());
+    Get.to(() => Page2(),
+        transition: Transition.fadeIn,
+        duration: Duration(
+          milliseconds: 700,
+        ));
   }
 
   FocusNode nameFocusNode = FocusNode();
+  FocusNode numberFocusNode = FocusNode();
+  FocusNode num1 = FocusNode();
+  FocusNode num2 = FocusNode();
+  FocusNode num3 = FocusNode();
+  FocusNode num4 = FocusNode();
+  @override
+  void initState() {
+    super.initState();
+    numberFocusNode.addListener(() {
+      bool hasFocus = numberFocusNode.hasFocus;
+      if (hasFocus) {
+        KeyboardOverlay.showOverlay(context);
+      } else {
+        KeyboardOverlay.removeOverlay();
+      }
+    });
+    num1.addListener(() {
+      bool hasFocus = num1.hasFocus;
+      if (hasFocus) {
+        KeyboardOverlay.showOverlay(context);
+      } else {
+        KeyboardOverlay.removeOverlay();
+      }
+    });
+    num2.addListener(() {
+      bool hasFocus = num2.hasFocus;
+      if (hasFocus) {
+        KeyboardOverlay.showOverlay(context);
+      } else {
+        KeyboardOverlay.removeOverlay();
+      }
+    });
+    num3.addListener(() {
+      bool hasFocus = num3.hasFocus;
+      if (hasFocus) {
+        KeyboardOverlay.showOverlay(context);
+      } else {
+        KeyboardOverlay.removeOverlay();
+      }
+    });
+    num4.addListener(() {
+      bool hasFocus = num4.hasFocus;
+      if (hasFocus) {
+        KeyboardOverlay.showOverlay(context);
+      } else {
+        KeyboardOverlay.removeOverlay();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    // Clean up the focus node
+    numberFocusNode.dispose();
+    num1.dispose();
+    num2.dispose();
+    num3.dispose();
+    num4.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -180,7 +280,7 @@ class _Page1State extends State<Page1> {
                     Container(
                       width: 364,
                       height: 112,
-                      decoration: isFirstContainerSelected ? touched : initial,
+                      decoration: isFirstContainerSelected ? touched : Binitial,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
@@ -248,7 +348,7 @@ class _Page1State extends State<Page1> {
                                           fontWeight: FontWeight.w400,
                                           color: Color(0xff9A9A9A)),
                                       contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 20),
+                                          EdgeInsets.fromLTRB(20, 10, 20, 11),
                                       border: InputBorder.none,
                                     ),
                                     style: TextStyle(
@@ -277,7 +377,13 @@ class _Page1State extends State<Page1> {
                                       });
                                     },
                                     controller: ageC,
-                                    keyboardType: TextInputType.number,
+                                    focusNode: numberFocusNode,
+                                    keyboardType:
+                                        TextInputType.numberWithOptions(
+                                            signed: false, decimal: false),
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
                                     onChanged: (newText) {
                                       // This callback will be called whenever the text in the TextField changes
                                       // You can update your state here based on the new text value
@@ -294,7 +400,7 @@ class _Page1State extends State<Page1> {
                                           fontWeight: FontWeight.w400,
                                           color: Color(0xff9A9A9A)),
                                       contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 20),
+                                          EdgeInsets.fromLTRB(20, 10, 20, 11),
                                       border: InputBorder.none,
                                     ),
                                     style: TextStyle(
@@ -344,7 +450,7 @@ class _Page1State extends State<Page1> {
                     Container(
                       width: 364,
                       height: 225,
-                      decoration: isFirstContainerSelected ? initial : touched,
+                      decoration: isFirstContainerSelected ? Binitial : touched,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(children: [
@@ -396,7 +502,13 @@ class _Page1State extends State<Page1> {
                                   },
                                   textAlign: TextAlign.center,
                                   controller: sleepH,
-                                  keyboardType: TextInputType.number,
+                                  focusNode: num1,
+                                    keyboardType:
+                                        TextInputType.numberWithOptions(
+                                            signed: false, decimal: false),
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
                                   decoration: InputDecoration(
                                     hintText: '23',
                                     hintStyle: TextStyle(
@@ -442,7 +554,13 @@ class _Page1State extends State<Page1> {
                                   },
                                   textAlign: TextAlign.center,
                                   controller: sleepM,
-                                  keyboardType: TextInputType.number,
+                                  focusNode: num2,
+                                    keyboardType:
+                                        TextInputType.numberWithOptions(
+                                            signed: false, decimal: false),
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
                                   onChanged: (newText) {
                                     // This callback will be called whenever the text in the TextField changes
                                     // You can update your state here based on the new text value
@@ -508,7 +626,14 @@ class _Page1State extends State<Page1> {
                                     });
                                   },
                                   controller: wakeH,
-                                  keyboardType: TextInputType.number,
+                                  
+                                  focusNode: num3,
+                                    keyboardType:
+                                        TextInputType.numberWithOptions(
+                                            signed: false, decimal: false),
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
                                   onChanged: (newText) {
                                     // This callback will be called whenever the text in the TextField changes
                                     // You can update your state here based on the new text value
@@ -563,7 +688,13 @@ class _Page1State extends State<Page1> {
                                     print(isFirstContainerSelected);
                                   },
                                   controller: wakeM,
-                                  keyboardType: TextInputType.number,
+                                  focusNode: num4,
+                                    keyboardType:
+                                        TextInputType.numberWithOptions(
+                                            signed: false, decimal: false),
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
                                   onChanged: (newText) {
                                     // This callback will be called whenever the text in the TextField changes
                                     // You can update your state here based on the new text value
@@ -686,7 +817,7 @@ class _Page1State extends State<Page1> {
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
-                                    color: Color.fromRGBO(154, 154, 154, 1))),
+                                    color: Colors.white)),
                           ),
                         ),
                       ),
@@ -698,5 +829,33 @@ class _Page1State extends State<Page1> {
         ),
       ),
     );
+  }
+}
+
+class KeyboardOverlay {
+  static OverlayEntry? _overlayEntry;
+
+  static showOverlay(BuildContext context) {
+    if(_overlayEntry != null) {
+      return;
+    }
+
+    OverlayState? overlayState = Overlay.of(context);
+    _overlayEntry = OverlayEntry(builder: (context) {
+      return Positioned(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+          right: 0.0,
+          left: 0.0,
+          child: const InputDoneView());
+    });
+
+    overlayState!.insert(_overlayEntry!);
+  }
+
+  static removeOverlay() {
+    if (_overlayEntry != null) {
+      _overlayEntry!.remove();
+      _overlayEntry = null;
+    }
   }
 }

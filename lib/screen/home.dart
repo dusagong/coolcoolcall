@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:coolcoolcall/call/incomming.dart';
+import 'package:coolcoolcall/screen/call/incomming.dart';
 import 'package:coolcoolcall/controller/auth_controller.dart';
-import 'package:coolcoolcall/call/call.dart';
+import 'package:coolcoolcall/screen/call/call.dart';
 import 'package:coolcoolcall/screen/onBoarding/page3.dart';
 import 'package:coolcoolcall/setting/setting.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +89,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    if (clickCount == 3) AuthController.instance.clickcount = clickCount;
+    // if (AuthController.instance.clickcount == 3) AuthController.instance.clickcount = clickCount;
     return Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -103,7 +103,7 @@ class _HomeState extends State<Home> {
             onTap: () {
               setState(() {
                 // AuthController.instance.clickcount++;
-                clickCount++;
+                AuthController.instance.clickcount++;
               });
             },
             child: Stack(
@@ -112,22 +112,25 @@ class _HomeState extends State<Home> {
                 Center(
                   child: Column(
                     children: [
-                      SizedBox(height: 56),
+                      SizedBox(height: 80),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.offAll(() => Setting());
+                              Get.offAll(() => Setting(),
+                                  transition: Transition.fadeIn,
+                                  duration: Duration(
+                                    milliseconds: 700,
+                                  ));
                             },
                             child: Image.asset("assets/home/setting.png"),
                           ),
                           SizedBox(width: 20),
                         ],
                       ),
-                      SizedBox(height: 28),
                       Container(
-                        height: 110,
+                        height: 104,
                         child: GestureDetector(
                           onDoubleTap: () {
                             _handleDoubleTap();
@@ -139,10 +142,11 @@ class _HomeState extends State<Home> {
                       FutureBuilder<String?>(
                         future: fetchNameFromFirestore(),
                         builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return CircularProgressIndicator();
-                          } else if (snapshot.hasError) {
+                          // if (snapshot.connectionState ==
+                          //     ConnectionState.waiting) {
+                          //   return CircularProgressIndicator();
+                          // } else
+                          if (snapshot.hasError) {
                             return Text("Error: ${snapshot.error}");
                           } else {
                             final String? name = snapshot.data;
@@ -155,9 +159,10 @@ class _HomeState extends State<Home> {
                                   ? Text(
                                       "      $trimmedName아!\n오늘도 고생했어,\n 같이 자러 갈래?",
                                       style: TextStyle(
+                                        height: 1.5,
                                         fontSize: 35,
-                                        // fontFamily: 'home',
-                                        fontWeight: FontWeight.w500,
+                                        fontFamily: 'home',
+                                        fontWeight: FontWeight.w700,
                                         color: Color.fromRGBO(229, 221, 234, 1),
                                       ),
                                     )
@@ -165,8 +170,9 @@ class _HomeState extends State<Home> {
                                       "      $trimmedName야!\n오늘도 고생했어,\n 같이 자러 갈래?",
                                       style: TextStyle(
                                         fontSize: 35,
-                                        // fontFamily: 'home',
-                                        fontWeight: FontWeight.w500,
+                                        height: 1.5,
+                                        fontFamily: 'home',
+                                        fontWeight: FontWeight.w700,
                                         color: Color.fromRGBO(229, 221, 234, 1),
                                       ),
                                     );
@@ -180,9 +186,16 @@ class _HomeState extends State<Home> {
                       GestureDetector(
                         onTap: () {
                           // Get.offAll(() => SpeechSampleApp());
-                          Get.offAll(() => Call());
+                          Get.offAll(() => Call(),
+                              transition: Transition.fadeIn,
+                              duration: Duration(
+                                milliseconds: 700,
+                              ));
                         },
                         child: Image.asset("assets/home/moon.png"),
+                      ),
+                      SizedBox(
+                        height: 5,
                       ),
                       Text(
                         "전화하기",
@@ -197,7 +210,7 @@ class _HomeState extends State<Home> {
                 ),
 //AuthController.instance.clickcount == 0
                 // Content to Show in the Container
-                if (clickCount == 0)
+                if (AuthController.instance.clickcount == 0)
                   Center(
                       child: Container(
                     width: double.infinity,
@@ -209,7 +222,7 @@ class _HomeState extends State<Home> {
                     //   fit: BoxFit.cover,
                     // ),
                   )),
-                if (clickCount == 1)
+                if (AuthController.instance.clickcount == 1)
                   Center(
                       child: Container(
                     width: double.infinity,
@@ -220,7 +233,7 @@ class _HomeState extends State<Home> {
                     //   fit: BoxFit.cover,
                     // ),
                   )),
-                if (clickCount == 2)
+                if (AuthController.instance.clickcount == 2)
                   Center(
                       child: Container(
                     width: double.infinity,

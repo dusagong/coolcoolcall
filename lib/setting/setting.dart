@@ -50,6 +50,12 @@ class SettingState extends State<Setting> {
 
   BoxDecoration initial = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Colors.transparent,
+      // color: Color(0xffE4DDEA),
+      width: 2,
+    ),
     color: Color(0xff060713),
     boxShadow: [
       BoxShadow(
@@ -76,34 +82,73 @@ class SettingState extends State<Setting> {
     setState(() {
       this.isTapped1 = isTapped1;
     });
+    if (isTapped1) {
+      Future.delayed(Duration(milliseconds: 500), () {
+        setState(() {
+          this.isTapped1 = false;
+        });
+      });
+    }
   }
+
   bool isTapped2 = false;
 
   void updateShadow2(bool isTapped2) {
     setState(() {
       this.isTapped2 = isTapped2;
     });
+    if (isTapped2) {
+      Future.delayed(Duration(milliseconds: 500), () {
+        setState(() {
+          this.isTapped2 = false;
+        });
+      });
+    }
   }
+
   bool isTapped3 = false;
 
   void updateShadow3(bool isTapped3) {
     setState(() {
       this.isTapped3 = isTapped3;
     });
+    if (isTapped3) {
+      Future.delayed(Duration(milliseconds: 500), () {
+        setState(() {
+          this.isTapped3 = false;
+        });
+      });
+    }
   }
+
   bool isTapped4 = false;
 
   void updateShadow4(bool isTapped4) {
     setState(() {
       this.isTapped4 = isTapped4;
     });
+    if (isTapped4) {
+      Future.delayed(Duration(milliseconds: 500), () {
+        setState(() {
+          this.isTapped4 = false;
+        });
+      });
+    }
   }
+
   bool isTapped5 = false;
 
   void updateShadow5(bool isTapped5) {
     setState(() {
       this.isTapped5 = isTapped5;
     });
+    if (isTapped5) {
+      Future.delayed(Duration(milliseconds: 500), () {
+        setState(() {
+          this.isTapped5 = false;
+        });
+      });
+    }
   }
 
   @override
@@ -114,7 +159,7 @@ class SettingState extends State<Setting> {
           child: Column(
             children: [
               SizedBox(
-                height: 53,
+                height: 77,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,10 +176,7 @@ class SettingState extends State<Setting> {
                       StreamBuilder<String?>(
                         stream: fetchNameFromFirestore(),
                         builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return CircularProgressIndicator();
-                          } else if (snapshot.hasError) {
+                          if (snapshot.hasError) {
                             return Text("Error: ${snapshot.error}");
                           } else {
                             final String? name = snapshot.data;
@@ -169,7 +211,11 @@ class SettingState extends State<Setting> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.offAll(() => Home());
+                      Get.offAll(() => Home(),
+                          transition: Transition.fadeIn,
+                          duration: Duration(
+                            milliseconds: 700,
+                          ));
                     },
                     child: Image.asset("assets/Setting/Home.png"),
                   ),
@@ -185,13 +231,15 @@ class SettingState extends State<Setting> {
                 onTapDown: (_) {
                   updateShadow1(true); // Set the shadow when touched
                 },
-                onTapUp: (_) {
-                  updateShadow1(false);
-                   // Set the initial shadow when released
-                },
+                // onTapUp: (_) {
+                //   updateShadow1(false);
+                //   // Set the initial shadow when released
+                // },
                 onTap: () {
+                  if (isTapped1)
+                    Get.to(() => Set1(), duration: Duration(seconds: 1));
                   updateShadow1(false); // Set the initial shadow when released
-                  Get.to(() => Set1());
+                  // Get.to(() => Set1(),transition: Transition.native,duration: Duration(seconds: 1));
                 },
                 child: Container(
                   width: 354.7760009765625,
@@ -219,21 +267,30 @@ class SettingState extends State<Setting> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
               GestureDetector(
                 onTapDown: (_) {
                   updateShadow2(true); // Set the shadow when touched
                 },
-                onTapUp: (_) {
-                  updateShadow2(false);
-                   // Set the initial shadow when released
-                },
+                // onTapUp: (_) {
+                //   updateShadow2(false);
+                //   // Set the initial shadow when released
+                // },
                 onTap: () {
-                  Get.to(() => Set2());
+                  if (isTapped2)
+                    Get.to(() => Set2(),
+                        transition: Transition.native,
+                        duration: Duration(
+                          milliseconds: 1000,
+                        ));
+                  updateShadow2(false);
                 },
                 child: Container(
                   width: 354.7760009765625,
                   height: 67,
-                  decoration: isTapped2?touched:initial,
+                  decoration: isTapped2 ? touched : initial,
                   child: Row(
                     children: [
                       SizedBox(
@@ -256,22 +313,32 @@ class SettingState extends State<Setting> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
               GestureDetector(
                 onTapDown: (_) {
                   updateShadow3(true); // Set the shadow when touched
                 },
-                onTapUp: (_) {
-                  updateShadow3(false);
-                   // Set the initial shadow when released
-                },
+                // onTapUp: (_) {
+                //   updateShadow3(false);
+                //   // Set the initial shadow when released
+                // },
                 onTap: () {
-                  Get.offAll(() => Home());
-                  AuthController.instance.clickcount = 0;
+                  if (isTapped3) {
+                    updateShadow3(false);
+                    AuthController.instance.clickcount = 0;
+                    Get.offAll(() => Home(),
+                        transition: Transition.fadeIn,
+                        duration: Duration(
+                          milliseconds: 700,
+                        ));
+                  }
                 },
                 child: Container(
                   width: 354.7760009765625,
                   height: 67,
-                  decoration: isTapped3?touched:initial,
+                  decoration: isTapped3 ? touched : initial,
                   child: Row(
                     children: [
                       SizedBox(
@@ -294,21 +361,28 @@ class SettingState extends State<Setting> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
               GestureDetector(
                 onTapDown: (_) {
                   updateShadow4(true); // Set the shadow when touched
                 },
                 onTapUp: (_) {
                   updateShadow4(false);
-                   // Set the initial shadow when released
+                  // Set the initial shadow when released
                 },
                 onTap: () {
-                  Get.to(() => Set4());
+                  Get.to(() => Set4(),
+                      transition: Transition.fadeIn,
+                      duration: Duration(
+                        milliseconds: 700,
+                      ));
                 },
                 child: Container(
                   width: 354.7760009765625,
                   height: 67,
-                  decoration: isTapped4?touched:initial,
+                  decoration: isTapped4 ? touched : initial,
                   child: Row(
                     children: [
                       SizedBox(
@@ -332,7 +406,7 @@ class SettingState extends State<Setting> {
                 ),
               ),
               SizedBox(
-                height: 360,
+                height: 322,
               ),
               GestureDetector(
                 onTapDown: (_) {
@@ -340,16 +414,20 @@ class SettingState extends State<Setting> {
                 },
                 onTapUp: (_) {
                   updateShadow5(false);
-                   // Set the initial shadow when released
+                  // Set the initial shadow when released
                 },
                 onTap: () {
-                  Get.offAll(() => FakeLogin());
+                  Get.offAll(() => FakeLogin(),
+                      transition: Transition.fadeIn,
+                      duration: Duration(
+                        milliseconds: 700,
+                      ));
                   AuthController.instance.clickcount = 0;
                 },
                 child: Container(
                   width: 354.7760009765625,
                   height: 67,
-                  decoration: isTapped5?touched:initial,
+                  decoration: isTapped5 ? touched : initial,
                   child: Center(
                       child: Row(
                     children: [

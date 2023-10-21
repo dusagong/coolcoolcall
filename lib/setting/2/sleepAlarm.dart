@@ -41,7 +41,7 @@ class _SleepAlarmState extends State<SleepAlarm> {
         body: Center(
           child: Column(children: [
             SizedBox(
-              height: 140,
+              height: 160,
             ),
             AnimatedSwitcher(
               // switchInCurve: Curves.fastOutSlowIn,
@@ -106,8 +106,8 @@ class _SleepAlarmState extends State<SleepAlarm> {
                     ),
                     duration: Duration(milliseconds: 600),
                     bottom: 3,
-                    left: click ? 140 : 0,
-                    right: click ? 0 : 140,
+                    left: click ? 128 : 0,
+                    right: click ? 0 : 152,
                   )
 
                   // Positioned(

@@ -13,8 +13,6 @@ class AiVoice extends StatefulWidget {
 }
 
 class _AiVoiceState extends State<AiVoice> {
-
-
   BoxDecoration touched = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
     border: Border.all(
@@ -35,6 +33,12 @@ class _AiVoiceState extends State<AiVoice> {
 
   BoxDecoration initial = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Colors.transparent,
+      // color: Color(0xffE4DDEA),
+      width: 2,
+    ),
     color: Color(0xff060713),
     boxShadow: [
       BoxShadow(
@@ -62,6 +66,7 @@ class _AiVoiceState extends State<AiVoice> {
       this.isTapped1 = isTapped1;
     });
   }
+
   bool isTapped2 = false;
 
   void updateShadow2(bool isTapped2) {
@@ -69,6 +74,7 @@ class _AiVoiceState extends State<AiVoice> {
       this.isTapped2 = isTapped2;
     });
   }
+
   bool isTapped3 = false;
 
   void updateShadow3(bool isTapped3) {
@@ -76,6 +82,7 @@ class _AiVoiceState extends State<AiVoice> {
       this.isTapped3 = isTapped3;
     });
   }
+
   bool isTapped4 = false;
 
   void updateShadow4(bool isTapped4) {
@@ -83,6 +90,7 @@ class _AiVoiceState extends State<AiVoice> {
       this.isTapped4 = isTapped4;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -106,124 +114,125 @@ class _AiVoiceState extends State<AiVoice> {
           child: Column(
         children: [
           SizedBox(
-            height: 20,
+            height: 50,
           ),
           GestureDetector(
-             onTapDown: (_) {
-                  updateShadow1(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow1(false);
-                   // Set the initial shadow when released
-                },
-                onTap: (){
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration:isTapped1?touched:initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                     
-                      Text("쿨쿨이1",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+            onTapDown: (_) {
+              updateShadow1(true); // Set the shadow when touched
+            },
+            onTapUp: (_) {
+              updateShadow1(false);
+              // Set the initial shadow when released
+            },
+            onTap: () {},
+            child: Container(
+              width: 354.7760009765625,
+              height: 67,
+              decoration: isTapped1 ? touched : initial,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
                   ),
-                ),
+                  Text("쿨쿨이1",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff)))
+                ],
               ),
-              GestureDetector(
-                 onTapDown: (_) {
-                  updateShadow2(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow2(false);
-                   // Set the initial shadow when released
-                },
-                onTap: (){
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped2?touched:initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                     
-                      Text("쿨쿨이2",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          GestureDetector(
+            onTapDown: (_) {
+              updateShadow2(true); // Set the shadow when touched
+            },
+            onTapUp: (_) {
+              updateShadow2(false);
+              // Set the initial shadow when released
+            },
+            onTap: () {},
+            child: Container(
+              width: 354.7760009765625,
+              height: 67,
+              decoration: isTapped2 ? touched : initial,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
                   ),
-                ),
+                  Text("쿨쿨이2",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff)))
+                ],
               ),
-              GestureDetector(
-                 onTapDown: (_) {
-                  updateShadow3(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow3(false);
-                   // Set the initial shadow when released
-                },
-                onTap: (){
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped3?touched:initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                     
-                      Text("쿨쿨이3",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          GestureDetector(
+            onTapDown: (_) {
+              updateShadow3(true); // Set the shadow when touched
+            },
+            onTapUp: (_) {
+              updateShadow3(false);
+              // Set the initial shadow when released
+            },
+            onTap: () {},
+            child: Container(
+              width: 354.7760009765625,
+              height: 67,
+              decoration: isTapped3 ? touched : initial,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
                   ),
-                ),
+                  Text("쿨쿨이3",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff)))
+                ],
               ),
-              GestureDetector(
-                 onTapDown: (_) {
-                  updateShadow4(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow4(false);
-                   // Set the initial shadow when released
-                },
-                onTap: (){
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration:isTapped4?touched:initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                     
-                      Text("쿨쿨이4",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          GestureDetector(
+            onTapDown: (_) {
+              updateShadow4(true); // Set the shadow when touched
+            },
+            onTapUp: (_) {
+              updateShadow4(false);
+              // Set the initial shadow when released
+            },
+            onTap: () {},
+            child: Container(
+              width: 354.7760009765625,
+              height: 67,
+              decoration: isTapped4 ? touched : initial,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
                   ),
-                ),
+                  Text("쿨쿨이4",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff)))
+                ],
               ),
+            ),
+          ),
         ],
       )),
     );

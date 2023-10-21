@@ -157,6 +157,7 @@ class _Set1State extends State<Set1> {
         child: Center(
             child: Column(
           children: [
+            SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 35),
               child: Row(
@@ -419,7 +420,7 @@ class _Set1State extends State<Set1> {
             ),
 
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             Row(
               children: [
@@ -864,7 +865,7 @@ class _Set1State extends State<Set1> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 50,
             ),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 35),

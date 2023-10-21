@@ -17,6 +17,11 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
     "사용자님이 ‘수면 유지에 어려움'을 겪고 계셔서 잠에 들어도 쿨쿨이가 계속 곁을 지키고 있는 거예요!  중간에 깨도 언제나 옆을 지키는 쿨쿨이와 외롭지 않게 밤을 보내 보세요 :)",
   ];
   List<String> assets = [
+    "assets/Setting/4/qa/SJsend/1_4_1.png",
+    "assets/Setting/4/qa/SJsend/2_4_1.png",
+    "assets/Setting/4/qa/SJsend/3_4_1.png",
+  ];
+  List<String> assetsTT = [
     "assets/Setting/4/qa/SJsend/1_4.png",
     "assets/Setting/4/qa/SJsend/2_4.png",
     "assets/Setting/4/qa/SJsend/3_4.png",
@@ -51,91 +56,143 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(
-            height: 590,
-            width: MediaQuery.of(context).size.width,
-            child: Center(
-              child: PageView.builder(
-                physics: BouncingScrollPhysics(),
-                controller:
-                    PageController(initialPage: 0, viewportFraction: 0.76),
-                onPageChanged: (value) {
-                  setState(() {
-                    // Smoothly update the container size
-                    currentindex = value % assets1.length;
-                  });
-                },
-                itemBuilder: (context, index) {
-                  // Calculate size based on the current index
-                  double containerWidth1 =
-                      currentindex == index % assets1.length ? 445 : 430;
-                  double containerHeight1 =
-                      currentindex == index % assets1.length ? 590 : 484;
-                  bool opa =
-                      currentindex == index % assets1.length ? true : false;
-                  return Column(
+          SizedBox(
+            height: 30,
+          ),
+          Stack(
+            children: [
+              Container(
+                height: 580,
+                width: MediaQuery.of(context).size.width,
+                // color: Colors.white,
+                child: PageView.builder(
+                  controller:
+                      PageController(initialPage: 0, viewportFraction: 0.752),
+                  onPageChanged: (value) {
+                    setState(() {
+                      // Smoothly update the container size
+                      currentindex = value % assets.length;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    // Calculate size based on the current index
+                    double containerWidth1 =
+                        currentindex == index % assets.length ? 305 * 1.0 : 240;
+                    double containerHeight1 =
+                        currentindex == index % assets.length ? 480 * 1.0 : 380;
+                    bool opa =
+                        currentindex == index % assets.length ? true : false;
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AnimatedContainer(
+                            duration: Duration(milliseconds: 300),
+                            // curve: Curves.easeInOut,
+                            width: containerWidth1,
+                            height: containerHeight1,
+                            child: opa
+                                ? Image.asset(
+                                    assets[index % assets.length],
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.asset(assets[index % assets.length],
+                                    fit: BoxFit.cover,
+                                    opacity: AnimationController(
+                                        vsync: this, value: 0.5))),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    height: 530,
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AnimatedContainer(
-                          duration: Duration(milliseconds: 300),
-                          // curve: Curves.easeInOut,
-                          width: containerWidth1,
-                          height: containerHeight1,
-                          child: opa
-                              ? Image.asset(
-                                  assets[index % assets1.length],
-                                  fit: BoxFit.cover,
-                                )
-                              : Image.asset(assets[index % assets1.length],
-                                  fit: BoxFit.cover,
-                                  opacity: AnimationController(
-                                      vsync: this, value: 0.5))
-                          
-                          ),
+                      currentindex == 0
+                          ? SizedBox(
+                              width: 0,
+                            )
+                          : SizedBox(
+                              width: 5,
+                            ),
+                      currentindex == 0
+                          ? Image.asset(
+                              "assets/Setting/4/qa/1.png",
+                              width: 30,
+                              height: 30,
+                            )
+                          : Image.asset(
+                              "assets/Setting/4/qa/1-2.png",
+                              width: 20,
+                              height: 20,
+                            ),
+                      currentindex == 0
+                          ? SizedBox(
+                              width: 0,
+                            )
+                          : SizedBox(
+                              width: 5,
+                            ),
+                      currentindex == 1
+                          ? SizedBox(
+                              width: 0,
+                            )
+                          : SizedBox(
+                              width: 5,
+                            ),
+                      currentindex == 1
+                          ? Image.asset(
+                              "assets/Setting/4/qa/2.png",
+                              width: 30,
+                              height: 30,
+                            )
+                          : Image.asset(
+                              "assets/Setting/4/qa/2-2.png",
+                              width: 20,
+                              height: 20,
+                            ),
+                      currentindex == 1
+                          ? SizedBox(
+                              width: 0,
+                            )
+                          : SizedBox(
+                              width: 5,
+                            ),
+                      currentindex == 2
+                          ? SizedBox(
+                              width: 0,
+                            )
+                          : SizedBox(
+                              width: 5,
+                            ),
+                      currentindex == 2
+                          ? Image.asset(
+                              "assets/Setting/4/qa/3.png",
+                              width: 30,
+                              height: 30,
+                            )
+                          : Image.asset(
+                              "assets/Setting/4/qa/3-2.png",
+                              width: 20,
+                              height: 20,
+                            ),
+                      currentindex == 2
+                          ? SizedBox(
+                              width: 0,
+                            )
+                          : SizedBox(
+                              width: 5,
+                            ),
                     ],
-                  );
-                },
-              ),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              currentindex == 0
-                  ? Image.asset(
-                      "assets/Setting/4/qa/1.png",
-                      width: 50,
-                      height: 50,
-                    )
-                  : Image.asset(
-                      "assets/Setting/4/qa/1-2.png",
-                      width: 31,
-                      height: 31,
-                    ),
-              currentindex == 1
-                  ? Image.asset(
-                      "assets/Setting/4/qa/2.png",
-                      width: 50,
-                      height: 50,
-                    )
-                  : Image.asset(
-                      "assets/Setting/4/qa/2-2.png",
-                      width: 31,
-                      height: 31,
-                    ),
-              currentindex == 2
-                  ? Image.asset(
-                      "assets/Setting/4/qa/3.png",
-                      width: 50,
-                      height: 50,
-                    )
-                  : Image.asset(
-                      "assets/Setting/4/qa/3-2.png",
-                      width: 31,
-                      height: 31,
-                    ),
+                  ),
+                ],
+              )
             ],
-          )
+          ),
         ],
       ),
     );

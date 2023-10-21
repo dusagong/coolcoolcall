@@ -14,7 +14,6 @@ class Set2 extends StatefulWidget {
 }
 
 class _Set2State extends State<Set2> {
-
   BoxDecoration touched = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
     border: Border.all(
@@ -35,6 +34,12 @@ class _Set2State extends State<Set2> {
 
   BoxDecoration initial = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Colors.transparent,
+      // color: Color(0xffE4DDEA),
+      width: 2,
+    ),
     color: Color(0xff060713),
     boxShadow: [
       BoxShadow(
@@ -62,6 +67,7 @@ class _Set2State extends State<Set2> {
       this.isTapped1 = isTapped1;
     });
   }
+
   bool isTapped2 = false;
 
   void updateShadow2(bool isTapped2) {
@@ -69,6 +75,7 @@ class _Set2State extends State<Set2> {
       this.isTapped2 = isTapped2;
     });
   }
+
   bool isTapped3 = false;
 
   void updateShadow3(bool isTapped3) {
@@ -76,6 +83,7 @@ class _Set2State extends State<Set2> {
       this.isTapped3 = isTapped3;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -98,6 +106,9 @@ class _Set2State extends State<Set2> {
       body: Center(
           child: Column(
         children: [
+          SizedBox(
+            height: 30,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -112,119 +123,137 @@ class _Set2State extends State<Set2> {
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 25,
           ),
           GestureDetector(
             onTapDown: (_) {
-                  updateShadow1(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow1(false);
-                   // Set the initial shadow when released
-                },
-                onTap: (){
-                  Get.to(()=>SleepAlarm());
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped1?touched:initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/2/setmoon.png",
-                        width: 18,
-                        height: 22.5,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("취침 알람 전화",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+              updateShadow1(true); // Set the shadow when touched
+            },
+            onTapUp: (_) {
+              updateShadow1(false);
+              // Set the initial shadow when released
+            },
+            onTap: () {
+              Get.to(() => SleepAlarm(),
+                  transition: Transition.fadeIn,
+                  duration: Duration(
+                    milliseconds: 700,
+                  ));
+            },
+            child: Container(
+              width: 354.7760009765625,
+              height: 67,
+              decoration: isTapped1 ? touched : initial,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
                   ),
-                ),
-              ),
-              GestureDetector(
-                onTapDown: (_) {
-                  updateShadow2(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow2(false);
-                   // Set the initial shadow when released
-                },
-                onTap: (){
-                  Get.to(()=>WakeAlarm());
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped2?touched:initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/2/setsun.png",
-                        width: 18,
-                        height: 22.5,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("기상 알람 전화",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+                  Image.asset(
+                    "assets/Setting/2/setmoon.png",
+                    width: 18,
+                    height: 22.5,
                   ),
-                ),
-              ),
-              GestureDetector(
-                onTapDown: (_) {
-                  updateShadow3(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow3(false);
-                   // Set the initial shadow when released
-                },
-                onTap: (){
-                  Get.to(()=>AiVoice());
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped3?touched:initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/2/setAI.png",
-                        width: 16,
-                        height: 18,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("AI 목소리 목록",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+                  SizedBox(
+                    width: 30,
                   ),
-                ),
+                  Text("취침 알람 전화",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff)))
+                ],
               ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          GestureDetector(
+            onTapDown: (_) {
+              updateShadow2(true); // Set the shadow when touched
+            },
+            onTapUp: (_) {
+              updateShadow2(false);
+              // Set the initial shadow when released
+            },
+            onTap: () {
+              Get.to(() => WakeAlarm(),
+                  transition: Transition.fadeIn,
+                  duration: Duration(
+                    milliseconds: 700,
+                  ));
+            },
+            child: Container(
+              width: 354.7760009765625,
+              height: 67,
+              decoration: isTapped2 ? touched : initial,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Image.asset(
+                    "assets/Setting/2/setsun.png",
+                    width: 18,
+                    height: 22.5,
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text("기상 알람 전화",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff)))
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          GestureDetector(
+            onTapDown: (_) {
+              updateShadow3(true); // Set the shadow when touched
+            },
+            onTapUp: (_) {
+              updateShadow3(false);
+              // Set the initial shadow when released
+            },
+            onTap: () {
+              Get.to(() => AiVoice(),
+                  transition: Transition.fadeIn,
+                  duration: Duration(
+                    milliseconds: 700,
+                  ));
+            },
+            child: Container(
+              width: 354.7760009765625,
+              height: 67,
+              decoration: isTapped3 ? touched : initial,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Image.asset(
+                    "assets/Setting/2/setAI.png",
+                    width: 16,
+                    height: 18,
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text("AI 목소리 목록",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff)))
+                ],
+              ),
+            ),
+          ),
         ],
       )),
     );

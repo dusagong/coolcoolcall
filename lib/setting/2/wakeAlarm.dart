@@ -106,8 +106,8 @@ class _WakeAlarmState extends State<WakeAlarm> {
                 height: 72.11,
               ), duration: Duration(milliseconds: 600),
               top: 31,              
-              left: click?140:-30,
-              right: click?17:140,)
+              left: click?130:-30,
+              right: click?17:150,)
             
             // Positioned(
             //   right: click ? -26 : 2, // Slide in from left or hide to the left
