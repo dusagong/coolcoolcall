@@ -67,7 +67,7 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
                 // color: Colors.white,
                 child: PageView.builder(
                   controller:
-                      PageController(initialPage: 0, viewportFraction: 0.752),
+                      PageController(initialPage: 0, viewportFraction: 0.952),
                   onPageChanged: (value) {
                     setState(() {
                       // Smoothly update the container size
@@ -77,9 +77,9 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
                   itemBuilder: (context, index) {
                     // Calculate size based on the current index
                     double containerWidth1 =
-                        currentindex == index % assets.length ? 305 * 1.0 : 240;
+                        currentindex == index % assets.length ? 455 * 1.0 : 240;
                     double containerHeight1 =
-                        currentindex == index % assets.length ? 480 * 1.0 : 380;
+                        currentindex == index % assets.length ? 480 * 1.1 : 380;
                     bool opa =
                         currentindex == index % assets.length ? true : false;
                     return Column(
@@ -107,7 +107,7 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
               Column(
                 children: [
                   SizedBox(
-                    height: 530,
+                    height: 550,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

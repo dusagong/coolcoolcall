@@ -14,6 +14,7 @@ class Page1 extends StatefulWidget {
 
 class _Page1State extends State<Page1> {
   bool isFirstContainerSelected = true;
+  bool isSecondContainerSelected = false;
   bool isFirstleft = false;
   bool isFirstright = false;
   bool isSecond1left = false;
@@ -177,11 +178,20 @@ class _Page1State extends State<Page1> {
   @override
   void initState() {
     super.initState();
+
     numberFocusNode.addListener(() {
       bool hasFocus = numberFocusNode.hasFocus;
       if (hasFocus) {
         KeyboardOverlay.showOverlay(context);
       } else {
+        setState(() {
+          if (nameC.text.trim().isNotEmpty && ageC.text.trim().isNotEmpty) {
+            isFirstContainerSelected = false;
+            isSecondContainerSelected = true;
+            isFirstright = false;
+            // isSecond1left = true;
+          }
+        });
         KeyboardOverlay.removeOverlay();
       }
     });
@@ -190,6 +200,16 @@ class _Page1State extends State<Page1> {
       if (hasFocus) {
         KeyboardOverlay.showOverlay(context);
       } else {
+        setState(() {
+          if (sleepH.text.trim().isNotEmpty &&
+              sleepM.text.trim().isNotEmpty &&
+              wakeH.text.trim().isNotEmpty &&
+              wakeM.text.trim().isNotEmpty) {
+            isSecondContainerSelected = false;
+            isSecond1left = false;
+          }
+        });
+        print("SecondCon $isSecondContainerSelected");
         KeyboardOverlay.removeOverlay();
       }
     });
@@ -198,6 +218,16 @@ class _Page1State extends State<Page1> {
       if (hasFocus) {
         KeyboardOverlay.showOverlay(context);
       } else {
+        setState(() {
+          if (sleepH.text.trim().isNotEmpty &&
+              sleepM.text.trim().isNotEmpty &&
+              wakeH.text.trim().isNotEmpty &&
+              wakeM.text.trim().isNotEmpty) {
+            isSecondContainerSelected = false;
+            isSecond1right = false;
+          }
+        });
+        print("SecondCon $isSecondContainerSelected");
         KeyboardOverlay.removeOverlay();
       }
     });
@@ -206,6 +236,16 @@ class _Page1State extends State<Page1> {
       if (hasFocus) {
         KeyboardOverlay.showOverlay(context);
       } else {
+        setState(() {
+          if (sleepH.text.trim().isNotEmpty &&
+              sleepM.text.trim().isNotEmpty &&
+              wakeH.text.trim().isNotEmpty &&
+              wakeM.text.trim().isNotEmpty) {
+            isSecondContainerSelected = false;
+            isSecond2left = false;
+          }
+        });
+        print("SecondCon $isSecondContainerSelected");
         KeyboardOverlay.removeOverlay();
       }
     });
@@ -214,6 +254,16 @@ class _Page1State extends State<Page1> {
       if (hasFocus) {
         KeyboardOverlay.showOverlay(context);
       } else {
+        setState(() {
+          if (sleepH.text.trim().isNotEmpty &&
+              sleepM.text.trim().isNotEmpty &&
+              wakeH.text.trim().isNotEmpty &&
+              wakeM.text.trim().isNotEmpty) {
+            isSecondContainerSelected = false;
+            isSecond2right = false;
+          }
+        });
+        print("SecondCon $isSecondContainerSelected");
         KeyboardOverlay.removeOverlay();
       }
     });
@@ -229,6 +279,7 @@ class _Page1State extends State<Page1> {
     num4.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -286,7 +337,7 @@ class _Page1State extends State<Page1> {
                         child: Column(
                           children: [
                             const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text("이름",
                                     style: TextStyle(
@@ -295,6 +346,9 @@ class _Page1State extends State<Page1> {
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white,
                                     )),
+                                SizedBox(
+                                  width: 152,
+                                ),
                                 Text("나이",
                                     style: TextStyle(
                                       fontSize: 18,
@@ -321,6 +375,7 @@ class _Page1State extends State<Page1> {
                                     onTap: () {
                                       setState(() {
                                         isFirstContainerSelected = true;
+                                        isSecondContainerSelected = false;
                                         isFirstleft = true;
                                         isFirstright = false;
                                         isSecond1left = false;
@@ -331,6 +386,8 @@ class _Page1State extends State<Page1> {
                                     },
                                     controller: nameC,
                                     focusNode: nameFocusNode,
+                                    keyboardAppearance: Brightness.dark, //
+
                                     onChanged: (newText) {
                                       // This callback will be called whenever the text in the TextField changes
                                       // You can update your state here based on the new text value
@@ -357,7 +414,7 @@ class _Page1State extends State<Page1> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 30,
+                                  width: 48,
                                 ),
                                 Container(
                                   width: 139,
@@ -368,6 +425,7 @@ class _Page1State extends State<Page1> {
                                     onTap: () {
                                       setState(() {
                                         isFirstContainerSelected = true;
+                                        isSecondContainerSelected = false;
                                         isFirstleft = false;
                                         isFirstright = true;
                                         isSecond1left = false;
@@ -381,6 +439,7 @@ class _Page1State extends State<Page1> {
                                     keyboardType:
                                         TextInputType.numberWithOptions(
                                             signed: false, decimal: false),
+                                    keyboardAppearance: Brightness.dark, //
                                     inputFormatters: [
                                       FilteringTextInputFormatter.digitsOnly,
                                     ],
@@ -428,12 +487,12 @@ class _Page1State extends State<Page1> {
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white)),
                         SizedBox(
-                          width: 4,
+                          width: 7,
                         ),
                         Column(
                           children: [
                             SizedBox(
-                              height: 8,
+                              height: 4,
                             ),
                             Text("*원하는 취침/기상 시간을 입력해 주세요!",
                                 style: TextStyle(
@@ -449,23 +508,37 @@ class _Page1State extends State<Page1> {
                     ),
                     Container(
                       width: 364,
-                      height: 225,
-                      decoration: isFirstContainerSelected ? Binitial : touched,
+                      height: 234,
+                      decoration:
+                          isSecondContainerSelected ? touched : Binitial,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(children: [
                           Row(
                             children: [
-                              Image.asset(
-                                "assets/onboarding/Subtract.png",
-                                width: 22,
-                                height: 20.53333282470703,
+                              SizedBox(
+                                width: 3,
                               ),
-                              Text("취침시간",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white))
+                              Image.asset(
+                                "assets/onboarding/moon.png",
+                                width: 17.02,
+                                height: 17.29,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                children: [
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  Text("취침시간",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white)),
+                                ],
+                              )
                             ],
                           ),
                           SizedBox(
@@ -483,6 +556,7 @@ class _Page1State extends State<Page1> {
                                   onTap: () {
                                     setState(() {
                                       isFirstContainerSelected = false;
+                                      isSecondContainerSelected = true;
                                       isFirstleft = false;
                                       isFirstright = false;
                                       isSecond1left = true;
@@ -503,12 +577,12 @@ class _Page1State extends State<Page1> {
                                   textAlign: TextAlign.center,
                                   controller: sleepH,
                                   focusNode: num1,
-                                    keyboardType:
-                                        TextInputType.numberWithOptions(
-                                            signed: false, decimal: false),
-                                    inputFormatters: [
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
+                                  keyboardType: TextInputType.numberWithOptions(
+                                      signed: false, decimal: false),
+                                  keyboardAppearance: Brightness.dark, //
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                   decoration: InputDecoration(
                                     hintText: '23',
                                     hintStyle: TextStyle(
@@ -544,6 +618,7 @@ class _Page1State extends State<Page1> {
                                   onTap: () {
                                     setState(() {
                                       isFirstContainerSelected = false;
+                                      isSecondContainerSelected = true;
                                       isFirstleft = false;
                                       isFirstright = false;
                                       isSecond1left = false;
@@ -555,28 +630,26 @@ class _Page1State extends State<Page1> {
                                   textAlign: TextAlign.center,
                                   controller: sleepM,
                                   focusNode: num2,
-                                    keyboardType:
-                                        TextInputType.numberWithOptions(
-                                            signed: false, decimal: false),
-                                    inputFormatters: [
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
+                                  keyboardType: TextInputType.numberWithOptions(
+                                      signed: false, decimal: false),
+                                  keyboardAppearance: Brightness.dark, //
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                   onChanged: (newText) {
-                                    // This callback will be called whenever the text in the TextField changes
-                                    // You can update your state here based on the new text value
-                                    // For example, you can update a variable or call setState to re-render the UI
                                     setState(() {
                                       // Update your state based on newText if needed
                                       sleepM = this.sleepM;
                                     });
                                   },
+                                  //
                                   decoration: InputDecoration(
                                     hintText: '00',
                                     hintStyle: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w400,
                                         color: Color(0xff9A9A9A)),
-                                    contentPadding: EdgeInsets.all(10),
+                                    // contentPadding: EdgeInsets.all(10),
                                     border: InputBorder.none,
                                   ),
                                   style: TextStyle(
@@ -592,15 +665,25 @@ class _Page1State extends State<Page1> {
                           Row(
                             children: [
                               Image.asset(
-                                "assets/onboarding/sun.png",
-                                width: 22,
-                                height: 20.53333282470703,
+                                "assets/onboarding/sun2x.png",
+                                width: 24,
+                                height: 28,
                               ),
-                              Text("기상시간",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white))
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Column(
+                                children: [
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  Text("기상시간",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white)),
+                                ],
+                              )
                             ],
                           ),
                           SizedBox(
@@ -617,6 +700,7 @@ class _Page1State extends State<Page1> {
                                   onTap: () {
                                     setState(() {
                                       isFirstContainerSelected = false;
+                                      isSecondContainerSelected = true;
                                       isFirstleft = false;
                                       isFirstright = false;
                                       isSecond1left = false;
@@ -626,14 +710,15 @@ class _Page1State extends State<Page1> {
                                     });
                                   },
                                   controller: wakeH,
-                                  
                                   focusNode: num3,
-                                    keyboardType:
-                                        TextInputType.numberWithOptions(
-                                            signed: false, decimal: false),
-                                    inputFormatters: [
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
+                                  keyboardType: TextInputType.numberWithOptions(
+                                      signed: false, decimal: false),
+                                  keyboardAppearance: Brightness
+                                      .dark, // no matter what you set, it simply shows white keyboard
+
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                   onChanged: (newText) {
                                     // This callback will be called whenever the text in the TextField changes
                                     // You can update your state here based on the new text value
@@ -650,7 +735,7 @@ class _Page1State extends State<Page1> {
                                         fontSize: 18,
                                         fontWeight: FontWeight.w400,
                                         color: Color(0xff9A9A9A)),
-                                    contentPadding: EdgeInsets.all(10),
+                                    // contentPadding: EdgeInsets.all(10),
                                     border: InputBorder.none,
                                   ),
                                   style: TextStyle(
@@ -678,6 +763,7 @@ class _Page1State extends State<Page1> {
                                   onTap: () {
                                     setState(() {
                                       isFirstContainerSelected = false;
+                                      isSecondContainerSelected = true;
                                       isFirstleft = false;
                                       isFirstright = false;
                                       isSecond1left = false;
@@ -689,12 +775,12 @@ class _Page1State extends State<Page1> {
                                   },
                                   controller: wakeM,
                                   focusNode: num4,
-                                    keyboardType:
-                                        TextInputType.numberWithOptions(
-                                            signed: false, decimal: false),
-                                    inputFormatters: [
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
+                                  keyboardType: TextInputType.numberWithOptions(
+                                      signed: false, decimal: false),
+                                  keyboardAppearance: Brightness.dark, //
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                   onChanged: (newText) {
                                     // This callback will be called whenever the text in the TextField changes
                                     // You can update your state here based on the new text value
@@ -711,7 +797,7 @@ class _Page1State extends State<Page1> {
                                         fontSize: 18,
                                         fontWeight: FontWeight.w400,
                                         color: Color(0xff9A9A9A)),
-                                    contentPadding: EdgeInsets.all(10),
+                                    // contentPadding: EdgeInsets.all(10),
                                     border: InputBorder.none,
                                   ),
                                   style: TextStyle(
@@ -836,7 +922,7 @@ class KeyboardOverlay {
   static OverlayEntry? _overlayEntry;
 
   static showOverlay(BuildContext context) {
-    if(_overlayEntry != null) {
+    if (_overlayEntry != null) {
       return;
     }
 

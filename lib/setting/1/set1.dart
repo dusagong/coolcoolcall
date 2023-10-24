@@ -34,7 +34,6 @@ class _Set1State extends State<Set1> {
   bool thirdState = false;
   late int boolcount;
 
-
   Future<void> storeDataInFirestore(
     String enteredName,
     String enteredAge,
@@ -56,6 +55,7 @@ class _Set1State extends State<Set1> {
       print('Error storing data: $e');
     }
   }
+
   late StreamController<bool> booleanStreamController;
 
   void initState() {
@@ -90,7 +90,7 @@ class _Set1State extends State<Set1> {
       print('Error retrieving data: $error');
     });
 
-        booleanStreamController = StreamController<bool>();
+    booleanStreamController = StreamController<bool>();
 
     FirebaseFirestore.instance
         .collection('불면 상태 입력')
@@ -117,17 +117,21 @@ class _Set1State extends State<Set1> {
           thirdState = third;
 
           // Update boolcount if needed
-          boolcount = (firstState ? 1 : 0) + (secondState ? 1 : 0) + (thirdState ? 1 : 0);
+          boolcount = (firstState ? 1 : 0) +
+              (secondState ? 1 : 0) +
+              (thirdState ? 1 : 0);
         });
       }
     });
   }
+
   @override
   void dispose() {
     // Don't forget to close the stream controller when disposing of the widget
     booleanStreamController.close();
     super.dispose();
   }
+
   void onSaveButtonPressed() {
     String enteredName = nameC.text;
     String enteredAge = ageC.text;
@@ -135,15 +139,18 @@ class _Set1State extends State<Set1> {
     String sleepMinute = sleepM.text;
     String wakeHour = wakeH.text;
     String wakeMinute = wakeM.text;
+    ageC.text = ageC.text.replaceAll('세', '');
+
     storeDataInFirestore(
         enteredName, enteredAge, sleepHour, sleepMinute, wakeHour, wakeMinute);
+    ageC.text = ageC.text + '세';
   }
 
   FocusNode nameFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff060713  ),
+      backgroundColor: Color(0xff060713),
       appBar: AppBar(
         title: Text("개인 정보 설정",
             style: TextStyle(
@@ -157,7 +164,9 @@ class _Set1State extends State<Set1> {
         child: Center(
             child: Column(
           children: [
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 35),
               child: Row(
@@ -175,6 +184,8 @@ class _Set1State extends State<Set1> {
                               isFirstContainerSelected = false;
                               isFirstleft = false;
                               isFirstright = false;
+                              ageC.text = ageC.text + '세';
+
                               onSaveButtonPressed();
                             });
                           },
@@ -193,6 +204,7 @@ class _Set1State extends State<Set1> {
                           : GestureDetector(
                               onTap: () {
                                 setState(() {
+                                  ageC.text = ageC.text.replaceAll('세', '');
                                   isFirstContainerSelected = true;
                                 });
                               },
@@ -323,7 +335,7 @@ class _Set1State extends State<Set1> {
                               });
                             },
                             readOnly: !isFirstContainerSelected,
-                            textAlign: TextAlign.center,
+                            textAlign: TextAlign.start,
                             controller: nameC,
                             focusNode: nameFocusNode,
                             onChanged: (newText) {
@@ -337,7 +349,7 @@ class _Set1State extends State<Set1> {
                               //     fontSize: 18,
                               //     fontWeight: FontWeight.w400,
                               //     color: Color(0xff9A9A9A)),
-                              contentPadding: EdgeInsets.all(10),
+                              contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                               border: InputBorder.none,
                             ),
                             style: TextStyle(
@@ -395,7 +407,7 @@ class _Set1State extends State<Set1> {
                               });
                             },
                             readOnly: !isFirstContainerSelected,
-                            textAlign: TextAlign.center,
+                            textAlign: TextAlign.start,
                             controller: ageC,
                             keyboardType: TextInputType.number,
                             onChanged: (newText) {
@@ -404,7 +416,7 @@ class _Set1State extends State<Set1> {
                               });
                             },
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(10),
+                              contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                               border: InputBorder.none,
                             ),
                             style: TextStyle(
@@ -432,10 +444,13 @@ class _Set1State extends State<Set1> {
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                         color: Colors.white)),
+                SizedBox(
+                  width: 7,
+                ),
                 Column(
                   children: [
                     SizedBox(
-                      height: 10,
+                      height: 4,
                     ),
                     Text("*원하는 취침/기상 시간을 입력해 주세요!",
                         style: TextStyle(
@@ -490,7 +505,7 @@ class _Set1State extends State<Set1> {
             ),
             Container(
               width: 358,
-              height: 221,
+              height: 228,
               decoration: !isSecondContainerSelected
                   ? BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -529,16 +544,29 @@ class _Set1State extends State<Set1> {
                 child: Column(children: [
                   Row(
                     children: [
-                      Image.asset(
-                        "assets/onboarding/Subtract.png",
-                        width: 22,
-                        height: 20.53333282470703,
+                      SizedBox(
+                        width: 3,
                       ),
-                      Text("취침시간",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white))
+                      Image.asset(
+                        "assets/onboarding/moon.png",
+                        width: 17.02,
+                        height: 17.29,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Text("취침시간",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white)),
+                        ],
+                      )
                     ],
                   ),
                   SizedBox(
@@ -606,7 +634,7 @@ class _Set1State extends State<Set1> {
                           controller: sleepH,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
+                            // contentPadding: EdgeInsets.all(10),
                             border: InputBorder.none,
                           ),
                           style: TextStyle(
@@ -683,7 +711,7 @@ class _Set1State extends State<Set1> {
                             });
                           },
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
+                            // contentPadding: EdgeInsets.all(10),
                             border: InputBorder.none,
                           ),
                           style: TextStyle(
@@ -699,15 +727,25 @@ class _Set1State extends State<Set1> {
                   Row(
                     children: [
                       Image.asset(
-                        "assets/onboarding/sun.png",
-                        width: 22,
-                        height: 20.53333282470703,
+                        "assets/onboarding/sun2x.png",
+                        width: 24,
+                        height: 28,
                       ),
-                      Text("기상시간",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white))
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Text("기상시간",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white)),
+                        ],
+                      )
                     ],
                   ),
                   SizedBox(
@@ -773,7 +811,7 @@ class _Set1State extends State<Set1> {
                             });
                           },
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
+                            // contentPadding: EdgeInsets.all(10),
                             border: InputBorder.none,
                           ),
                           style: TextStyle(
@@ -851,7 +889,7 @@ class _Set1State extends State<Set1> {
                             });
                           },
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
+                            // contentPadding: EdgeInsets.all(10),
                             border: InputBorder.none,
                           ),
                           style: TextStyle(
@@ -880,7 +918,7 @@ class _Set1State extends State<Set1> {
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            Get.to(()=>typeModify());
+                            Get.to(() => typeModify());
                           });
                         },
                         child: Image.asset(
@@ -986,10 +1024,10 @@ class _Set1State extends State<Set1> {
                           fontWeight: FontWeight.w400,
                           color: Color(0xffffffff))),
                   SizedBox(
-                    height: 14,
+                    height: 12,
                   ),
                   Image.asset(
-                    "assets/Setting/1/GumBuk.png",
+                    "assets/Setting/1/GumBuk4.png",
                     width: 48,
                     height: 48,
                   ),
@@ -1007,10 +1045,10 @@ class _Set1State extends State<Set1> {
                               fontWeight: FontWeight.w400,
                               color: Color(0xffffffff))),
                       SizedBox(
-                        height: 14,
+                        height: 12,
                       ),
                       Image.asset(
-                        "assets/Setting/1/Jada.png",
+                        "assets/Setting/1/Jada4.png",
                         width: 48,
                         height: 48,
                       ),
@@ -1027,10 +1065,10 @@ class _Set1State extends State<Set1> {
                               fontWeight: FontWeight.w400,
                               color: Color(0xffffffff))),
                       SizedBox(
-                        height: 14,
+                        height: 12,
                       ),
                       Image.asset(
-                        "assets/Setting/1/Bimong.png",
+                        "assets/Setting/1/Bimong4.png",
                         width: 50,
                         height: 50,
                       ),
@@ -1055,7 +1093,7 @@ class _Set1State extends State<Set1> {
                               fontWeight: FontWeight.w400,
                               color: Color(0xffffffff))),
                       SizedBox(
-                        height: 14,
+                        height: 12,
                       ),
                       Image.asset(
                         "assets/Setting/1/GumBuk.png",
@@ -1078,7 +1116,7 @@ class _Set1State extends State<Set1> {
                               fontWeight: FontWeight.w400,
                               color: Color(0xffffffff))),
                       SizedBox(
-                        height: 14,
+                        height: 12,
                       ),
                       Image.asset(
                         "assets/Setting/1/Jada.png",
@@ -1103,7 +1141,7 @@ class _Set1State extends State<Set1> {
                               fontWeight: FontWeight.w400,
                               color: Color(0xffffffff))),
                       SizedBox(
-                        height: 14,
+                        height: 12,
                       ),
                       Image.asset(
                         "assets/Setting/1/GumBuk.png",
@@ -1126,7 +1164,7 @@ class _Set1State extends State<Set1> {
                               fontWeight: FontWeight.w400,
                               color: Color(0xffffffff))),
                       SizedBox(
-                        height: 14,
+                        height: 12,
                       ),
                       Image.asset(
                         "assets/Setting/1/Bimong.png",
@@ -1194,77 +1232,76 @@ class _Set1State extends State<Set1> {
   }
 
   Widget bool3() {
-    return 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Column(
           children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: 15,
-                ),
-                Text("꿈벅꿈벅",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xffffffff))),
-                SizedBox(
-                  height: 14,
-                ),
-                Image.asset(
-                  "assets/Setting/1/GumBuk.png",
-                  width: 48,
-                  height: 48,
-                ),
-              ],
-            ),
             SizedBox(
-              width: 37,
+              height: 15,
             ),
-            Column(
-              children: [
-                SizedBox(
-                  height: 15,
-                ),
-                Text("자다깨다",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xffffffff))),
-                SizedBox(
-                  height: 14,
-                ),
-                Image.asset(
-                  "assets/Setting/1/Jada.png",
-                  width: 48,
-                  height: 48,
-                ),
-              ],
-            ),
+            Text("꿈벅꿈벅",
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xffffffff))),
             SizedBox(
-              width: 41,
+              height: 14,
             ),
-            Column(
-              children: [
-                SizedBox(
-                  height: 15,
-                ),
-                Text("비몽사몽",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xffffffff))),
-                SizedBox(
-                  height: 14,
-                ),
-                Image.asset(
-                  "assets/Setting/1/Bimong.png",
-                  width: 50,
-                  height: 50,
-                ),
-              ],
+            Image.asset(
+              "assets/Setting/1/GumBuk.png",
+              width: 48,
+              height: 48,
             ),
           ],
-        );
+        ),
+        SizedBox(
+          width: 37,
+        ),
+        Column(
+          children: [
+            SizedBox(
+              height: 15,
+            ),
+            Text("자다깨다",
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xffffffff))),
+            SizedBox(
+              height: 14,
+            ),
+            Image.asset(
+              "assets/Setting/1/Jada.png",
+              width: 48,
+              height: 48,
+            ),
+          ],
+        ),
+        SizedBox(
+          width: 41,
+        ),
+        Column(
+          children: [
+            SizedBox(
+              height: 15,
+            ),
+            Text("비몽사몽",
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xffffffff))),
+            SizedBox(
+              height: 14,
+            ),
+            Image.asset(
+              "assets/Setting/1/Bimong.png",
+              width: 50,
+              height: 50,
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }

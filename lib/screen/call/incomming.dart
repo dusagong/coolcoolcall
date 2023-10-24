@@ -29,7 +29,7 @@ class _IncomeState extends State<Income> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage('assets/Call/IncomeBack.png'), // 배경 이미지
+              image: AssetImage('assets/Call/IncomeBackT.png'), // 배경 이미지
             ),
           ),
           child: SafeArea(
@@ -61,7 +61,7 @@ class _IncomeState extends State<Income> {
                             ),
                             GestureDetector(
                               onTap: (){
-                                Get.offAll(()=>LockScreen());
+                                Get.offAll(()=>LockScreen(),transition: Transition.noTransition);
                               },
                               child: Image.asset(
                                 "assets/Call/1hour.png",
@@ -123,11 +123,11 @@ class _IncomeState extends State<Income> {
                     height: 77,
                     backgroundColor: Color(0x6ED9D9D9),
                     toggleColor: Color(0xffffffff),
-                    icon: Icon(Icons.navigate_next,size: 60,color: Color(0xff4676EE),),
+                    icon: Icon(Icons.navigate_next,size: 60,color: Color(0xffE5DDEA),),
                     action: (controller) async {
                       controller.loading(); //starts loading animation
                       // await Future.delayed(const Duration(seconds: 1));
-                      Get.offAll(()=>Call());
+                      Get.offAll(()=>Call(),transition: Transition.noTransition);
                       
                       // controller.success(); //starts success animation
                       // await Future.delayed(const Duration(seconds: 1));

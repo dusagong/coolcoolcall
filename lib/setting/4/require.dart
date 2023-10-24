@@ -29,6 +29,12 @@ class _RequireState extends State<Require> {
 
   BoxDecoration initial = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
+    border: Border.all(
+      // style: BorderStyle.solid,
+      color: Colors.transparent,
+      // color: Color(0xffE4DDEA),
+      width: 2,
+    ),
     color: Color(0xff060713),
     boxShadow: [
       BoxShadow(
@@ -70,7 +76,7 @@ class _RequireState extends State<Require> {
           backgroundColor: Color(0xff060713),
           appBar: AppBar(
             toolbarHeight: height * 47 / 844,
-            title: Text("건의 사항",
+            title: Text("건의 사항 작성",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
@@ -201,6 +207,7 @@ class _RequireState extends State<Require> {
                         height: 75,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
+                          
                           color: Color(0xff060713),
                           boxShadow: [
                             BoxShadow(

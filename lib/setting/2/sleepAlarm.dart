@@ -41,7 +41,7 @@ class _SleepAlarmState extends State<SleepAlarm> {
         body: Center(
           child: Column(children: [
             SizedBox(
-              height: 160,
+              height: 120,
             ),
             AnimatedSwitcher(
               // switchInCurve: Curves.fastOutSlowIn,
@@ -84,11 +84,11 @@ class _SleepAlarmState extends State<SleepAlarm> {
                     // key: ValueKey<Widget>(mychoice),
                     child: click
                         ? Image.asset("assets/Setting/2/BrightToggleBack.png",
-                            width: 260,
+                            width: 280,
                             height: 144.18,
                             key: ValueKey<String>('b1'))
                         : Image.asset("assets/Setting/2/DarkToggleBack.png",
-                            width: 260,
+                            width: 280,
                             height: 144.18,
                             key: ValueKey<String>('a1')),
                     //   transitionBuilder: (Widget child, Animation<double> animation) {
@@ -105,7 +105,7 @@ class _SleepAlarmState extends State<SleepAlarm> {
                       height: 144.18,
                     ),
                     duration: Duration(milliseconds: 600),
-                    bottom: 3,
+                    bottom: 4,
                     left: click ? 128 : 0,
                     right: click ? 0 : 152,
                   )
@@ -160,15 +160,41 @@ class _SleepAlarmState extends State<SleepAlarm> {
         ),
         Container(
           // Wrapping the text in a container with fixed height
-          height: 60, // Adjust the height as needed
+          height: 70, // Adjust the height as needed
           width: 300,
-          child: Text(
-            "            현재 쿨쿨콜 알람이 꺼져있어요.\n           취침 전 쿨쿨이의 전화를 싶다면\n                     알람을 켜주세요!",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              color: Color(0xffE5DDEA),
-            ),
+          child: Column(
+            children: [
+              Text(
+                "현재 쿨쿨콜 알람이 꺼져있어요.",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffE5DDEA),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "취침 전 쿨쿨이의 전화를 싶다면",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffE5DDEA),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "알람을 켜주세요!",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffE5DDEA),
+                ),
+              ),
+            ],
           ),
         ),
       ],
@@ -184,15 +210,41 @@ class _SleepAlarmState extends State<SleepAlarm> {
         ),
         Container(
           // Wrapping the text in a container with fixed height
-          height: 60, // Adjust the height as needed
+          height: 70, // Adjust the height as needed
           width: 300,
-          child: Text(
-            "            현재 쿨쿨콜 알람이 켜져있어요.\n    취침 전 쿨쿨이의 전화를 받고싶지 않다면\n                     알람을 꺼주세요!",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              color: Color(0xffE5DDEA),
-            ),
+          child: Column(
+            children: [
+              Text(
+                "현재 쿨쿨콜 알람이 켜져있어요.",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffE5DDEA),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "취침 전 쿨쿨이의 전화를 받고싶지 않다면",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffE5DDEA),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "알람을 꺼주세요!",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffE5DDEA),
+                ),
+              ),
+            ],
           ),
         ),
       ],

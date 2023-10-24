@@ -405,7 +405,7 @@ class _Page2State extends State<typeModify> {
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
-                              color: Colors.white)),
+                              color: Color(0xff9A9A9A))),
                     ))
               // else if (click == false)
               //   if (first == false && second == false && third == false)

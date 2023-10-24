@@ -8,7 +8,7 @@ class InputDoneView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
-        color: CupertinoColors.extraLightBackgroundGray,
+        color: Color(0xff2d2c32),
         child: Align(
             alignment: Alignment.topRight,
             child: Padding(
@@ -20,7 +20,7 @@ class InputDoneView extends StatelessWidget {
                   FocusScope.of(context).requestFocus(FocusNode());
                 },
                 child: const Text("Done",
-                    style: TextStyle(color: CupertinoColors.activeBlue,)
+                    style: TextStyle(color: Color.fromARGB(255, 226, 196, 239),)
                 ),
               ),
             )

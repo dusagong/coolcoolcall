@@ -10,7 +10,6 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
     Timer(Duration(milliseconds: 3500), () {
       Get.offAll(() => FakeLogin(),

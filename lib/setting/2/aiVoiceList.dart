@@ -1,9 +1,12 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coolcoolcall/screen/home.dart';
 import 'package:coolcoolcall/setting/2/sleepAlarm.dart';
 import 'package:coolcoolcall/setting/2/wakeAlarm.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+late AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer.newPlayer();
 
 class AiVoice extends StatefulWidget {
   AiVoice({super.key});
@@ -13,6 +16,34 @@ class AiVoice extends StatefulWidget {
 }
 
 class _AiVoiceState extends State<AiVoice> {
+  final audio1 = Audio(
+    "assets/sound/hello1.mp3",
+    metas: Metas(
+      id: 'audio1',
+      title: 'Audio 1',
+    ),
+  );
+  final audio2 = Audio(
+    "assets/sound/hello2.mp3",
+    metas: Metas(
+      id: 'audio2',
+      title: 'Audio 2',
+    ),
+  );
+  final audio3 = Audio(
+    "assets/sound/hello3.mp3",
+    metas: Metas(
+      id: 'audio3',
+      title: 'Audio 3',
+    ),
+  );
+  final audio4 = Audio(
+    "assets/sound/hello4.mp3",
+    metas: Metas(
+      id: 'audio4',
+      title: 'Audio 4',
+    ),
+  );
   BoxDecoration touched = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
     border: Border.all(
@@ -117,14 +148,14 @@ class _AiVoiceState extends State<AiVoice> {
             height: 50,
           ),
           GestureDetector(
-            onTapDown: (_) {
+            onTap: () async {
               updateShadow1(true); // Set the shadow when touched
-            },
-            onTapUp: (_) {
+              _assetsAudioPlayer.open(audio1);
+              await Future.delayed(Duration(seconds: 5));
+              _assetsAudioPlayer.stop();
+
               updateShadow1(false);
-              // Set the initial shadow when released
             },
-            onTap: () {},
             child: Container(
               width: 354.7760009765625,
               height: 67,
@@ -147,14 +178,13 @@ class _AiVoiceState extends State<AiVoice> {
             height: 10,
           ),
           GestureDetector(
-            onTapDown: (_) {
+            onTap: () async {
               updateShadow2(true); // Set the shadow when touched
-            },
-            onTapUp: (_) {
+              _assetsAudioPlayer.open(audio2);
+              await Future.delayed(Duration(seconds: 2));
+              _assetsAudioPlayer.stop();
               updateShadow2(false);
-              // Set the initial shadow when released
             },
-            onTap: () {},
             child: Container(
               width: 354.7760009765625,
               height: 67,
@@ -177,14 +207,13 @@ class _AiVoiceState extends State<AiVoice> {
             height: 10,
           ),
           GestureDetector(
-            onTapDown: (_) {
+            onTap: () async {
               updateShadow3(true); // Set the shadow when touched
-            },
-            onTapUp: (_) {
+              _assetsAudioPlayer.open(audio3);
+              await Future.delayed(Duration(seconds: 2));
+              _assetsAudioPlayer.stop();
               updateShadow3(false);
-              // Set the initial shadow when released
             },
-            onTap: () {},
             child: Container(
               width: 354.7760009765625,
               height: 67,
@@ -207,14 +236,13 @@ class _AiVoiceState extends State<AiVoice> {
             height: 10,
           ),
           GestureDetector(
-            onTapDown: (_) {
+            onTap: () async {
               updateShadow4(true); // Set the shadow when touched
-            },
-            onTapUp: (_) {
+              _assetsAudioPlayer.open(audio4);
+              await Future.delayed(Duration(seconds: 3));
+              _assetsAudioPlayer.stop();
               updateShadow4(false);
-              // Set the initial shadow when released
             },
-            onTap: () {},
             child: Container(
               width: 354.7760009765625,
               height: 67,

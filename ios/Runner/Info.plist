@@ -7,7 +7,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
-		<string>Coolcoolcall</string>
+		<string>쿨쿨콜</string>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
 		<key>CFBundleIdentifier</key>
@@ -45,13 +45,11 @@
 			<string>UIInterfaceOrientationLandscapeLeft</string>
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
+		<key>UIStatusBarHidden</key>
+		<false/>
 		<key>NSSpeechRecognitionUsageDescription</key>
 		<string>Reason your app uses speech recognition!</string>
 		<key>NSMicrophoneUsageDescription</key>
 		<string>Why your app needs microphone access!</string>
-		<!-- <key>NSMicrophoneRecognitionUsageDescription</key>
-	<string>Why your app needs microphone access!</string> -->
-		<key>UIStatusBarHidden</key>
-		<false/>
 	</dict>
 </plist>

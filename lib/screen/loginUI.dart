@@ -2,20 +2,21 @@ import 'package:coolcoolcall/screen/onBoarding/page1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 
 class FakeLogin extends StatelessWidget {
   const FakeLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,
-        overlays: [SystemUiOverlay.top]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]); // 하단 StatusBar 생성
+
 
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('assets/background/stars.png'), // 배경 이미지
+          image: AssetImage('assets/login/back4.png'), // 배경 이미지
         ),
       ),
       child: Scaffold(
@@ -26,13 +27,24 @@ class FakeLogin extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 114,
+                  height: 90,
                 ),
-                Image.asset("assets/login/coolcoolLogo.png"),
+                Image.asset(
+                  "assets/login/logo5.png",
+                  width: 100.3,
+                  height: 109,
+                ),
                 SizedBox(
-                  height: 84,
+                  height: 47,
                 ),
-                Text("기존에 사용하고 있던 계정으로\n   간단하게 회원가입 하세요!",
+                Text("기존에 사용하고 있던 계정으로",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Pretendard',
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white)),
+                        SizedBox(height: 3,),
+                Text("간단하게 회원가입 하세요!",
                     style: TextStyle(
                         fontSize: 18,
                         fontFamily: 'Pretendard',
@@ -69,10 +81,10 @@ class FakeLogin extends StatelessWidget {
                 SizedBox(height: 42),
                 GestureDetector(
                   onTap: () {
-                    Get.offAll(() => Page1(),
-                        transition: Transition.native,
+                    Get.to(() => Page1(),
+                        transition: Transition.noTransition,
                         duration: Duration(
-                          milliseconds: 700,
+                          milliseconds: 1100,
                         ));
                   },
                   child: Image.asset(

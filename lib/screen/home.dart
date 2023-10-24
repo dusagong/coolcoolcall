@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:coolcoolcall/screen/call/incomming.dart';
 import 'package:coolcoolcall/controller/auth_controller.dart';
 import 'package:coolcoolcall/screen/call/call.dart';
@@ -8,6 +9,7 @@ import 'package:coolcoolcall/setting/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get_navigation/src/routes/default_transitions.dart';
 
 Future<String?> fetchNameFromFirestore() async {
   try {
@@ -44,9 +46,12 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int clickCount = AuthController.instance.clickcount;
 
-  final ImageProvider image1 = AssetImage("assets/home/cover1_.png");
-  final ImageProvider image2 = AssetImage("assets/home/cover2_.png");
-  final ImageProvider image3 = AssetImage("assets/home/cover3_.png");
+  // final ImageProvider image1 = const AssetImage("assets/home/M1.png");
+  // final ImageProvider image2 = const AssetImage("assets/home/M2.png");
+  // final ImageProvider image3 = const AssetImage("assets/home/M3.png");
+  final ImageProvider image1 = const AssetImage("assets/home/MM1.png");
+  final ImageProvider image2 = const AssetImage("assets/home/MM2.png");
+  final ImageProvider image3 = const AssetImage("assets/home/MM3.png");
 
   @override
   void didChangeDependencies() {
@@ -70,7 +75,7 @@ class _HomeState extends State<Home> {
   void _handleDoubleTap() {
     // Create a timer with a 2-second delay
     Timer(Duration(seconds: 2), () {
-      Get.offAll(() => Income());
+      Get.offAll(() => Income(),transition: Transition.noTransition);
     });
   }
 
@@ -90,11 +95,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     // if (AuthController.instance.clickcount == 3) AuthController.instance.clickcount = clickCount;
+    
     return Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage('assets/background/background.png'), // 배경 이미지
+            image: AssetImage('assets/background/home.jpg'), // 배경 이미지
           ),
         ),
         child: Scaffold(
@@ -104,6 +110,7 @@ class _HomeState extends State<Home> {
               setState(() {
                 // AuthController.instance.clickcount++;
                 AuthController.instance.clickcount++;
+                   
               });
             },
             child: Stack(
@@ -142,11 +149,13 @@ class _HomeState extends State<Home> {
                       FutureBuilder<String?>(
                         future: fetchNameFromFirestore(),
                         builder: (context, snapshot) {
-                          // if (snapshot.connectionState ==
-                          //     ConnectionState.waiting) {
-                          //   return CircularProgressIndicator();
-                          // } else
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                                print("circle");
+                            return SizedBox(height: 159,);
+                          } else
                           if (snapshot.hasError) {
+                            print('error');
                             return Text("Error: ${snapshot.error}");
                           } else {
                             final String? name = snapshot.data;

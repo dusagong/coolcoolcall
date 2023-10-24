@@ -159,7 +159,7 @@ class SettingState extends State<Setting> {
           child: Column(
             children: [
               SizedBox(
-                height: 77,
+                height: 74,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -171,7 +171,7 @@ class SettingState extends State<Setting> {
                     // mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       SizedBox(
-                        height: 7,
+                        height: 6,
                       ),
                       StreamBuilder<String?>(
                         stream: fetchNameFromFirestore(),
@@ -195,19 +195,19 @@ class SettingState extends State<Setting> {
                     ],
                   ),
                   SizedBox(
-                    width: 25,
+                    width: 31,
                   ),
                   SizedBox(
-                    width: 25,
+                    width: 31,
                   ),
                   SizedBox(
-                    width: 25,
+                    width: 31,
                   ),
                   SizedBox(
-                    width: 25,
+                    width: 31,
                   ),
                   SizedBox(
-                    width: 25,
+                    width: 50,
                   ),
                   GestureDetector(
                     onTap: () {
@@ -374,7 +374,6 @@ class SettingState extends State<Setting> {
                 },
                 onTap: () {
                   Get.to(() => Set4(),
-                      transition: Transition.fadeIn,
                       duration: Duration(
                         milliseconds: 700,
                       ));

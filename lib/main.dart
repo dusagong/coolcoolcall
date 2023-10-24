@@ -1,5 +1,9 @@
 import 'package:coolcoolcall/controller/auth_controller.dart';
+import 'package:coolcoolcall/screen/call/call.dart';
+import 'package:coolcoolcall/screen/home.dart';
 import 'package:coolcoolcall/screen/loginUI.dart';
+import 'package:coolcoolcall/screen/onBoarding/page3.dart';
+import 'package:coolcoolcall/screen/onBoarding/page4.dart';
 import 'package:coolcoolcall/setting/4/question.dart';
 import 'package:coolcoolcall/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,6 +22,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Splash(), //loading screen should be here.

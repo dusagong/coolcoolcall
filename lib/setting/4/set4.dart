@@ -110,7 +110,6 @@ class _Set4State extends State<Set4> {
             },
             onTap: () {
               Get.to(() => Question(),
-                  transition: Transition.fadeIn,
                   duration: Duration(
                     milliseconds: 700,
                   ));
@@ -154,7 +153,6 @@ class _Set4State extends State<Set4> {
             },
             onTap: () {
               Get.to(() => Require(),
-                  transition: Transition.fadeIn,
                   duration: Duration(
                     milliseconds: 700,
                   ));
