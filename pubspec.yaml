@@ -52,6 +52,8 @@ dependencies:
   permission_handler: ^11.0.1
   assets_audio_player: ^3.1.1
   audioplayers: ^5.2.0
+  dart_openai: ^4.0.0
+  envied: ^0.3.0+3
 
 
 dev_dependencies:
@@ -59,6 +61,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  envied_generator: ^0.3.0+3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

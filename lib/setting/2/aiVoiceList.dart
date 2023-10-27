@@ -16,6 +16,8 @@ class AiVoice extends StatefulWidget {
 }
 
 class _AiVoiceState extends State<AiVoice> {
+  bool crit = false;
+
   final audio1 = Audio(
     "assets/sound/hello1.mp3",
     metas: Metas(
@@ -132,6 +134,17 @@ class _AiVoiceState extends State<AiVoice> {
     return Scaffold(
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 24.0,
+            semanticLabel: 'Text to announce in accessibility modes',
+          ),
+        ),
         toolbarHeight: height * 47 / 844,
         title: Text("AI 목소리 선택",
             style: TextStyle(
@@ -147,120 +160,216 @@ class _AiVoiceState extends State<AiVoice> {
           SizedBox(
             height: 50,
           ),
-          GestureDetector(
-            onTap: () async {
-              updateShadow1(true); // Set the shadow when touched
-              _assetsAudioPlayer.open(audio1);
-              await Future.delayed(Duration(seconds: 5));
-              _assetsAudioPlayer.stop();
+          crit
+              ? Container(
+                  width: 354.7760009765625,
+                  height: 67,
+                  decoration: isTapped1 ? touched : initial,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("쿨쿨이1",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xffffffff)))
+                    ],
+                  ),
+                )
+              : GestureDetector(
+                  onTap: () async {
+                    updateShadow1(true); // Set the shadow when touched
 
-              updateShadow1(false);
-            },
-            child: Container(
-              width: 354.7760009765625,
-              height: 67,
-              decoration: isTapped1 ? touched : initial,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 20,
+                    _assetsAudioPlayer.open(audio1);
+                    setState(() {
+                      crit = true;
+                    });
+                    await Future.delayed(Duration(seconds: 5));
+                    _assetsAudioPlayer.stop();
+                    setState(() {
+                      crit = false;
+                    });
+                    updateShadow1(false); // Set the shadow when touched
+                  },
+                  child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: isTapped1 ? touched : initial,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text("쿨쿨이1",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff)))
+                      ],
+                    ),
                   ),
-                  Text("쿨쿨이1",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xffffffff)))
-                ],
-              ),
-            ),
-          ),
+                ),
           SizedBox(
             height: 10,
           ),
-          GestureDetector(
-            onTap: () async {
-              updateShadow2(true); // Set the shadow when touched
-              _assetsAudioPlayer.open(audio2);
-              await Future.delayed(Duration(seconds: 2));
-              _assetsAudioPlayer.stop();
-              updateShadow2(false);
-            },
-            child: Container(
-              width: 354.7760009765625,
-              height: 67,
-              decoration: isTapped2 ? touched : initial,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 20,
+          crit
+              ? Container(
+                  width: 354.7760009765625,
+                  height: 67,
+                  decoration: isTapped2 ? touched : initial,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("쿨쿨이2",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xffffffff)))
+                    ],
                   ),
-                  Text("쿨쿨이2",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xffffffff)))
-                ],
-              ),
-            ),
-          ),
+                )
+              : GestureDetector(
+                  onTap: () async {
+                    updateShadow2(true); // Set the shadow when touched
+                    _assetsAudioPlayer.open(audio2);
+                    setState(() {
+                      crit = true;
+                    });
+                    await Future.delayed(Duration(seconds: 2));
+                    _assetsAudioPlayer.stop();
+                    setState(() {
+                      crit = false;
+                    });
+                    updateShadow2(false);
+                  },
+                  child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: isTapped2 ? touched : initial,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text("쿨쿨이2",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff)))
+                      ],
+                    ),
+                  ),
+                ),
           SizedBox(
             height: 10,
           ),
-          GestureDetector(
-            onTap: () async {
-              updateShadow3(true); // Set the shadow when touched
-              _assetsAudioPlayer.open(audio3);
-              await Future.delayed(Duration(seconds: 2));
-              _assetsAudioPlayer.stop();
-              updateShadow3(false);
-            },
-            child: Container(
-              width: 354.7760009765625,
-              height: 67,
-              decoration: isTapped3 ? touched : initial,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 20,
+          crit
+              ? Container(
+                  width: 354.7760009765625,
+                  height: 67,
+                  decoration: isTapped3 ? touched : initial,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("쿨쿨이3",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xffffffff)))
+                    ],
                   ),
-                  Text("쿨쿨이3",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xffffffff)))
-                ],
-              ),
-            ),
-          ),
+                )
+              : GestureDetector(
+                  onTap: () async {
+                    updateShadow3(true); // Set the shadow when touched
+                    _assetsAudioPlayer.open(audio3);
+                    setState(() {
+                      crit = true;
+                    });
+                    await Future.delayed(Duration(seconds: 2));
+                    _assetsAudioPlayer.stop();
+                    updateShadow3(false);
+                    setState(() {
+                      crit = false;
+                    });
+                  },
+                  child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: isTapped3 ? touched : initial,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text("쿨쿨이3",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff)))
+                      ],
+                    ),
+                  ),
+                ),
           SizedBox(
             height: 10,
           ),
-          GestureDetector(
-            onTap: () async {
-              updateShadow4(true); // Set the shadow when touched
-              _assetsAudioPlayer.open(audio4);
-              await Future.delayed(Duration(seconds: 3));
-              _assetsAudioPlayer.stop();
-              updateShadow4(false);
-            },
-            child: Container(
-              width: 354.7760009765625,
-              height: 67,
-              decoration: isTapped4 ? touched : initial,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 20,
+          crit
+              ? Container(
+                  width: 354.7760009765625,
+                  height: 67,
+                  decoration: isTapped4 ? touched : initial,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("쿨쿨이4",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xffffffff)))
+                    ],
                   ),
-                  Text("쿨쿨이4",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xffffffff)))
-                ],
-              ),
-            ),
-          ),
+                )
+              : GestureDetector(
+                  onTap: () async {
+                    updateShadow4(true); // Set the shadow when touched
+                    _assetsAudioPlayer.open(audio4);
+                    setState(() {
+                      crit = true;
+                    });
+                    await Future.delayed(Duration(seconds: 3));
+                    _assetsAudioPlayer.stop();
+                    setState(() {
+                      crit = false;
+                    });
+                    updateShadow4(false);
+                  },
+                  child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: isTapped4 ? touched : initial,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text("쿨쿨이4",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff)))
+                      ],
+                    ),
+                  ),
+                ),
         ],
       )),
     );

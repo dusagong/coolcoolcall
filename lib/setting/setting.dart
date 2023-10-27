@@ -153,305 +153,314 @@ class SettingState extends State<Setting> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Color(0xff060713),
-        body: Center(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 74,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Column(
-                    // mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(
-                        height: 6,
-                      ),
-                      StreamBuilder<String?>(
-                        stream: fetchNameFromFirestore(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasError) {
-                            return Text("Error: ${snapshot.error}");
-                          } else {
-                            final String? name = snapshot.data;
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage('assets/background/simpleBack.jpeg'), // 배경 이미지
+        ),
+      ),
+      child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 73,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Column(
+                      // mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          height: 6,
+                        ),
+                        StreamBuilder<String?>(
+                          stream: fetchNameFromFirestore(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasError) {
+                              return Text("Error: ${snapshot.error}");
+                            } else {
+                              final String? name = snapshot.data;
 
-                            return Text(
-                              "$name님",
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                              ),
-                            );
-                          }
-                        },
-                      )
-                    ],
+                              return Text(
+                                "$name님",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                ),
+                              );
+                            }
+                          },
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      width: 31,
+                    ),
+                    SizedBox(
+                      width: 31,
+                    ),
+                    SizedBox(
+                      width: 31,
+                    ),
+                    SizedBox(
+                      width: 31,
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAll(() => Home(),
+                            transition: Transition.fadeIn,
+                            duration: Duration(
+                              milliseconds: 700,
+                            ));
+                      },
+                      child: Image.asset("assets/Setting/Home.png"),
+                    ),
+                    SizedBox(
+                      width: 1,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+                GestureDetector(
+                  onTapDown: (_) {
+                    updateShadow1(true); // Set the shadow when touched
+                  },
+                  // onTapUp: (_) {
+                  //   updateShadow1(false);
+                  //   // Set the initial shadow when released
+                  // },
+                  onTap: () {
+                    if (isTapped1)
+                      Get.to(() => Set1(), duration: Duration(seconds: 1));
+                    updateShadow1(
+                        false); // Set the initial shadow when released
+                    // Get.to(() => Set1(),transition: Transition.native,duration: Duration(seconds: 1));
+                  },
+                  child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: isTapped1 ? touched : initial,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Image.asset(
+                          "assets/Setting/1.png",
+                          width: 18,
+                          height: 20,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Text("개인 정보 설정",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff)))
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                    width: 31,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTapDown: (_) {
+                    updateShadow2(true); // Set the shadow when touched
+                  },
+                  // onTapUp: (_) {
+                  //   updateShadow2(false);
+                  //   // Set the initial shadow when released
+                  // },
+                  onTap: () {
+                    if (isTapped2)
+                      Get.to(() => Set2(),
+                          transition: Transition.native,
+                          duration: Duration(
+                            milliseconds: 1000,
+                          ));
+                    updateShadow2(false);
+                  },
+                  child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: isTapped2 ? touched : initial,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Image.asset(
+                          "assets/Setting/2.png",
+                          width: 18,
+                          height: 32,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Text("서비스 설정",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff)))
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                    width: 31,
-                  ),
-                  SizedBox(
-                    width: 31,
-                  ),
-                  SizedBox(
-                    width: 31,
-                  ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  GestureDetector(
-                    onTap: () {
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTapDown: (_) {
+                    updateShadow3(true); // Set the shadow when touched
+                  },
+                  // onTapUp: (_) {
+                  //   updateShadow3(false);
+                  //   // Set the initial shadow when released
+                  // },
+                  onTap: () {
+                    if (isTapped3) {
+                      updateShadow3(false);
+                      AuthController.instance.clickcount = 0;
                       Get.offAll(() => Home(),
                           transition: Transition.fadeIn,
                           duration: Duration(
                             milliseconds: 700,
                           ));
-                    },
-                    child: Image.asset("assets/Setting/Home.png"),
-                  ),
-                  SizedBox(
-                    width: 1,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              GestureDetector(
-                onTapDown: (_) {
-                  updateShadow1(true); // Set the shadow when touched
-                },
-                // onTapUp: (_) {
-                //   updateShadow1(false);
-                //   // Set the initial shadow when released
-                // },
-                onTap: () {
-                  if (isTapped1)
-                    Get.to(() => Set1(), duration: Duration(seconds: 1));
-                  updateShadow1(false); // Set the initial shadow when released
-                  // Get.to(() => Set1(),transition: Transition.native,duration: Duration(seconds: 1));
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped1 ? touched : initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/1.png",
-                        width: 18,
-                        height: 20,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("개인 정보 설정",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+                    }
+                  },
+                  child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: isTapped3 ? touched : initial,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Image.asset(
+                          "assets/Setting/3.png",
+                          width: 18,
+                          height: 22.5,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Text("사용 설명서",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff)))
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              GestureDetector(
-                onTapDown: (_) {
-                  updateShadow2(true); // Set the shadow when touched
-                },
-                // onTapUp: (_) {
-                //   updateShadow2(false);
-                //   // Set the initial shadow when released
-                // },
-                onTap: () {
-                  if (isTapped2)
-                    Get.to(() => Set2(),
-                        transition: Transition.native,
+                SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTapDown: (_) {
+                    updateShadow4(true); // Set the shadow when touched
+                  },
+                  onTapUp: (_) {
+                    updateShadow4(false);
+                    // Set the initial shadow when released
+                  },
+                  onTap: () {
+                    Get.to(() => Set4(),
                         duration: Duration(
-                          milliseconds: 1000,
+                          milliseconds: 700,
                         ));
-                  updateShadow2(false);
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped2 ? touched : initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/2.png",
-                        width: 18,
-                        height: 32,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("서비스 설정",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+                  },
+                  child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: isTapped4 ? touched : initial,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Image.asset(
+                          "assets/Setting/4.png",
+                          width: 18,
+                          height: 22.5,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Text("건의 사항",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff)))
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              GestureDetector(
-                onTapDown: (_) {
-                  updateShadow3(true); // Set the shadow when touched
-                },
-                // onTapUp: (_) {
-                //   updateShadow3(false);
-                //   // Set the initial shadow when released
-                // },
-                onTap: () {
-                  if (isTapped3) {
-                    updateShadow3(false);
-                    AuthController.instance.clickcount = 0;
-                    Get.offAll(() => Home(),
+                SizedBox(
+                  height: 272,
+                ),
+                GestureDetector(
+                  onTapDown: (_) {
+                    updateShadow5(true); // Set the shadow when touched
+                  },
+                  onTapUp: (_) {
+                    updateShadow5(false);
+                    // Set the initial shadow when released
+                  },
+                  onTap: () {
+                    Get.offAll(() => FakeLogin(),
                         transition: Transition.fadeIn,
                         duration: Duration(
                           milliseconds: 700,
                         ));
-                  }
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped3 ? touched : initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/3.png",
-                        width: 18,
-                        height: 22.5,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("사용 설명서",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
+                    AuthController.instance.clickcount = 0;
+                  },
+                  child: Container(
+                    width: 354.7760009765625,
+                    height: 67,
+                    decoration: isTapped5 ? touched : initial,
+                    child: Center(
+                        child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Image.asset(
+                          "assets/Setting/5.png",
+                          width: 18,
+                          height: 22.5,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Text("로그아웃",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff)))
+                      ],
+                    )),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              GestureDetector(
-                onTapDown: (_) {
-                  updateShadow4(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow4(false);
-                  // Set the initial shadow when released
-                },
-                onTap: () {
-                  Get.to(() => Set4(),
-                      duration: Duration(
-                        milliseconds: 700,
-                      ));
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped4 ? touched : initial,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/4.png",
-                        width: 18,
-                        height: 22.5,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("건의 사항",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 322,
-              ),
-              GestureDetector(
-                onTapDown: (_) {
-                  updateShadow5(true); // Set the shadow when touched
-                },
-                onTapUp: (_) {
-                  updateShadow5(false);
-                  // Set the initial shadow when released
-                },
-                onTap: () {
-                  Get.offAll(() => FakeLogin(),
-                      transition: Transition.fadeIn,
-                      duration: Duration(
-                        milliseconds: 700,
-                      ));
-                  AuthController.instance.clickcount = 0;
-                },
-                child: Container(
-                  width: 354.7760009765625,
-                  height: 67,
-                  decoration: isTapped5 ? touched : initial,
-                  child: Center(
-                      child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        "assets/Setting/5.png",
-                        width: 18,
-                        height: 22.5,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("로그아웃",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xffffffff)))
-                    ],
-                  )),
-                ),
-              ),
-            ],
-          ),
-        ));
+              ],
+            ),
+          )),
+    );
   }
 }

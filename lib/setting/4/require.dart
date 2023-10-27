@@ -75,6 +75,17 @@ class _RequireState extends State<Require> {
         Scaffold(
           backgroundColor: Color(0xff060713),
           appBar: AppBar(
+            leading: GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 24.0,
+                semanticLabel: 'Text to announce in accessibility modes',
+              ),
+            ),
             toolbarHeight: height * 47 / 844,
             title: Text("건의 사항 작성",
                 style: TextStyle(
@@ -145,14 +156,19 @@ class _RequireState extends State<Require> {
                                       const Color.fromARGB(255, 199, 189, 189),
                                 ),
                                 decoration: InputDecoration(
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.transparent)),
-                                  focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: BorderSide(color: Colors.transparent)),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
                                   // contentPadding: EdgeInsets.all(20),
                                   hintText:
                                       '건의 사항을 입력 해주세요', // Optional hint text
                                   hintStyle: TextStyle(
-                                      fontSize: 18, 
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w400,
                                       color: Color(0xff9A9A9A)),
                                 ),
@@ -207,7 +223,6 @@ class _RequireState extends State<Require> {
                         height: 75,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
-                          
                           color: Color(0xff060713),
                           boxShadow: [
                             BoxShadow(

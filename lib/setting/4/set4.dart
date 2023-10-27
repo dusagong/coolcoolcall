@@ -85,6 +85,17 @@ class _Set4State extends State<Set4> {
     return Scaffold(
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 24.0,
+            semanticLabel: 'Text to announce in accessibility modes',
+          ),
+        ),
         toolbarHeight: height * 47 / 844,
         title: Text("건의 사항",
             style: TextStyle(
@@ -98,7 +109,7 @@ class _Set4State extends State<Set4> {
           child: Column(
         children: [
           SizedBox(
-            height: 40,
+            height: 62,
           ),
           GestureDetector(
             onTapDown: (_) {

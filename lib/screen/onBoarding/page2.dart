@@ -34,13 +34,24 @@ class _Page2State extends State<Page2> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    double conwidth = width * 310 / 390;
+    double conwidth = width * 335 / 390;
     double conhight = height * 126 / 844;
 
     return Scaffold(
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
         toolbarHeight: height * 47 / 844,
+        leading: GestureDetector(
+          onTap: (){
+            Get.back();
+          },
+          child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 27.0,
+                semanticLabel: 'Text to announce in accessibility modes',
+              ),
+        ),
         title: Text("불면 상태 입력",
             style: TextStyle(
               fontSize: 20,
@@ -121,7 +132,7 @@ class _Page2State extends State<Page2> {
                         height: 73,
                       ),
                       SizedBox(
-                        width: 25,
+                        width: 24,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -221,7 +232,7 @@ class _Page2State extends State<Page2> {
                         height: 101.81,
                       ),
                       SizedBox(
-                        width: 45,
+                        width: 43,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -321,7 +332,7 @@ class _Page2State extends State<Page2> {
                         height: 94.00258,
                       ),
                       SizedBox(
-                        width: 30,
+                        width: 29,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -354,7 +365,7 @@ class _Page2State extends State<Page2> {
               ),
               if (first == false && second == false && third == false)
                 Container(
-                    width: conwidth,
+                    width: 310,
                     height: height * 75 / 844,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
@@ -399,7 +410,7 @@ class _Page2State extends State<Page2> {
                         ));
                   },
                   child: Container(
-                      width: conwidth,
+                      width: 310,
                       height: height * 75 / 844,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Question extends StatefulWidget {
   @override
@@ -42,6 +43,17 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
+        leading: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: 24.0,
+              semanticLabel: 'Text to announce in accessibility modes',
+            ),
+          ),
         toolbarHeight: screenHeight * 47 / 844,
         title: const Text(
           "자주 묻는 질문",

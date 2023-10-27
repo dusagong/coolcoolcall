@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:coolcoolcall/screen/onBoarding/page2.dart';
 
+final GlobalKey _widgetKey = GlobalKey();
+
 class Page1 extends StatefulWidget {
   Page1({super.key});
 
@@ -21,6 +23,7 @@ class _Page1State extends State<Page1> {
   bool isSecond1right = false;
   bool isSecond2left = false;
   bool isSecond2right = false;
+  bool isFull = false;
 
   TextEditingController nameC = TextEditingController();
   TextEditingController ageC = TextEditingController();
@@ -202,9 +205,10 @@ class _Page1State extends State<Page1> {
       } else {
         setState(() {
           if (sleepH.text.trim().isNotEmpty &&
-              sleepM.text.trim().isNotEmpty &&
-              wakeH.text.trim().isNotEmpty &&
-              wakeM.text.trim().isNotEmpty) {
+                  // sleepM.text.trim().isNotEmpty &&
+                  wakeH.text.trim().isNotEmpty
+              // wakeM.text.trim().isNotEmpty
+              ) {
             isSecondContainerSelected = false;
             isSecond1left = false;
           }
@@ -220,9 +224,8 @@ class _Page1State extends State<Page1> {
       } else {
         setState(() {
           if (sleepH.text.trim().isNotEmpty &&
-              sleepM.text.trim().isNotEmpty &&
-              wakeH.text.trim().isNotEmpty &&
-              wakeM.text.trim().isNotEmpty) {
+              // sleepM.text.trim().isNotEmpty &&
+              wakeH.text.trim().isNotEmpty) {
             isSecondContainerSelected = false;
             isSecond1right = false;
           }
@@ -238,9 +241,8 @@ class _Page1State extends State<Page1> {
       } else {
         setState(() {
           if (sleepH.text.trim().isNotEmpty &&
-              sleepM.text.trim().isNotEmpty &&
-              wakeH.text.trim().isNotEmpty &&
-              wakeM.text.trim().isNotEmpty) {
+              // sleepM.text.trim().isNotEmpty &&
+              wakeH.text.trim().isNotEmpty) {
             isSecondContainerSelected = false;
             isSecond2left = false;
           }
@@ -256,9 +258,8 @@ class _Page1State extends State<Page1> {
       } else {
         setState(() {
           if (sleepH.text.trim().isNotEmpty &&
-              sleepM.text.trim().isNotEmpty &&
-              wakeH.text.trim().isNotEmpty &&
-              wakeM.text.trim().isNotEmpty) {
+              // sleepM.text.trim().isNotEmpty &&
+              wakeH.text.trim().isNotEmpty) {
             isSecondContainerSelected = false;
             isSecond2right = false;
           }
@@ -282,6 +283,8 @@ class _Page1State extends State<Page1> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+
     return GestureDetector(
       onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
@@ -289,6 +292,18 @@ class _Page1State extends State<Page1> {
       child: Scaffold(
         backgroundColor: Color(0xff060713),
         appBar: AppBar(
+          toolbarHeight: height * 47 / 844,
+          leading: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: 24.0,
+              semanticLabel: 'Text to announce in accessibility modes',
+            ),
+          ),
           title: Text("기본 가입 정보",
               style: TextStyle(
                 fontFamily: 'Pretendard',
@@ -367,6 +382,7 @@ class _Page1State extends State<Page1> {
                             Row(
                               children: [
                                 Container(
+                                  key: _widgetKey,
                                   width: 139,
                                   height: 44,
                                   decoration:
@@ -403,7 +419,7 @@ class _Page1State extends State<Page1> {
                                           fontSize: 18,
                                           fontFamily: 'Pretendard',
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff9A9A9A)),
+                                          color: Color(0x759A9A9A)),
                                       contentPadding:
                                           EdgeInsets.fromLTRB(20, 10, 20, 11),
                                       border: InputBorder.none,
@@ -457,7 +473,8 @@ class _Page1State extends State<Page1> {
                                       hintStyle: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff9A9A9A)),
+                                          color: Color(0x759A9A9A)),
+                                          // color: Color(0xff9A9A9A)),
                                       contentPadding:
                                           EdgeInsets.fromLTRB(20, 10, 20, 11),
                                       border: InputBorder.none,
@@ -474,7 +491,7 @@ class _Page1State extends State<Page1> {
                       ),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 30,
                     ),
                     Row(
                       children: [
@@ -554,6 +571,11 @@ class _Page1State extends State<Page1> {
                                 // child:
                                 child: TextField(
                                   onTap: () {
+                                    Scrollable.ensureVisible(
+                                        _widgetKey.currentContext!,
+                                        duration: Duration(milliseconds: 300),
+                                        curve: Curves.easeInOut,
+                                        alignment: 0);
                                     setState(() {
                                       isFirstContainerSelected = false;
                                       isSecondContainerSelected = true;
@@ -588,7 +610,8 @@ class _Page1State extends State<Page1> {
                                     hintStyle: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff9A9A9A)),
+                                          color: Color(0x759A9A9A)),
+                                        // color: Color(0xff9A9A9A)),
                                     // contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
 
                                     border: InputBorder.none,
@@ -616,6 +639,11 @@ class _Page1State extends State<Page1> {
                                     isSecond1right ? smallTouched : initial,
                                 child: TextField(
                                   onTap: () {
+                                    Scrollable.ensureVisible(
+                                        _widgetKey.currentContext!,
+                                        duration: Duration(milliseconds: 300),
+                                        curve: Curves.easeInOut,
+                                        alignment: 0);
                                     setState(() {
                                       isFirstContainerSelected = false;
                                       isSecondContainerSelected = true;
@@ -648,7 +676,8 @@ class _Page1State extends State<Page1> {
                                     hintStyle: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff9A9A9A)),
+                                          color: Color(0x759A9A9A)),
+                                        // color: Color(0xff9A9A9A)),
                                     // contentPadding: EdgeInsets.all(10),
                                     border: InputBorder.none,
                                   ),
@@ -734,7 +763,8 @@ class _Page1State extends State<Page1> {
                                     hintStyle: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff9A9A9A)),
+                                          color: Color(0x759A9A9A)),
+                                        // color: Color(0xff9A9A9A)),
                                     // contentPadding: EdgeInsets.all(10),
                                     border: InputBorder.none,
                                   ),
@@ -796,7 +826,8 @@ class _Page1State extends State<Page1> {
                                     hintStyle: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff9A9A9A)),
+                                          color: Color(0x759A9A9A)),
+                                        // color: Color(0xff9A9A9A)),
                                     // contentPadding: EdgeInsets.all(10),
                                     border: InputBorder.none,
                                   ),
@@ -814,32 +845,46 @@ class _Page1State extends State<Page1> {
                       height: 30,
                     ),
                     if (nameC.text.trim().isEmpty ||
-                        ageC.text.trim().isEmpty ||
-                        sleepH.text.trim().isEmpty ||
-                        sleepM.text.trim().isEmpty ||
-                        wakeH.text.trim().isEmpty ||
-                        wakeM.text.trim().isEmpty)
+                            ageC.text.trim().isEmpty ||
+                            sleepH.text.trim().isEmpty ||
+                            // sleepM.text.trim().isEmpty ||
+                            wakeH.text.trim().isEmpty
+                        // wakeM.text.trim().isEmpty
+                        ) 
                       SizedBox(
-                        height: 38,
+                        height: 39,
                       )
                     else
-                      Text(
-                          "입력한 시간에 자동으로 전화와 모닝콜이 수신됩니다.\n          환경설정에서 나중에 변경 가능합니다.",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'Pretendard',
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white)),
+                      Column(
+                        children: [
+                          Text(
+                              "입력한 시간에 자동으로 전화와 모닝콜이 수신됩니다.",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'Pretendard',
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white)),
+                                  Text(
+                              "환경설정에서 나중에 변경 가능합니다.",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'Pretendard',
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white)),
+                        ],
+                      )
+                              ,
                     SizedBox(
-                      height: 100,
+                      height: 80,
                     ),
                     //맨 밑
                     if (nameC.text.trim().isEmpty ||
-                        ageC.text.trim().isEmpty ||
-                        sleepH.text.trim().isEmpty ||
-                        sleepM.text.trim().isEmpty ||
-                        wakeH.text.trim().isEmpty ||
-                        wakeM.text.trim().isEmpty)
+                            ageC.text.trim().isEmpty ||
+                            sleepH.text.trim().isEmpty ||
+                            // sleepM.text.trim().isEmpty ||
+                            wakeH.text.trim().isEmpty
+                        // wakeM.text.trim().isEmpty
+                        )
                       Container(
                         width: 310,
                         height: 75,

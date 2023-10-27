@@ -76,12 +76,23 @@ class _Page2State extends State<typeModify> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    double conwidth = width * 310 / 390;
+    double conwidth = width * 335 / 390;
     double conhight = height * 126 / 844;
 
     return Scaffold(
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 24.0,
+            semanticLabel: 'Text to announce in accessibility modes',
+          ),
+        ),
         toolbarHeight: height * 47 / 844,
         title: Text("불면 타입 변경",
             style: TextStyle(
@@ -108,7 +119,6 @@ class _Page2State extends State<typeModify> {
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                             color: Colors.white)),
-                    
                   ],
                 ),
               ),
@@ -441,33 +451,33 @@ class _Page2State extends State<typeModify> {
               //                   fontWeight: FontWeight.w600,
               //                   color: Colors.white)),
               //         ))
-                else
-                  GestureDetector(
-                    onTap: () {
-                      onSaveButtonPressed();
-                    },
-                    child: Container(
-                        width: conwidth,
-                        height: height * 75 / 844,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: Color(0xff060713),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 5.0,
-                              spreadRadius: 3.0,
-                            ),
-                          ],
-                        ),
-                        child: Center(
-                          child: Text("수정완료",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white)),
-                        )),
-                  )
+              else
+                GestureDetector(
+                  onTap: () {
+                    onSaveButtonPressed();
+                  },
+                  child: Container(
+                      width: conwidth,
+                      height: height * 75 / 844,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Color(0xff060713),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 5.0,
+                            spreadRadius: 3.0,
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text("수정완료",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white)),
+                      )),
+                )
               // else
               //   Container(
               //       width: conwidth,

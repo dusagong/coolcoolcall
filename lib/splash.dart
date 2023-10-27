@@ -11,14 +11,14 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Timer(Duration(milliseconds: 3500), () {
+    Timer(Duration(milliseconds: 2900), () {
       Get.offAll(() => FakeLogin(),
           transition: Transition.fadeIn,
-          duration: Duration(milliseconds: 700)); // Navigate to the home route
+          duration: Duration(milliseconds: 1200)); // Navigate to the home route
     });
     return Container(
       child: Image.asset(
-        "assets/background/Comp 2_1.gif",
+        "assets/background/Comp4.gif",
         fit: BoxFit.cover,
       ),
     );

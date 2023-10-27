@@ -152,6 +152,17 @@ class _Set1State extends State<Set1> {
     return Scaffold(
       backgroundColor: Color(0xff060713),
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 24.0,
+            semanticLabel: 'Text to announce in accessibility modes',
+          ),
+        ),
         title: Text("개인 정보 설정",
             style: TextStyle(
               fontSize: 20,
@@ -162,30 +173,322 @@ class _Set1State extends State<Set1> {
       ),
       body: SafeArea(
         child: Center(
-            child: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 35),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("기본 정보",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white)),
+                    isFirstContainerSelected
+                        ? GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isFirstContainerSelected = false;
+                                isFirstleft = false;
+                                isFirstright = false;
+                                ageC.text = ageC.text + '세';
+
+                                onSaveButtonPressed();
+                              });
+                            },
+                            child: Image.asset(
+                              "assets/Setting/1/check.png",
+                              width: 20.5,
+                              height: 20.5,
+                            ),
+                          )
+                        : isSecondContainerSelected
+                            ? Image.asset(
+                                "assets/Setting/1/pencil.png",
+                                width: 20.5,
+                                height: 20.5,
+                              )
+                            : GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    ageC.text = ageC.text.replaceAll('세', '');
+                                    isFirstContainerSelected = true;
+                                  });
+                                },
+                                child: Image.asset(
+                                  "assets/Setting/1/pencil.png",
+                                  width: 20.5,
+                                  height: 20.5,
+                                ),
+                              ),
+                  ],
+                ),
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
+              //첫번째 박스
+
+              Container(
+                width: 358,
+                height: 112,
+                decoration: isFirstContainerSelected
+                    ? BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color(0xff04060f),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 5.0,
+                            spreadRadius: 3.0,
+                          ),
+                        ],
+                      )
+                    : (BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Color(0xff060713),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x40E4DDEA),
+                            blurRadius: 8.0,
+                            offset: Offset(-4, -4),
+                          ),
+                          BoxShadow(
+                            color: Color(0xff000215),
+                            blurRadius: 24.0,
+                            offset: Offset(4, 4),
+                          ),
+                          BoxShadow(
+                            color: Color(0xff000000),
+                            blurRadius: 4.0,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      )),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text("이름",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              )),
+                          SizedBox(
+                            width: 152,
+                          ),
+                          Text("나이",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              )),
+                          SizedBox(
+                            width: 15,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: 139,
+                            height: 44,
+                            decoration: isFirstleft
+                                ? (BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xff04060f),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        blurRadius: 5.0,
+                                        spreadRadius: 3.0,
+                                      ),
+                                    ],
+                                  ))
+                                : BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xff060714),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        // color: Color.fromRGBO(228, 221, 234, 0.25),
+                                        color: Color(0x40E4DDEA),
+                                        blurRadius: 8.0,
+                                        offset: Offset(4, 4),
+                                      ),
+                                      BoxShadow(
+                                        color: Color(0xff000215),
+                                        blurRadius: 24.0,
+                                        offset: Offset(-4, -4),
+                                      ),
+                                      BoxShadow(
+                                        color: Color(0xff000000),
+                                        blurRadius: 4.0,
+                                        offset: Offset(0, -4),
+                                      ),
+                                    ],
+                                  ),
+                            child: TextField(
+                              onTap: () {
+                                setState(() {
+                                  isFirstContainerSelected
+                                      ? isFirstleft = true
+                                      : isFirstleft = false;
+                                  isFirstright = false;
+                                });
+                              },
+                              readOnly: !isFirstContainerSelected,
+                              textAlign: TextAlign.start,
+                              controller: nameC,
+                              focusNode: nameFocusNode,
+                              onChanged: (newText) {
+                                setState(() {
+                                  nameC = this.nameC;
+                                });
+                              },
+                              decoration: InputDecoration(
+                                // hintText: 'ex. 김한동',
+                                // hintStyle: TextStyle(
+                                //     fontSize: 18,
+                                //     fontWeight: FontWeight.w400,
+                                //     color: Color(0xff9A9A9A)),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                border: InputBorder.none,
+                              ),
+                              style: TextStyle(
+                                color: Colors.white, // Text color
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 48,
+                          ),
+                          Container(
+                            width: 139,
+                            height: 44,
+                            decoration: isFirstright
+                                ? BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xff04060f),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        blurRadius: 5.0,
+                                        spreadRadius: 3.0,
+                                      ),
+                                    ],
+                                  )
+                                : BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xff060714),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        // color: Color.fromRGBO(228, 221, 234, 0.25),
+                                        color: Color(0x40E4DDEA),
+                                        blurRadius: 8.0,
+                                        offset: Offset(4, 4),
+                                      ),
+                                      BoxShadow(
+                                        color: Color(0xff000215),
+                                        blurRadius: 24.0,
+                                        offset: Offset(-4, -4),
+                                      ),
+                                      BoxShadow(
+                                        color: Color(0xff000000),
+                                        blurRadius: 4.0,
+                                        offset: Offset(0, -4),
+                                      ),
+                                    ],
+                                  ),
+                            child: TextField(
+                              onTap: () {
+                                setState(() {
+                                  isFirstContainerSelected
+                                      ? isFirstright = true
+                                      : isFirstright = false;
+                                  isFirstleft = false;
+                                });
+                              },
+                              readOnly: !isFirstContainerSelected,
+                              textAlign: TextAlign.start,
+                              controller: ageC,
+                              keyboardType: TextInputType.number,
+                              onChanged: (newText) {
+                                setState(() {
+                                  ageC = this.ageC;
+                                });
+                              },
+                              decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                border: InputBorder.none,
+                              ),
+                              style: TextStyle(
+                                color: Colors.white, // Text color
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text("기본 정보",
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text("수면 주기",
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: Colors.white)),
-                  isFirstContainerSelected
+                  SizedBox(
+                    width: 7,
+                  ),
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 4,
+                      ),
+                      Text("*원하는 취침/기상 시간을 입력해 주세요!",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white))
+                    ],
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  isSecondContainerSelected
                       ? GestureDetector(
                           onTap: () {
                             setState(() {
-                              isFirstContainerSelected = false;
-                              isFirstleft = false;
-                              isFirstright = false;
-                              ageC.text = ageC.text + '세';
-
+                              isSecondContainerSelected = false;
+                              isSecond1left = false;
+                              isSecond2left = false;
+                              isSecond1right = false;
+                              isSecond2right = false;
                               onSaveButtonPressed();
                             });
                           },
@@ -195,7 +498,7 @@ class _Set1State extends State<Set1> {
                             height: 20.5,
                           ),
                         )
-                      : isSecondContainerSelected
+                      : isFirstContainerSelected
                           ? Image.asset(
                               "assets/Setting/1/pencil.png",
                               width: 20.5,
@@ -204,8 +507,7 @@ class _Set1State extends State<Set1> {
                           : GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  ageC.text = ageC.text.replaceAll('세', '');
-                                  isFirstContainerSelected = true;
+                                  isSecondContainerSelected = true;
                                 });
                               },
                               child: Image.asset(
@@ -216,83 +518,85 @@ class _Set1State extends State<Set1> {
                             ),
                 ],
               ),
-            ),
-
-            SizedBox(
-              height: 10,
-            ),
-            //첫번째 박스
-
-            Container(
-              width: 358,
-              height: 112,
-              decoration: isFirstContainerSelected
-                  ? BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xff04060f),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 5.0,
-                          spreadRadius: 3.0,
-                        ),
-                      ],
-                    )
-                  : (BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xff060713),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0x40E4DDEA),
-                          blurRadius: 8.0,
-                          offset: Offset(-4, -4),
-                        ),
-                        BoxShadow(
-                          color: Color(0xff000215),
-                          blurRadius: 24.0,
-                          offset: Offset(4, 4),
-                        ),
-                        BoxShadow(
-                          color: Color(0xff000000),
-                          blurRadius: 4.0,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    )),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 358,
+                height: 228,
+                decoration: !isSecondContainerSelected
+                    ? BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Color(0xff060713),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x40E4DDEA),
+                            blurRadius: 8.0,
+                            offset: Offset(-4, -4),
+                          ),
+                          BoxShadow(
+                            color: Color(0xff000215),
+                            blurRadius: 24.0,
+                            offset: Offset(4, 4),
+                          ),
+                          BoxShadow(
+                            color: Color(0xff000000),
+                            blurRadius: 4.0,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      )
+                    : BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Color(0xff060713),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 5.0,
+                            spreadRadius: 3.0,
+                          ),
+                        ],
+                      ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(children: [
+                    Row(
                       children: [
-                        Text("이름",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            )),
-                        Text("나이",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            )),
                         SizedBox(
-                          width: 15,
+                          width: 3,
                         ),
+                        Image.asset(
+                          "assets/onboarding/moon.png",
+                          width: 17.02,
+                          height: 17.29,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 3,
+                            ),
+                            Text("취침시간",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white)),
+                          ],
+                        )
                       ],
                     ),
                     SizedBox(
-                      height: 8,
+                      height: 15,
                     ),
                     Row(
                       children: [
                         Container(
                           width: 139,
                           height: 44,
-                          decoration: isFirstleft
-                              ? (BoxDecoration(
+                          decoration: isSecond1left
+                              ? BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Color(0xff04060f),
                                   boxShadow: [
@@ -302,7 +606,7 @@ class _Set1State extends State<Set1> {
                                       spreadRadius: 3.0,
                                     ),
                                   ],
-                                ))
+                                )
                               : BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Color(0xff060714),
@@ -325,31 +629,30 @@ class _Set1State extends State<Set1> {
                                     ),
                                   ],
                                 ),
+
+                          // child:
                           child: TextField(
                             onTap: () {
                               setState(() {
-                                isFirstContainerSelected
-                                    ? isFirstleft = true
+                                isSecondContainerSelected
+                                    ? isSecond1left = true
                                     : isFirstleft = false;
-                                isFirstright = false;
+                                isSecond1right = false;
+                                isSecond2left = false;
+                                isSecond2right = false;
                               });
                             },
-                            readOnly: !isFirstContainerSelected,
-                            textAlign: TextAlign.start,
-                            controller: nameC,
-                            focusNode: nameFocusNode,
                             onChanged: (newText) {
                               setState(() {
-                                nameC = this.nameC;
+                                sleepH = this.sleepH;
                               });
                             },
+                            readOnly: !isSecondContainerSelected,
+                            textAlign: TextAlign.center,
+                            controller: sleepH,
+                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              // hintText: 'ex. 김한동',
-                              // hintStyle: TextStyle(
-                              //     fontSize: 18,
-                              //     fontWeight: FontWeight.w400,
-                              //     color: Color(0xff9A9A9A)),
-                              contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                              // contentPadding: EdgeInsets.all(10),
                               border: InputBorder.none,
                             ),
                             style: TextStyle(
@@ -358,12 +661,20 @@ class _Set1State extends State<Set1> {
                           ),
                         ),
                         SizedBox(
-                          width: 30,
+                          width: 20,
+                        ),
+                        Text(":",
+                            style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.white)),
+                        SizedBox(
+                          width: 20,
                         ),
                         Container(
                           width: 139,
                           height: 44,
-                          decoration: isFirstright
+                          decoration: isSecond1right
                               ? BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Color(0xff04060f),
@@ -400,23 +711,25 @@ class _Set1State extends State<Set1> {
                           child: TextField(
                             onTap: () {
                               setState(() {
-                                isFirstContainerSelected
-                                    ? isFirstright = true
-                                    : isFirstright = false;
-                                isFirstleft = false;
+                                isSecondContainerSelected
+                                    ? isSecond1right = true
+                                    : isSecond1right = false;
+                                isSecond1left = false;
+                                isSecond2left = false;
+                                isSecond2right = false;
                               });
                             },
-                            readOnly: !isFirstContainerSelected,
-                            textAlign: TextAlign.start,
-                            controller: ageC,
+                            readOnly: !isSecondContainerSelected,
+                            textAlign: TextAlign.center,
+                            controller: sleepM,
                             keyboardType: TextInputType.number,
                             onChanged: (newText) {
                               setState(() {
-                                ageC = this.ageC;
+                                sleepM = this.sleepM;
                               });
                             },
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                              // contentPadding: EdgeInsets.all(10),
                               border: InputBorder.none,
                             ),
                             style: TextStyle(
@@ -426,584 +739,290 @@ class _Set1State extends State<Set1> {
                         ),
                       ],
                     ),
-                  ],
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Row(
+                      children: [
+                        Image.asset(
+                          "assets/onboarding/sun2x.png",
+                          width: 24,
+                          height: 28,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 3,
+                            ),
+                            Text("기상시간",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white)),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 139,
+                          height: 44,
+                          decoration: isSecond2left
+                              ? BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xff04060f),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 5.0,
+                                      spreadRadius: 3.0,
+                                    ),
+                                  ],
+                                )
+                              : BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xff060714),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      // color: Color.fromRGBO(228, 221, 234, 0.25),
+                                      color: Color(0x40E4DDEA),
+                                      blurRadius: 8.0,
+                                      offset: Offset(4, 4),
+                                    ),
+                                    BoxShadow(
+                                      color: Color(0xff000215),
+                                      blurRadius: 24.0,
+                                      offset: Offset(-4, -4),
+                                    ),
+                                    BoxShadow(
+                                      color: Color(0xff000000),
+                                      blurRadius: 4.0,
+                                      offset: Offset(0, -4),
+                                    ),
+                                  ],
+                                ),
+                          child: TextField(
+                            onTap: () {
+                              setState(() {
+                                isSecondContainerSelected
+                                    ? isSecond2left = true
+                                    : isSecond2left = false;
+                                isSecond1left = false;
+                                isSecond1right = false;
+                                isSecond2right = false;
+                              });
+                            },
+                            readOnly: !isSecondContainerSelected,
+                            textAlign: TextAlign.center,
+                            controller: wakeH,
+                            keyboardType: TextInputType.number,
+                            onChanged: (newText) {
+                              setState(() {
+                                wakeH = this.wakeH;
+                              });
+                            },
+                            decoration: InputDecoration(
+                              // contentPadding: EdgeInsets.all(10),
+                              border: InputBorder.none,
+                            ),
+                            style: TextStyle(
+                              color: Colors.white, // Text color
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(":",
+                            style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.white)),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Container(
+                          width: 139,
+                          height: 44,
+                          decoration: isSecond2right
+                              ? BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xff04060f),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 5.0,
+                                      spreadRadius: 3.0,
+                                    ),
+                                  ],
+                                )
+                              : BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xff060714),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      // color: Color.fromRGBO(228, 221, 234, 0.25),
+                                      color: Color(0x40E4DDEA),
+                                      blurRadius: 8.0,
+                                      offset: Offset(4, 4),
+                                    ),
+                                    BoxShadow(
+                                      color: Color(0xff000215),
+                                      blurRadius: 24.0,
+                                      offset: Offset(-4, -4),
+                                    ),
+                                    BoxShadow(
+                                      color: Color(0xff000000),
+                                      blurRadius: 4.0,
+                                      offset: Offset(0, -4),
+                                    ),
+                                  ],
+                                ),
+                          child: TextField(
+                            onTap: () {
+                              setState(() {
+                                isSecondContainerSelected
+                                    ? isSecond2right = true
+                                    : isSecond2right = false;
+                                isSecond1left = false;
+                                isSecond1right = false;
+                                isSecond2left = false;
+                              });
+                              print(isFirstContainerSelected);
+                            },
+                            readOnly: !isSecondContainerSelected,
+                            textAlign: TextAlign.center,
+                            controller: wakeM,
+                            keyboardType: TextInputType.number,
+                            onChanged: (newText) {
+                              setState(() {
+                                wakeM = this.wakeM;
+                              });
+                            },
+                            decoration: InputDecoration(
+                              // contentPadding: EdgeInsets.all(10),
+                              border: InputBorder.none,
+                            ),
+                            style: TextStyle(
+                              color: Colors.white, // Text color
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ]),
                 ),
               ),
-            ),
-
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 35,
-                ),
-                Text("수면 주기",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white)),
-                SizedBox(
-                  width: 7,
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 4,
-                    ),
-                    Text("*원하는 취침/기상 시간을 입력해 주세요!",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white))
-                  ],
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                isSecondContainerSelected
-                    ? GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isSecondContainerSelected = false;
-                            isSecond1left = false;
-                            isSecond2left = false;
-                            isSecond1right = false;
-                            isSecond2right = false;
-                            onSaveButtonPressed();
-                          });
-                        },
-                        child: Image.asset(
-                          "assets/Setting/1/check.png",
-                          width: 20.5,
-                          height: 20.5,
-                        ),
-                      )
-                    : isFirstContainerSelected
-                        ? Image.asset(
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("불면 타입",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white)),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              Get.to(() => typeModify());
+                            });
+                          },
+                          child: Image.asset(
                             "assets/Setting/1/pencil.png",
                             width: 20.5,
                             height: 20.5,
-                          )
-                        : GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                isSecondContainerSelected = true;
-                              });
-                            },
-                            child: Image.asset(
-                              "assets/Setting/1/pencil.png",
-                              width: 20.5,
-                              height: 20.5,
-                            ),
                           ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              width: 358,
-              height: 228,
-              decoration: !isSecondContainerSelected
-                  ? BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xff060713),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0x40E4DDEA),
-                          blurRadius: 8.0,
-                          offset: Offset(-4, -4),
                         ),
-                        BoxShadow(
-                          color: Color(0xff000215),
-                          blurRadius: 24.0,
-                          offset: Offset(4, 4),
-                        ),
-                        BoxShadow(
-                          color: Color(0xff000000),
-                          blurRadius: 4.0,
-                          offset: Offset(0, 4),
-                        ),
+                      ])),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 358,
+                height: 187,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color(0xff060713),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x40E4DDEA),
+                      blurRadius: 8.0,
+                      offset: Offset(-4, -4),
+                    ),
+                    BoxShadow(
+                      color: Color(0xff000215),
+                      blurRadius: 24.0,
+                      offset: Offset(4, 4),
+                    ),
+                    BoxShadow(
+                      color: Color(0xff000000),
+                      blurRadius: 4.0,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(24, 20, 24, 0),
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        Text("현재 불면 상태",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white))
                       ],
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    Container(
+                      width: 310,
+                      height: 107,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Color(0xff060713),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x40E4DDEA),
+                            blurRadius: 8.0,
+                            offset: Offset(-4, -4),
+                          ),
+                          BoxShadow(
+                            color: Color(0xff000215),
+                            blurRadius: 24.0,
+                            offset: Offset(4, 4),
+                          ),
+                          BoxShadow(
+                            color: Color(0xff000000),
+                            blurRadius: 4.0,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: boolcount == 1
+                          ? bool1()
+                          : boolcount == 2
+                              ? bool2()
+                              : bool3(),
                     )
-                  : BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xff060713),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 5.0,
-                          spreadRadius: 3.0,
-                        ),
-                      ],
-                    ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(children: [
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 3,
-                      ),
-                      Image.asset(
-                        "assets/onboarding/moon.png",
-                        width: 17.02,
-                        height: 17.29,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text("취침시간",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white)),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 139,
-                        height: 44,
-                        decoration: isSecond1left
-                            ? BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xff04060f),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 5.0,
-                                    spreadRadius: 3.0,
-                                  ),
-                                ],
-                              )
-                            : BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xff060714),
-                                boxShadow: [
-                                  BoxShadow(
-                                    // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                    color: Color(0x40E4DDEA),
-                                    blurRadius: 8.0,
-                                    offset: Offset(4, 4),
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0xff000215),
-                                    blurRadius: 24.0,
-                                    offset: Offset(-4, -4),
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0xff000000),
-                                    blurRadius: 4.0,
-                                    offset: Offset(0, -4),
-                                  ),
-                                ],
-                              ),
-
-                        // child:
-                        child: TextField(
-                          onTap: () {
-                            setState(() {
-                              isSecondContainerSelected
-                                  ? isSecond1left = true
-                                  : isFirstleft = false;
-                              isSecond1right = false;
-                              isSecond2left = false;
-                              isSecond2right = false;
-                            });
-                          },
-                          onChanged: (newText) {
-                            setState(() {
-                              sleepH = this.sleepH;
-                            });
-                          },
-                          readOnly: !isSecondContainerSelected,
-                          textAlign: TextAlign.center,
-                          controller: sleepH,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            // contentPadding: EdgeInsets.all(10),
-                            border: InputBorder.none,
-                          ),
-                          style: TextStyle(
-                            color: Colors.white, // Text color
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(":",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.white)),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        width: 139,
-                        height: 44,
-                        decoration: isSecond1right
-                            ? BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xff04060f),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 5.0,
-                                    spreadRadius: 3.0,
-                                  ),
-                                ],
-                              )
-                            : BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xff060714),
-                                boxShadow: [
-                                  BoxShadow(
-                                    // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                    color: Color(0x40E4DDEA),
-                                    blurRadius: 8.0,
-                                    offset: Offset(4, 4),
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0xff000215),
-                                    blurRadius: 24.0,
-                                    offset: Offset(-4, -4),
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0xff000000),
-                                    blurRadius: 4.0,
-                                    offset: Offset(0, -4),
-                                  ),
-                                ],
-                              ),
-                        child: TextField(
-                          onTap: () {
-                            setState(() {
-                              isSecondContainerSelected
-                                  ? isSecond1right = true
-                                  : isSecond1right = false;
-                              isSecond1left = false;
-                              isSecond2left = false;
-                              isSecond2right = false;
-                            });
-                          },
-                          readOnly: !isSecondContainerSelected,
-                          textAlign: TextAlign.center,
-                          controller: sleepM,
-                          keyboardType: TextInputType.number,
-                          onChanged: (newText) {
-                            setState(() {
-                              sleepM = this.sleepM;
-                            });
-                          },
-                          decoration: InputDecoration(
-                            // contentPadding: EdgeInsets.all(10),
-                            border: InputBorder.none,
-                          ),
-                          style: TextStyle(
-                            color: Colors.white, // Text color
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        "assets/onboarding/sun2x.png",
-                        width: 24,
-                        height: 28,
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text("기상시간",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white)),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 139,
-                        height: 44,
-                        decoration: isSecond2left
-                            ? BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xff04060f),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 5.0,
-                                    spreadRadius: 3.0,
-                                  ),
-                                ],
-                              )
-                            : BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xff060714),
-                                boxShadow: [
-                                  BoxShadow(
-                                    // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                    color: Color(0x40E4DDEA),
-                                    blurRadius: 8.0,
-                                    offset: Offset(4, 4),
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0xff000215),
-                                    blurRadius: 24.0,
-                                    offset: Offset(-4, -4),
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0xff000000),
-                                    blurRadius: 4.0,
-                                    offset: Offset(0, -4),
-                                  ),
-                                ],
-                              ),
-                        child: TextField(
-                          onTap: () {
-                            setState(() {
-                              isSecondContainerSelected
-                                  ? isSecond2left = true
-                                  : isSecond2left = false;
-                              isSecond1left = false;
-                              isSecond1right = false;
-                              isSecond2right = false;
-                            });
-                          },
-                          readOnly: !isSecondContainerSelected,
-                          textAlign: TextAlign.center,
-                          controller: wakeH,
-                          keyboardType: TextInputType.number,
-                          onChanged: (newText) {
-                            setState(() {
-                              wakeH = this.wakeH;
-                            });
-                          },
-                          decoration: InputDecoration(
-                            // contentPadding: EdgeInsets.all(10),
-                            border: InputBorder.none,
-                          ),
-                          style: TextStyle(
-                            color: Colors.white, // Text color
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(":",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.white)),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        width: 139,
-                        height: 44,
-                        decoration: isSecond2right
-                            ? BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xff04060f),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 5.0,
-                                    spreadRadius: 3.0,
-                                  ),
-                                ],
-                              )
-                            : BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xff060714),
-                                boxShadow: [
-                                  BoxShadow(
-                                    // color: Color.fromRGBO(228, 221, 234, 0.25),
-                                    color: Color(0x40E4DDEA),
-                                    blurRadius: 8.0,
-                                    offset: Offset(4, 4),
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0xff000215),
-                                    blurRadius: 24.0,
-                                    offset: Offset(-4, -4),
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0xff000000),
-                                    blurRadius: 4.0,
-                                    offset: Offset(0, -4),
-                                  ),
-                                ],
-                              ),
-                        child: TextField(
-                          onTap: () {
-                            setState(() {
-                              isSecondContainerSelected
-                                  ? isSecond2right = true
-                                  : isSecond2right = false;
-                              isSecond1left = false;
-                              isSecond1right = false;
-                              isSecond2left = false;
-                            });
-                            print(isFirstContainerSelected);
-                          },
-                          readOnly: !isSecondContainerSelected,
-                          textAlign: TextAlign.center,
-                          controller: wakeM,
-                          keyboardType: TextInputType.number,
-                          onChanged: (newText) {
-                            setState(() {
-                              wakeM = this.wakeM;
-                            });
-                          },
-                          decoration: InputDecoration(
-                            // contentPadding: EdgeInsets.all(10),
-                            border: InputBorder.none,
-                          ),
-                          style: TextStyle(
-                            color: Colors.white, // Text color
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ]),
-              ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("불면 타입",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            Get.to(() => typeModify());
-                          });
-                        },
-                        child: Image.asset(
-                          "assets/Setting/1/pencil.png",
-                          width: 20.5,
-                          height: 20.5,
-                        ),
-                      ),
-                    ])),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              width: 358,
-              height: 187,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Color(0xff060713),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x40E4DDEA),
-                    blurRadius: 8.0,
-                    offset: Offset(-4, -4),
-                  ),
-                  BoxShadow(
-                    color: Color(0xff000215),
-                    blurRadius: 24.0,
-                    offset: Offset(4, 4),
-                  ),
-                  BoxShadow(
-                    color: Color(0xff000000),
-                    blurRadius: 4.0,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(24, 20, 24, 0),
-                child: Column(children: [
-                  Row(
-                    children: [
-                      Text("현재 불면 상태",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white))
-                    ],
-                  ),
-                  SizedBox(
-                    height: 18,
-                  ),
-                  Container(
-                    width: 310,
-                    height: 107,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Color(0xff060713),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0x40E4DDEA),
-                          blurRadius: 8.0,
-                          offset: Offset(-4, -4),
-                        ),
-                        BoxShadow(
-                          color: Color(0xff000215),
-                          blurRadius: 24.0,
-                          offset: Offset(4, 4),
-                        ),
-                        BoxShadow(
-                          color: Color(0xff000000),
-                          blurRadius: 4.0,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: boolcount == 1
-                        ? bool1()
-                        : boolcount == 2
-                            ? bool2()
-                            : bool3(),
-                  )
-                ]),
-              ),
-            )
-          ],
+                  ]),
+                ),
+              )
+            ],
+          ),
         )),
       ),
     );

@@ -29,6 +29,17 @@ class _SleepAlarmState extends State<SleepAlarm> {
     return Scaffold(
         backgroundColor: Color(0xff060713),
         appBar: AppBar(
+          leading: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: 24.0,
+              semanticLabel: 'Text to announce in accessibility modes',
+            ),
+          ),
           toolbarHeight: height * 47 / 844,
           title: Text("취침 알람 전화 설정",
               style: TextStyle(

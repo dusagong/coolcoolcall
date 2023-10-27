@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
   void _handleDoubleTap() {
     // Create a timer with a 2-second delay
     Timer(Duration(seconds: 2), () {
-      Get.offAll(() => Income(),transition: Transition.noTransition);
+      Get.offAll(() => Income(), transition: Transition.noTransition);
     });
   }
 
@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     // if (AuthController.instance.clickcount == 3) AuthController.instance.clickcount = clickCount;
-    
+
     return Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -106,11 +106,12 @@ class _HomeState extends State<Home> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: GestureDetector(
+            onVerticalDragStart: (details) =>
+                AuthController.instance.clickcount++,
             onTap: () {
               setState(() {
                 // AuthController.instance.clickcount++;
                 AuthController.instance.clickcount++;
-                   
               });
             },
             child: Stack(
@@ -151,10 +152,11 @@ class _HomeState extends State<Home> {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                                print("circle");
-                            return SizedBox(height: 159,);
-                          } else
-                          if (snapshot.hasError) {
+                            print("circle");
+                            return SizedBox(
+                              height: 159,
+                            );
+                          } else if (snapshot.hasError) {
                             print('error');
                             return Text("Error: ${snapshot.error}");
                           } else {

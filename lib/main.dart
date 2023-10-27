@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
-
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Splash(), //loading screen should be here.
