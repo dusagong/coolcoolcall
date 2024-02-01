@@ -1,17 +1,13 @@
 # coolcoolcall
 
-A new Flutter project.
+2023 HGU Degree outsourcing project just for demo.
 
-## Getting Started
+**Mission!**
+Must use voices in typecast. (Unable to get API)
+AI Voice communication for easy sleeping.
 
-This project is a starting point for a Flutter application.
+**Have done**
+Used Openai Api for turbo-3.5 + finetuned
+For 5days demo with 2devices costed 130$ (need to optimize,,)
+Finetuned to answer 1~54 which points prepared typecast voice(prepared script)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# coolcoolcall
