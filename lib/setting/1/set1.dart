@@ -167,6 +167,7 @@ class _Set1State extends State<Set1> {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
+              color: Colors.white
             )),
         backgroundColor: Color(0xff060713),
         elevation: 0.0,
@@ -523,7 +524,7 @@ class _Set1State extends State<Set1> {
               ),
               Container(
                 width: 358,
-                height: 228,
+                height: 233,
                 decoration: !isSecondContainerSelected
                     ? BoxDecoration(
                         borderRadius: BorderRadius.circular(20),

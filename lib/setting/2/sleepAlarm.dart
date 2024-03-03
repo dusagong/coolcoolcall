@@ -45,6 +45,7 @@ class _SleepAlarmState extends State<SleepAlarm> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
+                color: Colors.white
               )),
           backgroundColor: Color(0xff060713),
           elevation: 0.0,
@@ -171,7 +172,7 @@ class _SleepAlarmState extends State<SleepAlarm> {
         ),
         Container(
           // Wrapping the text in a container with fixed height
-          height: 70, // Adjust the height as needed
+          height: 82, // Adjust the height as needed
           width: 300,
           child: Column(
             children: [
@@ -187,7 +188,7 @@ class _SleepAlarmState extends State<SleepAlarm> {
                 height: 5,
               ),
               Text(
-                "취침 전 쿨쿨이의 전화를 싶다면",
+                "취침 전 쿨쿨이의 전화를 받고 싶다면",
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
@@ -221,7 +222,7 @@ class _SleepAlarmState extends State<SleepAlarm> {
         ),
         Container(
           // Wrapping the text in a container with fixed height
-          height: 70, // Adjust the height as needed
+          height: 82, // Adjust the height as needed
           width: 300,
           child: Column(
             children: [

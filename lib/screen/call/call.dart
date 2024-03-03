@@ -376,18 +376,18 @@ class _CallState extends State<Call> {
   bool isOut = false;
   final OpenAIService openAIService = OpenAIService();
   @override
-  void initState() async {
-    super.initState();
-    mychoice = b();
-    await initSpeechToText();
-    await _assetsAudioPlayer.open(audio1); // Play audio1
-    await Future.delayed(
-        Duration(milliseconds: 1150)); // Delay for 3 milliseconds
-    _assetsAudioPlayer.stop();
-    print('hear?');
-    if (await speechToText.hasPermission && speechToText.isNotListening)
-      await startListening();
-  }
+  // void initState() async {
+  //   super.initState();
+  //   mychoice = b();
+  //   await initSpeechToText();
+  //   await _assetsAudioPlayer.open(audio1); // Play audio1
+  //   await Future.delayed(
+  //       Duration(milliseconds: 1150)); // Delay for 3 milliseconds
+  //   _assetsAudioPlayer.stop();
+  //   print('hear?');
+  //   if (await speechToText.hasPermission && speechToText.isNotListening)
+  //     await startListening();
+  // }
 
 // if (await speechToText.hasPermission &&
 //                 speechToText.isNotListening) {
@@ -759,7 +759,7 @@ class _CallState extends State<Call> {
           child: Column(
             children: [
               SizedBox(
-                height: 580,
+                height: 560,
               ),
               Text("전화를 종료하고 싶으시면",
                   style: TextStyle(
@@ -833,7 +833,7 @@ class _CallState extends State<Call> {
           child: Column(
             children: [
               SizedBox(
-                height: 580,
+                height: 560,
               ),
               Text("전화를 종료하고 싶으시면",
                   style: TextStyle(

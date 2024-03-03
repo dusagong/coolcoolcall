@@ -309,6 +309,7 @@ class _Page1State extends State<Page1> {
                 fontFamily: 'Pretendard',
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
+                color: Colors.white
               )),
           backgroundColor: Color(0xff060713),
           elevation: 0.0,
@@ -345,7 +346,7 @@ class _Page1State extends State<Page1> {
                     //첫번째 박스
                     Container(
                       width: 364,
-                      height: 112,
+                      height: 116,
                       decoration: isFirstContainerSelected ? touched : Binitial,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
@@ -525,7 +526,7 @@ class _Page1State extends State<Page1> {
                     ),
                     Container(
                       width: 364,
-                      height: 234,
+                      height: 239,
                       decoration:
                           isSecondContainerSelected ? touched : Binitial,
                       child: Padding(

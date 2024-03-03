@@ -44,6 +44,7 @@ class _WakeAlarmState extends State<WakeAlarm> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
+                color: Colors.white
               )),
           backgroundColor: Color(0xff060713),
           elevation: 0.0,
@@ -170,7 +171,7 @@ class _WakeAlarmState extends State<WakeAlarm> {
         ),
         Container(
           // Wrapping the text in a container with fixed height
-          height: 70, // Adjust the height as needed
+          height: 82, // Adjust the height as needed
           width: 300,
           child: Column(
             children: [
@@ -220,7 +221,7 @@ class _WakeAlarmState extends State<WakeAlarm> {
         ),
         Container(
           // Wrapping the text in a container with fixed height
-          height: 70, // Adjust the height as needed
+          height: 82, // Adjust the height as needed
           width: 300,
           child: Column(
             children: [

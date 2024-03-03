@@ -101,6 +101,7 @@ class _Set4State extends State<Set4> {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
+              color: Colors.white
             )),
         backgroundColor: Color(0xff060713),
         elevation: 0.0,

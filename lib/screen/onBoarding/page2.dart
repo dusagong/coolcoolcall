@@ -56,6 +56,7 @@ class _Page2State extends State<Page2> {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
+              color: Colors.white
             )),
         backgroundColor: Color(0xff060713),
         elevation: 0.0,

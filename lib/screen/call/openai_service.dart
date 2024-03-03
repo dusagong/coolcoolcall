@@ -159,6 +159,7 @@ class OpenAIService {
         body: jsonEncode({
           // "training_file": "lib/screen/call/fine_tune.json",//내가 만든 스크립트 파일
           "model": "ft:gpt-3.5-turbo-0613:personal::8DnJgRLP",
+          // "model": "ft:gpt-3.5-turbo-0613:personal::8DnJgRLP",
           "messages": messages,
         }),
       );

@@ -38,7 +38,7 @@ class _IncomeState extends State<Income> {
               body: Center(
                 child: Column(children: [
                   SizedBox(
-                    height: 90,
+                    height: 70,
                   ),
                   Text("쿨쿨이",
                       style: TextStyle(

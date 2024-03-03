@@ -60,6 +60,7 @@ class _QuestionState extends State<Question> with TickerProviderStateMixin {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
+            color: Colors.white
           ),
         ),
         backgroundColor: Color(0xff060713),

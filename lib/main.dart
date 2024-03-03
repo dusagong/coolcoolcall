@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coolcoolcall/controller/auth_controller.dart';
 import 'package:coolcoolcall/screen/call/call.dart';
 import 'package:coolcoolcall/screen/home.dart';
@@ -13,10 +14,33 @@ import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
-  runApp(const MyApp());
+   try {
+    await Firebase.initializeApp();
+    print("Good Connection");
+  readData();
+    Get.put(AuthController());
+    runApp(const MyApp());
+  } catch (e) {
+    print("Error initializing Firebase: $e");
+    // Handle the error, for example, show an error message or log the error.
+  }
 }
+void readData() async {
+  try {
+    // Reference to the 'users' collection
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
 
+    // Get documents from the 'users' collection
+    QuerySnapshot querySnapshot = await users.get();
+
+    // Loop through the documents and print their data
+    querySnapshot.docs.forEach((doc) {
+      print('User ID: ${doc.id}, Data: ${doc.data()}');
+    });
+  } catch (e) {
+    print('Error reading data: $e');
+  }
+}
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
